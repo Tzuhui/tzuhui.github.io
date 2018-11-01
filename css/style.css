@@ -137,6 +137,10 @@ code {
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
   background-color: #f8f8f8;
 }
+.active {
+  color: #38b7ea !important;
+  font-weight: 800 !important;
+}
 .outer {
   max-width: 1320px;
   margin: 0 auto;
@@ -155,9 +159,6 @@ code {
     padding: 0;
   }
 }
-.is-active {
-  color: #38b7ea !important;
-}
 .left,
 .alignleft {
   float: left;
@@ -170,13 +171,13 @@ code {
   clear: both;
 }
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-repeat: no-repeat;
   background-image: url("https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4");
-  -webkit-background-size: 40px 40px;
-  -moz-background-size: 40px 40px;
-  background-size: 40px 40px;
+  -webkit-background-size: 30px 30px;
+  -moz-background-size: 30px 30px;
+  background-size: 30px 30px;
 }
 #container {
   position: relative;
@@ -207,6 +208,32 @@ code {
 }
 @media screen and (max-width: 559px) {
   #main {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #main-article {
+    display: inline;
+    float: left;
+    width: 75.38461538461539%;
+    margin: 0 0.769230769230769%;
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1199px) {
+  #main-article {
+    display: inline;
+    float: left;
+    width: 52.307692307692314%;
+    margin: 0 0.769230769230769%;
+  }
+}
+@media screen and (min-width: 560px) and (max-width: 799px) {
+  #main-article {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 559px) {
+  #main-article {
     width: 100%;
   }
 }
@@ -366,9 +393,9 @@ code {
 #main-nav,
 #sub-nav,
 #search-form-wrap {
-  height: 40px;
-  line-height: 40px;
-  padding: 12px 15px;
+  height: 30px;
+  line-height: 30px;
+  padding: 17px 15px;
 }
 .header-inner #logo,
 #main-nav {
@@ -397,11 +424,11 @@ code {
 }
 #header-title {
   text-align: center;
-  height: 40px;
+  height: 30px;
   position: absolute;
   top: 50%;
   left: 0;
-  margin-top: -20px;
+  margin-top: -15px;
 }
 .header-sub {
   border-top: 1px solid #eceff2;
@@ -472,8 +499,8 @@ code {
   height: 14px;
   position: relative;
   cursor: pointer;
-  height: 40px !important;
-  line-height: 40px !important;
+  height: 30px !important;
+  line-height: 30px !important;
 }
 .main-nav-link {
   font-weight: 300;
@@ -485,8 +512,8 @@ code {
 }
 #sub-nav #profile-nav #profile-anchor {
   display: block;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
 }
 #sub-nav #profile-nav #profile-anchor:before,
 #sub-nav #profile-nav #profile-anchor:after {
@@ -501,12 +528,12 @@ code {
   float: left;
 }
 #sub-nav #profile-nav .avatar {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-right: 8px;
 }
 #sub-nav #profile-nav .fa {
-  line-height: 40px;
+  line-height: 30px;
 }
 @media screen and (max-width: 559px) {
   #search-form-wrap {
@@ -519,9 +546,9 @@ code {
 #search-form-wrap .search-form .search-form-input {
   width: 100%;
   padding: 0 30px 0 15px;
-  line-height: 40px;
-  height: 40px !important;
-  border-radius: 21px;
+  line-height: 30px;
+  height: 30px !important;
+  border-radius: 16px;
 }
 #search-form-wrap .search-form .search-form-input::-webkit-search-results-decoration,
 #search-form-wrap .search-form .search-form-input::-webkit-search-cancel-button {
@@ -536,9 +563,10 @@ code {
   background: none;
   position: absolute;
   font-size: 13px;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+  font-main-nav-link: mily;
 }
+#search-form-wrap .search-form .search-form-submit : "Font Awesome 5 Free",
+#search-form-wrap .search-form .search-form-submit font-weight: 900,
 #search-form-wrap .search-form .search-form-submit:before {
   content: "\f002";
 }
