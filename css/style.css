@@ -696,13 +696,17 @@ code {
 }
 #profile .inner .base-info #name,
 #profile .inner .base-info #title,
-#profile .inner .base-info #location {
+#profile .inner .base-info #location,
+#profile .inner .base-info #description {
   display: block;
   text-align: center;
 }
 #profile .inner .base-info #name {
   font-size: 20px;
   font-weight: 600;
+}
+#profile .inner .base-info #description {
+  font-size: 12px;
 }
 #profile .inner .base-info #location {
   font-size: 12px;
