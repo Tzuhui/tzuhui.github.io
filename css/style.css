@@ -118,7 +118,7 @@ body,
 body {
   color: #565a5f;
   background: #f5f8f9;
-  font: 14px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
+  font: 16px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 a {
@@ -132,7 +132,7 @@ code {
   margin: 0 2px;
   color: #e96900;
   padding: 3px 5px;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   border-radius: 2px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
   background-color: #f8f8f8;
@@ -277,27 +277,27 @@ code {
 }
 .article-entry h1,
 .widget h1 {
-  font-size: 2em;
+  font-size: 2rem;
 }
 .article-entry h2,
 .widget h2 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 .article-entry h3,
 .widget h3 {
-  font-size: 1.3em;
+  font-size: 1.3rem;
 }
 .article-entry h4,
 .widget h4 {
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 .article-entry h5,
 .widget h5 {
-  font-size: 1em;
+  font-size: 1rem;
 }
 .article-entry h6,
 .widget h6 {
-  font-size: 1em;
+  font-size: 1rem;
   color: #999;
 }
 .article-entry hr,
@@ -318,7 +318,7 @@ code {
 .widget sup,
 .article-entry sub,
 .widget sub {
-  font-size: 0.75em;
+  font-size: 0.75rem;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
@@ -333,7 +333,7 @@ code {
 }
 .article-entry small,
 .widget small {
-  font-size: 0.85em;
+  font-size: 0.85rem;
 }
 .article-entry acronym,
 .widget acronym,
@@ -348,7 +348,7 @@ code {
 .article-entry dl,
 .widget dl {
   margin: 0 20px;
-  line-height: 1.6em;
+  line-height: 1.6rem;
 }
 .article-entry ul ul,
 .widget ul ul,
@@ -494,9 +494,9 @@ code {
 }
 .nav-icon {
   text-align: center;
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
   position: relative;
   cursor: pointer;
   height: 30px !important;
@@ -595,10 +595,10 @@ code {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   height: auto !important;
-  line-height: 1.6em;
+  line-height: 1.6rem;
   outline: none !important;
   background: none !important;
-  font: 14px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
+  font: 16px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
   border: 1px solid #eceff2 !important;
 }
 .search-form-input:focus,
@@ -706,10 +706,10 @@ code {
   font-weight: 600;
 }
 #profile .inner .base-info #description {
-  font-size: 12px;
+  font-size: 14px;
 }
 #profile .inner .base-info #location {
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 5px;
   color: #9a9ea3;
 }
@@ -754,11 +754,11 @@ code {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-size: 20px;
+  font-size: 22px;
 }
 #profile .inner .article-info .article-info-block span {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
 }
 #profile .inner .article-info .article-info-block:first-child {
@@ -769,7 +769,7 @@ code {
 }
 #profile .inner .social-links > table td {
   text-align: center;
-  font-size: 24px;
+  font-size: 26px;
 }
 #profile .inner .social-links > table td a {
   position: relative;
@@ -902,10 +902,10 @@ code {
   margin-bottom: 14px;
 }
 .article-title {
-  font-size: 2em;
+  font-size: 2rem;
   color: #565a5f;
   text-decoration: none;
-  line-height: 1.3em;
+  line-height: 2.5rem;
 }
 a.article-title:visited {
   color: #565a5f;
@@ -915,16 +915,16 @@ a.article-title:hover {
 }
 @media screen and (max-width: 559px) {
   .article-title {
-    font-size: 1.6em;
+    font-size: 1.6rem;
   }
 }
 @media screen and (min-width: 560px) and (max-width: 799px) {
   .article-title {
-    font-size: 1.6em;
+    font-size: 1.6rem;
   }
 }
 .article-meta {
-  line-height: 1.6em;
+  line-height: 1.6rem;
 }
 .article-meta:before,
 .article-meta:after {
@@ -956,7 +956,7 @@ a.article-title:hover {
 .article-entry {
   color: #565a5f;
   padding: 0 20px;
-  line-height: 1.6em;
+  line-height: 1.6rem;
 }
 .article-entry:before,
 .article-entry:after {
@@ -971,8 +971,8 @@ a.article-title:hover {
 }
 .article-entry p,
 .article-entry table {
-  line-height: 1.6em;
-  margin: 1.6em 0;
+  line-height: 1.6rem;
+  margin: 1.6rem 0;
 }
 .article-entry h1,
 .article-entry h2,
@@ -988,8 +988,8 @@ a.article-title:hover {
 .article-entry h4,
 .article-entry h5,
 .article-entry h6 {
-  line-height: 1.3em;
-  margin: 1.3em 0;
+  line-height: 2.5rem;
+  margin: 2.5rem 0;
 }
 .article-entry a {
   color: #38b7ea;
@@ -1001,8 +1001,8 @@ a.article-title:hover {
 .article-entry ul,
 .article-entry ol,
 .article-entry dl {
-  margin-top: 1.6em;
-  margin-bottom: 1.6em;
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
 }
 .article-entry img,
 .article-entry video {
@@ -1026,7 +1026,7 @@ a.article-title:hover {
 .article-entry th {
   font-weight: bold;
   border-bottom: 3px solid #eceff2;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.5rem;
 }
 .article-entry td {
   border-bottom: 1px solid #eceff2;
@@ -1035,7 +1035,7 @@ a.article-title:hover {
 .article-entry blockquote {
   position: static;
   font-family: Georgia, "Times New Roman", "Microsoft Yahei", serif;
-  font-size: 1.1em;
+  font-size: 1.1rem;
   margin: 0 -20px;
   padding: 10px 20px 10px 54px;
   background: #fcfcfc;
@@ -1053,13 +1053,13 @@ a.article-title:hover {
   position: static;
 }
 .article-entry blockquote footer {
-  font-size: 14px;
-  margin: 1.6em 0;
+  font-size: 16px;
+  margin: 1.6rem 0;
   font-family: "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
-  padding: 0 0.5em;
+  padding: 0 0.5rem;
 }
 .article-entry .pullquote {
   text-align: left;
@@ -1067,18 +1067,18 @@ a.article-title:hover {
   margin: 0;
 }
 .article-entry .pullquote.left {
-  margin-left: 0.5em;
-  margin-right: 1em;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
 }
 .article-entry .pullquote.right {
-  margin-right: 0.5em;
-  margin-left: 1em;
+  margin-right: 0.5rem;
+  margin-left: 1rem;
 }
 .article-entry .caption {
   color: #999;
   display: block;
-  font-size: 0.9em;
-  margin-top: 0.5em;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
   position: relative;
   text-align: center;
 }
@@ -1100,7 +1100,7 @@ a.article-title:hover {
 }
 .article-more-link a {
   display: inline-block;
-  line-height: 1em;
+  line-height: 1rem;
   padding: 6px 15px;
   border-radius: 15px;
   background: #f5f8f9;
@@ -1115,10 +1115,10 @@ a.article-title:hover {
   text-shadow: 0 1px #169cd2;
 }
 .article-footer {
-  font-size: 0.85em;
-  line-height: 1.6em;
+  font-size: 0.85rem;
+  line-height: 1.6rem;
   border-top: 1px solid #eceff2;
-  padding-top: 1.6em;
+  padding-top: 1.6rem;
   margin: 0 20px 20px;
 }
 .article-footer:before,
@@ -1219,7 +1219,7 @@ a.article-title:hover {
 }
 .article-nav-caption {
   letter-spacing: 2px;
-  line-height: 1em;
+  line-height: 1rem;
   font-weight: bold;
   color: #565a5f;
   text-transform: uppercase;
@@ -1228,10 +1228,10 @@ a.article-title:hover {
   margin-right: -2px;
 }
 .article-nav-title {
-  font-size: 0.85em;
-  margin-top: 0.5em;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
   color: #565a5f;
-  line-height: 1.6em;
+  line-height: 1.6rem;
 }
 .article-share-box {
   position: absolute;
@@ -1326,7 +1326,7 @@ a.article-title:hover {
   background: #000;
   position: relative;
   text-align: center;
-  margin: 1.6em 0;
+  margin: 1.6rem 0;
 }
 .article-gallery .gallery-item {
   display: none;
@@ -1367,14 +1367,14 @@ a.article-title:hover {
 }
 .toc-article {
   padding: 20px 25px;
-  line-height: 1em;
+  line-height: 1rem;
   background: #f9f9f9;
-  margin: 2em 0 0 0.2em;
+  margin: 2rem 0 0 0.2rem;
   border-radius: 0px;
 }
 .toc-article .toc-title {
   font-size: 120%;
-  padding: 0.3em 1;
+  padding: 0.3rem 1;
 }
 .toc-article .toc {
   padding: 0;
@@ -1417,7 +1417,7 @@ a.article-title:hover {
 .archive-category-wrap,
 .archive-tag-wrap,
 .layout-title {
-  font-size: 1.4em;
+  font-size: 1.4rem;
   margin: 40px 0 20px 0;
 }
 @media screen and (max-width: 559px) {
@@ -1426,7 +1426,7 @@ a.article-title:hover {
   .archive-tag-wrap,
   .layout-title {
     padding: 0 15px;
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
 }
 .archive-year-wrap .fa,
@@ -1523,14 +1523,14 @@ a.article-title:hover {
 }
 .archive-article-title {
   display: block;
-  font-size: 1.6em;
-  line-height: 1.4em;
+  font-size: 1.6rem;
+  line-height: 1.4rem;
   margin-bottom: 12px;
 }
 @media screen and (max-width: 559px) {
   .archive-article-title {
     display: block;
-    font-size: 1.3em;
+    font-size: 1.3rem;
   }
 }
 .archive-article-date {
@@ -1544,7 +1544,7 @@ a.article-title:hover {
 .layout-wrap-inner.list-categories ul li,
 .layout-wrap-inner.list-categories ul .category-list-child {
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
   border-bottom: 1px solid border-color;
 }
 .layout-wrap-inner.list-categories ul li a,
@@ -1716,7 +1716,7 @@ a.article-title:hover {
   padding: 20px 0;
   border-top: 1px solid #eceff2;
   color: #565a5f;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
 }
 #footer .outer {
@@ -1730,7 +1730,7 @@ a.article-title:hover {
   text-decoration: underline;
 }
 #footer-info {
-  line-height: 1.6em;
+  line-height: 1.6rem;
   font-size: 0.85em;
 }
 @media screen and (min-width: 1200px) {
@@ -1750,7 +1750,7 @@ a.article-title:hover {
   }
 }
 .widget {
-  line-height: 1.6em;
+  line-height: 1.6rem;
   word-wrap: break-word;
   font-size: 0.9em;
 }
@@ -1835,7 +1835,7 @@ a.article-title:hover {
 .widget ul .category-list-child,
 .widget ol .category-list-child {
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
   border-bottom: 1px solid border-color;
 }
 .widget ul li a,
@@ -2140,9 +2140,9 @@ a.article-title:hover {
   display: block;
   overflow-x: auto;
   padding: 15px 20px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
-  line-height: 22.400000000000002px;
+  line-height: 25.6px;
 }
 .highlight table {
   margin: 0;
@@ -2160,10 +2160,10 @@ a.article-title:hover {
   padding-right: 20px;
 }
 .article-entry .highlight {
-  margin: 1.6em 0;
+  margin: 1.6rem 0;
 }
 .article-entry .highlight .line {
-  height: 1.6em;
+  height: 1.6rem;
 }
 .highlight {
   color: #ddd;

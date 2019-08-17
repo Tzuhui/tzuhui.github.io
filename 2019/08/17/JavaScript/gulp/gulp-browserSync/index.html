@@ -3,21 +3,21 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>Vue CLI 3 環境變數設置 | 想飛的葉子</title>
+    <title>在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync) | 想飛的葉子</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="使用 Vue 開發時若有使用到 firebse 資料庫，會需要將資料庫金鑰加入到專案中，但在 commit 時不建議將金鑰也一併 commit 到公開的儲存庫上，這時就會建議使用環境變數">
-<meta name="keywords" content="Vue,技術筆記,JavaScript">
+    <meta name="description" content="這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起">
+<meta name="keywords" content="技術筆記,JavaScript,gulp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue CLI 3 環境變數設置">
-<meta property="og:url" content="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/index.html">
+<meta property="og:title" content="在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)">
+<meta property="og:url" content="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/index.html">
 <meta property="og:site_name" content="想飛的葉子">
-<meta property="og:description" content="使用 Vue 開發時若有使用到 firebse 資料庫，會需要將資料庫金鑰加入到專案中，但在 commit 時不建議將金鑰也一併 commit 到公開的儲存庫上，這時就會建議使用環境變數">
+<meta property="og:description" content="這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2019-06-20T17:03:40.688Z">
+<meta property="og:updated_time" content="2019-08-17T05:11:36.563Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue CLI 3 環境變數設置">
-<meta name="twitter:description" content="使用 Vue 開發時若有使用到 firebse 資料庫，會需要將資料庫金鑰加入到專案中，但在 commit 時不建議將金鑰也一併 commit 到公開的儲存庫上，這時就會建議使用環境變數">
+<meta name="twitter:title" content="在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)">
+<meta name="twitter:description" content="這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
     
 
@@ -156,7 +156,7 @@ ga('send', 'pageview');
     <div class="outer">
     
     
-      <section id="main-article" ><article id="post-Vue/Vue-CLI3-env" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main-article" ><article id="post-JavaScript/gulp/gulp-browserSync" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -164,7 +164,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Vue CLI 3 環境變數設置
+            在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)
         </h1>
     
 
@@ -173,8 +173,8 @@ ga('send', 'pageview');
                         <!-- 
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/01/08/Vue/Vue-CLI3-env/">
-            <time datetime="2019-01-07T16:00:00.000Z" itemprop="datePublished">2019-01-08</time>
+        <a href="/2019/08/17/JavaScript/gulp/gulp-browserSync/">
+            <time datetime="2019-08-16T16:00:00.000Z" itemprop="datePublished">2019-08-17</time>
         </a>
     </div>
 
@@ -182,13 +182,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/Vue-筆記/">Vue 筆記</a>
+        <a class="article-category-link" href="/categories/gulp/">gulp</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Vue/">Vue</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/gulp/">gulp</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
     </div>
 
                     </div>
@@ -199,18 +199,22 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>使用 Vue 開發時若有使用到 firebse 資料庫，會需要將資料庫金鑰加入到專案中，但在 commit 時不建議將金鑰也一併 commit 到公開的儲存庫上，這時就會建議使用環境變數<br><a id="more"></a> </p>
-<h3 id="新增一個-env-local"><a href="#新增一個-env-local" class="headerlink" title="新增一個 .env.local"></a>新增一個 .env.local</h3><p>新增的 .env.local 會在所有環境中被載入，但會被 git 忽略<br>在 .env.local 中加入環境變數，例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FIREBASE_APIKEY=Key</span><br><span class="line">FIREBASE_AUTODOMAIN=Domain</span><br><span class="line">FIREBASE_DATABASEURL=DatabaseUrl</span><br><span class="line">FIREBASE_PROJECTID=ProjectId</span><br><span class="line">FIREBASE_STORAGEBUCKET=StorageBucket</span><br><span class="line">FIREBASE_MESSAGINGSENDERID=MessagingsId</span><br></pre></td></tr></table></figure></p>
-<p>左邊為環境變數的變數名稱，通常以全部都大寫字母來命名<br>右邊是金鑰的內容，在 firebase 中可以取得相關的資料</p>
-<h3 id="在-JS-中取得環境變數設置"><a href="#在-JS-中取得環境變數設置" class="headerlink" title="在 JS 中取得環境變數設置"></a>在 JS 中取得環境變數設置</h3><p>在 JS 中要使用環境變數，只要在變數前加上 <code>process.env</code> 就可以了～<br>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">process.env.FIREBASE_APIKEY</span><br></pre></td></tr></table></figure></p>
-<h3 id="部署要注意的地方"><a href="#部署要注意的地方" class="headerlink" title="部署要注意的地方"></a>部署要注意的地方</h3><p>將金鑰改為環境變數之後，因為只有在本地端才能使用，所以要注意部署網站時要將環境變數設定到機器上<br>以部署到 heroku 為例：</p>
-<ol>
-<li>進入 heroku 專案畫面，點選 Settings，在 Settings 頁面有設定環境變數的地方 - Config Vars</li>
-<li>點選 Reveal Config Vars</li>
-<li>將變數加上，如下圖：</li>
-</ol>
-<p><img src="https://drive.google.com/uc?id=17thuessbvoox937xiH0puXpAo9RU4MxE" alt=""></p>
-<p>官網的環境變數說明：<br><a href="https://cli.vuejs.org/zh/guide/mode-and-env.html" target="_blank" rel="noopener">https://cli.vuejs.org/zh/guide/mode-and-env.html</a></p>
+            <p>這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法<br>正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起<br><a id="more"></a> </p>
+<h3 id="1-初始化套件管理器-NPM"><a href="#1-初始化套件管理器-NPM" class="headerlink" title="1. 初始化套件管理器 ( NPM )"></a>1. 初始化套件管理器 ( NPM )</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<p>下指令後會有一些需要輸入的內容，懶人建立就都按 Enter 就好<br>完成後資料夾中就會有 package.json 檔案了</p>
+<h3 id="2-新增一個-JS-檔案"><a href="#2-新增一個-JS-檔案" class="headerlink" title="2. 新增一個 JS 檔案"></a>2. 新增一個 JS 檔案</h3><p>ex: gulpfile.js<br>用來加入 gulp 任務</p>
+<h3 id="3-require-gulp-模組"><a href="#3-require-gulp-模組" class="headerlink" title="3. require gulp 模組"></a>3. require gulp 模組</h3><p>在終端機下指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp</span><br></pre></td></tr></table></figure></p>
+<p>在 gulpfile.js 寫入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const gulp = require(&apos;gulp&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>引入 gulp 後可以使用 gulp.task 來執行任務<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;, gulp.series(&apos;browserSync&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>在 gulp4 中可使用 <code>gulp.series()</code> 和  <code>gulp.parallel()</code> 來安排任務進行</p>
+<p><code>gulp.series()</code>   -&gt; 按照順序進行<br><code>gulp.parallel()</code> -&gt; 同時進行<br><code>&#39;default&#39;</code>       -&gt; 任務名稱<br><code>&#39;browserSync&#39;</code>   -&gt; 任務的內容</p>
+<p>了解任務要如何安排後，接下來要安裝用來開始 web server 的套件 - <code>browser-sync</code></p>
+<h3 id="4-載入-browser-sync-套件"><a href="#4-載入-browser-sync-套件" class="headerlink" title="4. 載入 browser-sync 套件"></a>4. 載入 browser-sync 套件</h3><p>在終端機下指令安裝 browser-sync<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install browser-sync</span><br></pre></td></tr></table></figure></p>
+<p>在 gulpfile.js 寫入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const browserSync = require(&apos;browser-sync&apos;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-使用-browserSync-所提供的方法來-init"><a href="#5-使用-browserSync-所提供的方法來-init" class="headerlink" title="5. 使用 browserSync 所提供的方法來 init"></a>5. 使用 browserSync 所提供的方法來 init</h3><p>參考寫法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;browserSync&apos;, function () &#123;</span><br><span class="line">  browserSync.init(&#123;</span><br><span class="line">    server: &#123;</span><br><span class="line">      baseDir: &apos;./&apos;, // 指向要開啟的資料夾</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-執行-gulp-就可以順利開啟-web-server-啦"><a href="#6-執行-gulp-就可以順利開啟-web-server-啦" class="headerlink" title="6. 執行 gulp 就可以順利開啟 web server 啦"></a>6. 執行 gulp 就可以順利開啟 web server 啦</h3><h3 id="小補充-運用-gulp-watch-讓檔案有更動時自動-reload"><a href="#小補充-運用-gulp-watch-讓檔案有更動時自動-reload" class="headerlink" title="小補充 - 運用 gulp watch() 讓檔案有更動時自動 reload"></a>小補充 - 運用 gulp watch() 讓檔案有更動時自動 reload</h3><p>gulp watch 是用於監看全局任務，因此可以用於當檔案發生改變時觸發某行為<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.watch(&quot;*.html&quot;).on(&quot;change&quot;, browserSync.reload);</span><br></pre></td></tr></table></figure></p>
+<p>也就是當 HTML 檔案有更動時，在儲存的同時 web server 也會 reload，這樣在開發上就更方便啦～</p>
+<p>更多 browser-sync 使用方法請見：<br><a href="https://browsersync.io/docs/gulp#gulp-install" target="_blank" rel="noopener">https://browsersync.io/docs/gulp#gulp-install</a></p>
 
         
         </div>
@@ -221,7 +225,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/" data-id="cjzf3i7a700084g27bandd4z4" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/" data-id="cjzf3i7be00184g27losu9rhk" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -289,7 +293,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/">評論</a>
+        <a href="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/">評論</a>
     
 
         </footer>
@@ -298,19 +302,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2019/06/20/Git/fast-forward/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    連葉子都秒懂的 Fast Forward
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/12/28/Vue/Vue-CLI3-create/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/06/20/Bootstrap/vue-cli-use-bootstrap/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Vue CLI 3 快速建立篇</div>
+            <div class="article-nav-title">在 Vue Cli 中加入自定義 Bootstrap 樣式</div>
         </a>
     
 </nav>
@@ -486,9 +481,9 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/';
+            this.page.url = 'https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/';
         
-        this.page.identifier = 'Vue/Vue-CLI3-env';
+        this.page.identifier = 'JavaScript/gulp/gulp-browserSync';
     };
     (function() { 
         var d = document, s = d.createElement('script');  

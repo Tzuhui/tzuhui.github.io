@@ -3,22 +3,15 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>Vue CLI 3 環境變數設置 | 想飛的葉子</title>
+    <title>分類: gulp | 想飛的葉子</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="使用 Vue 開發時若有使用到 firebse 資料庫，會需要將資料庫金鑰加入到專案中，但在 commit 時不建議將金鑰也一併 commit 到公開的儲存庫上，這時就會建議使用環境變數">
-<meta name="keywords" content="Vue,技術筆記,JavaScript">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vue CLI 3 環境變數設置">
-<meta property="og:url" content="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="想飛的葉子">
+<meta property="og:url" content="https://tzuhui.github.io/categories/gulp/index.html">
 <meta property="og:site_name" content="想飛的葉子">
-<meta property="og:description" content="使用 Vue 開發時若有使用到 firebse 資料庫，會需要將資料庫金鑰加入到專案中，但在 commit 時不建議將金鑰也一併 commit 到公開的儲存庫上，這時就會建議使用環境變數">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2019-06-20T17:03:40.688Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue CLI 3 環境變數設置">
-<meta name="twitter:description" content="使用 Vue 開發時若有使用到 firebse 資料庫，會需要將資料庫金鑰加入到專案中，但在 commit 時不建議將金鑰也一併 commit 到公開的儲存庫上，這時就會建議使用環境變數">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta name="twitter:title" content="想飛的葉子">
     
 
     
@@ -80,6 +73,16 @@ ga('send', 'pageview');
         
           <a class="main-nav-link " href="/about/">關於我</a>
         
+      </nav>
+      
+      
+      <nav id="sub-nav">
+        <div class="profile" id="profile-nav">
+          <a id="profile-anchor" href="javascript:;">
+            <img class="avatar" src="/css/images/personal.png">
+            <i class="fas fa-caret-down"></i>
+          </a>
+        </div>
       </nav>
       
       <div id="search-form-wrap">
@@ -155,180 +158,105 @@ ga('send', 'pageview');
 
     <div class="outer">
     
+      
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/personal.png">
+            <h2 id="name">想飛的葉子</h2>
+            <h3 id="title">前端工程師</h3>
+            <h5 id="description">因為金魚腦所以寫文做筆記！</h5>
+            <span id="location"><i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>Taiwan</span>
+            <a id="follow" target="_blank" href="https://github.com/Tzuhui">關注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                6
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                6
+                <span>標籤</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/Tzuhui" target="_blank" title="github" class="tooltip">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/tzuhui.ye" target="_blank" title="facebook" class="tooltip">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.instagram.com/da_hun_g/?hl=zh-tw" target="_blank" title="instagram" class="tooltip">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
     
-      <section id="main-article" ><article id="post-Vue/Vue-CLI3-env" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
+    
+      <section id="main">
+<div class="timeline timeline-wrap">
+    <div class="timeline-row timeline-row-major">
+        <span class="node"><i class="fas fa-folder"></i></span>
+        <h1 class="title">gulp</h1>
+    </div>
+    
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
                 
     
-        <h1 class="article-title" itemprop="name">
-            Vue CLI 3 環境變數設置
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/2019/08/17/JavaScript/gulp/gulp-browserSync/">在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)</a>
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        <!-- 
+                <div class="article-meta">
+                    
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/01/08/Vue/Vue-CLI3-env/">
-            <time datetime="2019-01-07T16:00:00.000Z" itemprop="datePublished">2019-01-08</time>
+        <a href="/2019/08/17/JavaScript/gulp/gulp-browserSync/">
+            <time datetime="2019-08-16T16:00:00.000Z" itemprop="datePublished">2019-08-17</time>
         </a>
     </div>
 
- -->
-                        
+
+                    
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/Vue-筆記/">Vue 筆記</a>
+        <a class="article-category-link" href="/categories/gulp/">gulp</a>
     </div>
 
-                        
+                    
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Vue/">Vue</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/gulp/">gulp</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
     </div>
 
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>使用 Vue 開發時若有使用到 firebse 資料庫，會需要將資料庫金鑰加入到專案中，但在 commit 時不建議將金鑰也一併 commit 到公開的儲存庫上，這時就會建議使用環境變數<br><a id="more"></a> </p>
-<h3 id="新增一個-env-local"><a href="#新增一個-env-local" class="headerlink" title="新增一個 .env.local"></a>新增一個 .env.local</h3><p>新增的 .env.local 會在所有環境中被載入，但會被 git 忽略<br>在 .env.local 中加入環境變數，例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FIREBASE_APIKEY=Key</span><br><span class="line">FIREBASE_AUTODOMAIN=Domain</span><br><span class="line">FIREBASE_DATABASEURL=DatabaseUrl</span><br><span class="line">FIREBASE_PROJECTID=ProjectId</span><br><span class="line">FIREBASE_STORAGEBUCKET=StorageBucket</span><br><span class="line">FIREBASE_MESSAGINGSENDERID=MessagingsId</span><br></pre></td></tr></table></figure></p>
-<p>左邊為環境變數的變數名稱，通常以全部都大寫字母來命名<br>右邊是金鑰的內容，在 firebase 中可以取得相關的資料</p>
-<h3 id="在-JS-中取得環境變數設置"><a href="#在-JS-中取得環境變數設置" class="headerlink" title="在 JS 中取得環境變數設置"></a>在 JS 中取得環境變數設置</h3><p>在 JS 中要使用環境變數，只要在變數前加上 <code>process.env</code> 就可以了～<br>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">process.env.FIREBASE_APIKEY</span><br></pre></td></tr></table></figure></p>
-<h3 id="部署要注意的地方"><a href="#部署要注意的地方" class="headerlink" title="部署要注意的地方"></a>部署要注意的地方</h3><p>將金鑰改為環境變數之後，因為只有在本地端才能使用，所以要注意部署網站時要將環境變數設定到機器上<br>以部署到 heroku 為例：</p>
-<ol>
-<li>進入 heroku 專案畫面，點選 Settings，在 Settings 頁面有設定環境變數的地方 - Config Vars</li>
-<li>點選 Reveal Config Vars</li>
-<li>將變數加上，如下圖：</li>
-</ol>
-<p><img src="https://drive.google.com/uc?id=17thuessbvoox937xiH0puXpAo9RU4MxE" alt=""></p>
-<p>官網的環境變數說明：<br><a href="https://cli.vuejs.org/zh/guide/mode-and-env.html" target="_blank" rel="noopener">https://cli.vuejs.org/zh/guide/mode-and-env.html</a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/" data-id="cjzf3i7a700084g27bandd4z4" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/">評論</a>
-    
-
-        </footer>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2019/06/20/Git/fast-forward/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    連葉子都秒懂的 Fast Forward
-                
+                </div>
             </div>
-        </a>
+        </div>
     
-    
-        <a href="/2018/12/28/Vue/Vue-CLI3-create/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Vue CLI 3 快速建立篇</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    
-        <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-</section>
-    
-
+</div>
 </section>
       
         
@@ -486,13 +414,11 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/';
-        
-        this.page.identifier = 'Vue/Vue-CLI3-env';
+        this.page.identifier = '';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'tzuhui' + '.disqus.com/embed.js';
+        s.src = '//' + 'tzuhui' + '.disqus.com/count.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
