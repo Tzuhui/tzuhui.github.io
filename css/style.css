@@ -348,7 +348,7 @@ code {
 .article-entry dl,
 .widget dl {
   margin: 0 20px;
-  line-height: 1.6rem;
+  line-height: 1.5rem;
 }
 .article-entry ul ul,
 .widget ul ul,
@@ -595,7 +595,7 @@ code {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   height: auto !important;
-  line-height: 1.6rem;
+  line-height: 1.5rem;
   outline: none !important;
   background: none !important;
   font: 16px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
@@ -902,10 +902,10 @@ code {
   margin-bottom: 14px;
 }
 .article-title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #565a5f;
   text-decoration: none;
-  line-height: 2.5rem;
+  line-height: 1.5rem;
 }
 a.article-title:visited {
   color: #565a5f;
@@ -956,7 +956,7 @@ a.article-title:hover {
 .article-entry {
   color: #565a5f;
   padding: 0 20px;
-  line-height: 1.6rem;
+  line-height: 1.5rem;
 }
 .article-entry:before,
 .article-entry:after {
@@ -971,8 +971,8 @@ a.article-title:hover {
 }
 .article-entry p,
 .article-entry table {
-  line-height: 1.6rem;
-  margin: 1.6rem 0;
+  line-height: 1.5rem;
+  margin: 1.5rem 0;
 }
 .article-entry h1,
 .article-entry h2,
@@ -988,8 +988,8 @@ a.article-title:hover {
 .article-entry h4,
 .article-entry h5,
 .article-entry h6 {
-  line-height: 2.5rem;
-  margin: 2.5rem 0;
+  line-height: 1.5rem;
+  margin: 1.5rem 0;
 }
 .article-entry a {
   color: #38b7ea;
@@ -1001,8 +1001,8 @@ a.article-title:hover {
 .article-entry ul,
 .article-entry ol,
 .article-entry dl {
-  margin-top: 1.6rem;
-  margin-bottom: 1.6rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 .article-entry img,
 .article-entry video {
@@ -1054,7 +1054,7 @@ a.article-title:hover {
 }
 .article-entry blockquote footer {
   font-size: 16px;
-  margin: 1.6rem 0;
+  margin: 1.5rem 0;
   font-family: "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
@@ -1116,9 +1116,9 @@ a.article-title:hover {
 }
 .article-footer {
   font-size: 0.85rem;
-  line-height: 1.6rem;
+  line-height: 1.5rem;
   border-top: 1px solid #eceff2;
-  padding-top: 1.6rem;
+  padding-top: 1.5rem;
   margin: 0 20px 20px;
 }
 .article-footer:before,
@@ -1231,7 +1231,7 @@ a.article-title:hover {
   font-size: 0.85rem;
   margin-top: 0.5rem;
   color: #565a5f;
-  line-height: 1.6rem;
+  line-height: 1.5rem;
 }
 .article-share-box {
   position: absolute;
@@ -1326,7 +1326,7 @@ a.article-title:hover {
   background: #000;
   position: relative;
   text-align: center;
-  margin: 1.6rem 0;
+  margin: 1.5rem 0;
 }
 .article-gallery .gallery-item {
   display: none;
@@ -1730,7 +1730,7 @@ a.article-title:hover {
   text-decoration: underline;
 }
 #footer-info {
-  line-height: 1.6rem;
+  line-height: 1.5rem;
   font-size: 0.85em;
 }
 @media screen and (min-width: 1200px) {
@@ -1750,7 +1750,7 @@ a.article-title:hover {
   }
 }
 .widget {
-  line-height: 1.6rem;
+  line-height: 1.5rem;
   word-wrap: break-word;
   font-size: 0.9em;
 }
@@ -2142,7 +2142,7 @@ a.article-title:hover {
   padding: 15px 20px;
   font-size: 16px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
-  line-height: 25.6px;
+  line-height: 24px;
 }
 .highlight table {
   margin: 0;
