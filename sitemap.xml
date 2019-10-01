@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzuhui.github.io/2019/10/01/Mine/hexschool-third-party/</loc>
+    
+    <lastmod>2019-10-01T15:04:23.995Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzuhui.github.io/about/index.html</loc>
     
     <lastmod>2019-09-26T17:59:11.691Z</lastmod>
@@ -44,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-create/</loc>
-    
-    <lastmod>2019-06-20T17:03:40.688Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/</loc>
     
     <lastmod>2019-06-20T17:03:40.688Z</lastmod>
@@ -65,14 +65,21 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/tags/index.html</loc>
+    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-create/</loc>
+    
+    <lastmod>2019-06-20T17:03:40.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzuhui.github.io/categories/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.679Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/categories/index.html</loc>
+    <loc>https://tzuhui.github.io/tags/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.679Z</lastmod>
     
