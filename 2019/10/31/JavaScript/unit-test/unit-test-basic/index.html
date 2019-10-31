@@ -3,22 +3,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync) | 想飛的葉子</title>
+    <title>初探前端 Unit Test | 想飛的葉子</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起">
-<meta name="keywords" content="技術筆記,JavaScript,gulp">
+    <meta name="description" content="上上個禮拜參加 MOPCON 2019 時，聽到神 Q 超人介紹了『我們與測試的距離』，當時他問了在場的會眾說：『有聽過單元測試的舉手？』現場大概有八成的人都舉手了，接著他再問：『有在前端導入測試的舉手？』結果很意外的，居然幾乎沒有人舉手！">
+<meta name="keywords" content="技術筆記,JavaScript,Unit Test">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)">
-<meta property="og:url" content="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/index.html">
+<meta property="og:title" content="初探前端 Unit Test">
+<meta property="og:url" content="https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/index.html">
 <meta property="og:site_name" content="想飛的葉子">
-<meta property="og:description" content="這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起">
+<meta property="og:description" content="上上個禮拜參加 MOPCON 2019 時，聽到神 Q 超人介紹了『我們與測試的距離』，當時他問了在場的會眾說：『有聽過單元測試的舉手？』現場大概有八成的人都舉手了，接著他再問：『有在前端導入測試的舉手？』結果很意外的，居然幾乎沒有人舉手！">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2019-08-17T05:11:36.563Z">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F201910%2F1572513295771-unitTest?alt=media&token=94f0c39e-5397-4c17-adc2-b5cde258cae6">
+<meta property="og:updated_time" content="2019-10-31T09:15:26.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)">
-<meta name="twitter:description" content="這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta name="twitter:title" content="初探前端 Unit Test">
+<meta name="twitter:description" content="上上個禮拜參加 MOPCON 2019 時，聽到神 Q 超人介紹了『我們與測試的距離』，當時他問了在場的會眾說：『有聽過單元測試的舉手？』現場大概有八成的人都舉手了，接著他再問：『有在前端導入測試的舉手？』結果很意外的，居然幾乎沒有人舉手！">
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F201910%2F1572513295771-unitTest?alt=media&token=94f0c39e-5397-4c17-adc2-b5cde258cae6">
     
 
     
@@ -158,7 +158,7 @@ ga('send', 'pageview');
     <div class="outer">
     
     
-      <section id="main-article" ><article id="post-JavaScript/gulp/gulp-browserSync" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main-article" ><article id="post-JavaScript/unit-test/unit-test-basic" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -166,7 +166,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)
+            初探前端 Unit Test
         </h1>
     
 
@@ -175,8 +175,8 @@ ga('send', 'pageview');
                         <!-- 
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/08/17/JavaScript/gulp/gulp-browserSync/">
-            <time datetime="2019-08-16T16:00:00.000Z" itemprop="datePublished">2019-08-17</time>
+        <a href="/2019/10/31/JavaScript/unit-test/unit-test-basic/">
+            <time datetime="2019-10-30T16:00:00.000Z" itemprop="datePublished">2019-10-31</time>
         </a>
     </div>
 
@@ -184,13 +184,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/gulp/">gulp</a>
+        <a class="article-category-link" href="/categories/JS/">JS</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/gulp/">gulp</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Unit-Test/">Unit Test</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
     </div>
 
                     </div>
@@ -201,22 +201,68 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法<br>正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起<br><a id="more"></a> </p>
-<h3 id="1-初始化套件管理器-NPM"><a href="#1-初始化套件管理器-NPM" class="headerlink" title="1. 初始化套件管理器 ( NPM )"></a>1. 初始化套件管理器 ( NPM )</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
-<p>下指令後會有一些需要輸入的內容，懶人建立就都按 Enter 就好<br>完成後資料夾中就會有 package.json 檔案了</p>
-<h3 id="2-新增一個-JS-檔案"><a href="#2-新增一個-JS-檔案" class="headerlink" title="2. 新增一個 JS 檔案"></a>2. 新增一個 JS 檔案</h3><p>ex: gulpfile.js<br>用來加入 gulp 任務</p>
-<h3 id="3-require-gulp-模組"><a href="#3-require-gulp-模組" class="headerlink" title="3. require gulp 模組"></a>3. require gulp 模組</h3><p>在終端機下指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp</span><br></pre></td></tr></table></figure></p>
-<p>在 gulpfile.js 寫入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const gulp = require(&apos;gulp&apos;);</span><br></pre></td></tr></table></figure></p>
-<p>引入 gulp 後可以使用 gulp.task 來執行任務<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;, gulp.series(&apos;browserSync&apos;))</span><br></pre></td></tr></table></figure></p>
-<p>在 gulp4 中可使用 <code>gulp.series()</code> 和  <code>gulp.parallel()</code> 來安排任務進行</p>
-<p><code>gulp.series()</code>   -&gt; 按照順序進行<br><code>gulp.parallel()</code> -&gt; 同時進行<br><code>&#39;default&#39;</code>       -&gt; 任務名稱<br><code>&#39;browserSync&#39;</code>   -&gt; 任務的內容</p>
-<p>了解任務要如何安排後，接下來要安裝用來開始 web server 的套件 - <code>browser-sync</code></p>
-<h3 id="4-載入-browser-sync-套件"><a href="#4-載入-browser-sync-套件" class="headerlink" title="4. 載入 browser-sync 套件"></a>4. 載入 browser-sync 套件</h3><p>在終端機下指令安裝 browser-sync<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install browser-sync</span><br></pre></td></tr></table></figure></p>
-<p>在 gulpfile.js 寫入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const browserSync = require(&apos;browser-sync&apos;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-使用-browserSync-所提供的方法來-init"><a href="#5-使用-browserSync-所提供的方法來-init" class="headerlink" title="5. 使用 browserSync 所提供的方法來 init"></a>5. 使用 browserSync 所提供的方法來 init</h3><p>參考寫法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;browserSync&apos;, function () &#123;</span><br><span class="line">  browserSync.init(&#123;</span><br><span class="line">    server: &#123;</span><br><span class="line">      baseDir: &apos;./&apos;, // 指向要開啟的資料夾</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="6-執行-gulp-就可以順利開啟-web-server-啦"><a href="#6-執行-gulp-就可以順利開啟-web-server-啦" class="headerlink" title="6. 執行 gulp 就可以順利開啟 web server 啦"></a>6. 執行 gulp 就可以順利開啟 web server 啦</h3><h3 id="小補充-運用-gulp-watch-讓檔案有更動時自動-reload"><a href="#小補充-運用-gulp-watch-讓檔案有更動時自動-reload" class="headerlink" title="小補充 - 運用 gulp watch() 讓檔案有更動時自動 reload"></a>小補充 - 運用 gulp watch() 讓檔案有更動時自動 reload</h3><p>gulp watch 是用於監看全局任務，因此可以用於當檔案發生改變時觸發某行為<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.watch(&quot;*.html&quot;).on(&quot;change&quot;, browserSync.reload);</span><br></pre></td></tr></table></figure></p>
-<p>也就是當 HTML 檔案有更動時，在儲存的同時 web server 也會 reload，這樣在開發上就更方便啦～</p>
-<p>更多 browser-sync 使用方法請見：<br><a href="https://browsersync.io/docs/gulp#gulp-install" target="_blank" rel="noopener">https://browsersync.io/docs/gulp#gulp-install</a></p>
+            <p>上上個禮拜參加 MOPCON 2019 時，聽到神 Q 超人介紹了『我們與測試的距離』，當時他問了在場的會眾說：『有聽過單元測試的舉手？』現場大概有八成的人都舉手了，接著他再問：『有在前端導入測試的舉手？』結果很意外的，居然幾乎沒有人舉手！<br><a id="more"></a><br>我想這應該是因為目前大多數的前端開發還是都以人工進行測試比較多。隨著專案當規模變大時，在產品上線前都會進行多次人工的測試，或是進行程式碼的重構，這都是常見的現象。但也經常因為重構或是測試後進行調整時出現改 A 壞 B 的情況，又或者花在人工測試的時間太多，因此這時就可以試著導入單元測試來輔助開發過程。</p>
+<h2 id="何謂單元測試？"><a href="#何謂單元測試？" class="headerlink" title="何謂單元測試？"></a>何謂單元測試？</h2><p>以 function 為最小單位，程式裡每個單一行為，可稱為一個單元。<br>例如：</p>
+<ol>
+<li>按下按鈕事件觸發</li>
+<li>API function 執行與回傳</li>
+</ol>
+<p>而單元測試則是利用貼近實際使用的腳本來進行對程式碼的檢查與驗證，確保函式的輸入輸出結果是符合需求且可以正確運行的。</p>
+<h2 id="單元測試的好處"><a href="#單元測試的好處" class="headerlink" title="單元測試的好處"></a>單元測試的好處</h2><ul>
+<li><strong>提高正確性：</strong><br>透過測試可以對於功能輸入輸出有個快速的回饋，開發時也可以驗證函式邏輯與想法。</li>
+<li><strong>隨時可測試</strong><br>隨時都可以開啟測試，不一定要等到功能完全寫完後才進行人工的測試，當其中出現問題時，還需要一一驗證是哪個環節出問題。</li>
+<li><strong>花費時間短</strong><br>透過自動化重複測試的部分，不需要一再進行耗時的重複人工測試。</li>
+<li><strong>測試後能產生測試報告（覆蓋率報告）</strong><br>透過單元測試的工具，可以輸出測試後的測試報告，也包含此次測試所覆蓋的程式碼驗證程度，讓測試不會口說無憑！</li>
+</ul>
+<h2 id="兩個常被提到的單元測試面向-TDD-amp-BDD"><a href="#兩個常被提到的單元測試面向-TDD-amp-BDD" class="headerlink" title="兩個常被提到的單元測試面向 - TDD &amp; BDD"></a>兩個常被提到的單元測試面向 - TDD &amp; BDD</h2><h3 id="TDD（Test-driven-development）測試驅動開發"><a href="#TDD（Test-driven-development）測試驅動開發" class="headerlink" title="TDD（Test-driven development）測試驅動開發"></a>TDD（Test-driven development）測試驅動開發</h3><p>TDD 是在開發前先寫測試的程式碼，由通過測試來推動開發的進行。</p>
+<p>TDD 的主要運行圖：<br><img src="https://perspectives.mobilelive.ca/hs-fs/hubfs/TDD%20BDD%20DDD/1-4.jpg?width=2560&amp;name=1-4.jpg" alt="TDD 流程圖"><br>圖片引用自 <a href="https://dzone.com/articles/hybrid-development-with-tdd-ddd-bdd" target="_blank" rel="noopener">hybrid-development-with-tdd-ddd-bdd</a></p>
+<p>從圖中可看出 TDD 的運作是『紅燈』(Red)、『綠燈』(Green)、『綠燈』(Refactor) 的循環。</p>
+<p>這個循環也可以簡單的分為 6 個步驟：</p>
+<p><strong>1. 分析需求、思考實作：</strong><br>根據需求取設計一個自動化的測試實例。</p>
+<p><strong>2. 運行所有測試：</strong><br>在目前開發的程式碼上運行這些自動化測試。在此階段通常會出現紅燈（因為根本還沒開始開發嘛～～～）</p>
+<p><strong>3. 開發符合測試需求的程式碼</strong><br>以功能邏輯為主進行開發，並使其通過測試案例</p>
+<p><strong>4. 再次運行測試，並確認是否通過測試</strong><br>首先要確保功能的開發是否有正確得到實作，若是通過測試（綠燈）代表大致上已經完成一個可正確運行的版本。</p>
+<p><strong>5. 重構</strong><br>這個步驟是可做可不做，但重構可以提高程式碼品質以及提升複用性。</p>
+<p><strong>6. 重複以上步驟</strong><br>有新的測試（對應每個功能）都可以重複步驟 1-5，直到所以測試都通過。</p>
+<p>流程圖參考：<br><img src="https://cdn.softwaretestinghelp.com/wp-content/qa/uploads/2019/08/TDD-Flowchart.jpg" alt="image alt"><br>圖片來自 <a href="https://www.softwaretestinghelp.com/tdd-vs-bdd/" target="_blank" rel="noopener">TDD Vs BDD – Analyze The Differences With Examples</a></p>
+<p>使用 TDD 的方式，就好像是腳踏車的輪子，都是向同一個方向轉動（相同專案需求目標），但後輪是施力的讓腳踏車往前，而前輪是受力的，被帶動而轉（測試驅動開發）。</p>
+<p>TDD 實例可以參考這篇文章 <em><a href="https://tw.alphacamp.co/blog/tdd-test-driven-development-example" target="_blank" rel="noopener">TDD 開發五步驟</a></em> 中提到的『TDD 模式示範』。</p>
+<h3 id="BDD（Behavior-driven-development）行為驅動開發"><a href="#BDD（Behavior-driven-development）行為驅動開發" class="headerlink" title="BDD（Behavior-driven development）行為驅動開發"></a>BDD（Behavior-driven development）行為驅動開發</h3><p>BDD 的主要目標是以<strong>行為</strong>為導向去寫測試，透過利益相關者又或者是專案成員（開發人員、測試人員、用戶）描述系統功能和業務邏輯，來了解預期對系統的需求與認知，進而根據這些描述來進行系統自動化的測試。</p>
+<p>BDD 流程：</p>
+<p><strong>1. 根據 user story 定義出具體的目標：</strong></p>
+<ul>
+<li>Given（上下文，如：環境條件、情境先決條件）</li>
+<li>When（事件、當下的動作）</li>
+<li>Then（預期結果、其他結果）</li>
+</ul>
+<p>例如：</p>
+<p><strong>Given</strong> 有個顧客擁有一個銀行帳戶<br><strong>When</strong> 顧客要從帳戶中轉帳到海外帳戶<br><strong>Then</strong> 這筆帳轉到海外帳戶<br><strong>And</strong> 並從這個帳戶中收取轉帳的小費</p>
+<p><strong>2. 將定義出的敘述轉為程式碼</strong></p>
+<p>BDD 的過程可以參考這一篇文章 <em><a href="https://medium.com/@yurenju/%E8%87%AA%E5%8B%95%E8%BB%9F%E9%AB%94%E6%B8%AC%E8%A9%A6-tdd-%E8%88%87-bdd-464519672ac5" target="_blank" rel="noopener">自動軟體測試</a></em> 中 BDD (Behavior-driven development)<br>這邊有舉出 BDD 實例。</p>
+<h2 id="總結-TDD-與-BDD-差異"><a href="#總結-TDD-與-BDD-差異" class="headerlink" title="總結 TDD 與 BDD 差異"></a>總結 TDD 與 BDD 差異</h2><p>BDD 和 TDD 有個各自適用的情境，TDD 在於高效且快速開發並測試功能模組，在開發前先寫測試，以確保程式碼品質與符合需求的結果。BDD 比較偏向於系統功能與業務邏輯的自動化測試，除了實作前先寫測試外，通常還會產出一分執行規格。因為強調的是系統行為，因此也會減少使用者和工程師的溝通成本。</p>
+<h2 id="測試工具入門初體驗"><a href="#測試工具入門初體驗" class="headerlink" title="測試工具入門初體驗"></a>測試工具入門初體驗</h2><p>以上講了這麼多觀念，當然要搭配程式碼來理解一下！這邊使用 Jest 來初步做一個簡單的測試。</p>
+<ol>
+<li><p>在專案中載入 Jest</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jest</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在專案中加入 sum.js<br>寫入一個加總的函式，讓函式返回結果為 a+b</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let math = &#123;</span><br><span class="line">  sum: function(a, b) &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">  &#125;,</span><br><span class="line">  minus: function(a, b) &#123;</span><br><span class="line">    return a - b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = math;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在專案中加入 sum.test.js<br>test 的 js 中需要將要測試的函式 require 進來，接著寫下要測試的內容，並寫在預期測試的結果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const math = require(&apos;./sum&apos;);</span><br><span class="line"></span><br><span class="line">test(&apos;adds 1 + 2 to equal 3&apos;, () =&gt; &#123;</span><br><span class="line">  expect(math.sum(1, 2)).toBe(3);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">test(&apos;minus 4 - 2 to equal 2&apos;, () =&gt; &#123;</span><br><span class="line">  expect(math.minus(4, 2)).toBe(2);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 package.json 加入 test</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;jest&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>運行 npm run test 看結果<br>如果 test 成功會出現如下圖</p>
+</li>
+</ol>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F201910%2F1572510101359-package_json_%E2%80%94_jest_test.png?alt=media&amp;token=668d99a2-2ca6-4561-a9f0-96d72afc64c1" alt="Jest 測試成功"></p>
+<p>我們試著將函式修改一下(假裝不小心把 return 結果寫相反)，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sum: function(a, b) &#123;</span><br><span class="line">  return a - b;</span><br><span class="line">&#125;,</span><br><span class="line">minus: function(a, b) &#123;</span><br><span class="line">  return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>那運行測試的結果一定是錯誤的，接著就會看到如下圖：</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F201910%2F1572510140132-sum_js_%E2%80%94_jest_test.png?alt=media&amp;token=fc855c50-5770-42e6-a8b1-764481ccfb4f" alt="Jest 測試失敗"></p>
+<h2 id="本文小結"><a href="#本文小結" class="headerlink" title="本文小結"></a>本文小結</h2><p>這篇主要著重於了解單元測試的基礎觀念，接下來持續往實作的方向做介紹。<br>初步開始了解單元測試，若是文章中的解釋有誤，再請多多指教 :D</p>
+<h2 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h2><p><a href="https://www.slideshare.net/wantingj/tdd-bdd-47559903" target="_blank" rel="noopener">認識軟體測試的世界 &amp; TDD/BDD 入門</a><br><a href="https://www.itread01.com/content/1545281675.html" target="_blank" rel="noopener">前端單元測試Unit Test</a><br><a href="https://juejin.im/post/5b2da89cf265da597f1c7cab" target="_blank" rel="noopener">浅谈前端单元测试</a><br><a href="https://cythilya.github.io/2017/09/17/unit-test-with-mocha-chai-and-sinon/" target="_blank" rel="noopener">單元測試：Mocha、Chai 和 Sinon</a></p>
 
         
         </div>
@@ -227,7 +273,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/" data-id="ck2ehuwyr001n44275b2wvs8n" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/" data-id="ck2ehuwyu001s4427fvtsvtsm" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -295,7 +341,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/">評論</a>
+        <a href="https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/">評論</a>
     
 
         </footer>
@@ -304,19 +350,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2019/08/29/JavaScript/gulp/gulp3-to-4/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    gulp 3 遷移至 gulp 4
-                
-            </div>
-        </a>
     
-    
-        <a href="/2019/06/20/Bootstrap/vue-cli-use-bootstrap/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/10/24/Mine/mopcon-2019/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">在 Vue Cli 中加入自定義 Bootstrap 樣式</div>
+            <div class="article-nav-title">漂流在 MOPCON 2019 的葉子成長記</div>
         </a>
     
 </nav>
@@ -492,9 +529,9 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/';
+            this.page.url = 'https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/';
         
-        this.page.identifier = 'JavaScript/gulp/gulp-browserSync';
+        this.page.identifier = 'JavaScript/unit-test/unit-test-basic';
     };
     (function() { 
         var d = document, s = d.createElement('script');  

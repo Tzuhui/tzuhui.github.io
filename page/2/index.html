@@ -174,11 +174,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                11
+                12
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                10
+                11
                 <span>標籤</span>
             </div>
         </div>
@@ -216,6 +216,139 @@ ga('send', 'pageview');
     
     
       <section id="main">
+    <article id="post-JavaScript/gulp/gulp3-to-4" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2019/08/29/JavaScript/gulp/gulp3-to-4/">gulp 3 遷移至 gulp 4</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        <!-- 
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2019/08/29/JavaScript/gulp/gulp3-to-4/">
+            <time datetime="2019-08-28T16:00:00.000Z" itemprop="datePublished">2019-08-29</time>
+        </a>
+    </div>
+
+ -->
+                        
+    <div class="article-category">
+    	<i class="fas fa-folder"></i>
+        <a class="article-category-link" href="/categories/gulp/">gulp</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/gulp/">gulp</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p></p><p>從 2018 年 10 月開始，使用 npm 下載 gulp 預設的版本都將為 4，因 gulp 3 與 4 在寫法上有些更新，所以在安裝 4 的情況之下，運行 3 的寫法是有可能會出錯的，因此這篇主要說明 gulp 3 與 4 的差異<br></p>
+            <p class="article-more-link">
+                <a href="/2019/08/29/JavaScript/gulp/gulp3-to-4/#more">繼續閱讀</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://tzuhui.github.io/2019/08/29/JavaScript/gulp/gulp3-to-4/" data-id="ck2ehuwyt001r4427c9kzpqex" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://tzuhui.github.io/2019/08/29/JavaScript/gulp/gulp3-to-4/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/08/29/JavaScript/gulp/gulp3-to-4/">評論</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-JavaScript/gulp/gulp-browserSync" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -271,7 +404,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/" data-id="ck24twtgf0021js27dz81q9gp" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/" data-id="ck2ehuwyr001n44275b2wvs8n" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -349,139 +482,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-Git/fast-forward" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/06/20/Git/fast-forward/">連葉子都秒懂的 Fast Forward</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        <!-- 
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/06/20/Git/fast-forward/">
-            <time datetime="2019-06-19T16:00:00.000Z" itemprop="datePublished">2019-06-20</time>
-        </a>
-    </div>
-
- -->
-                        
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/Git-筆記/">Git 筆記</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/git/">git</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p></p><h3 id="fast-forward-出現時機"><a href="#fast-forward-出現時機" class="headerlink" title="fast-forward 出現時機"></a>fast-forward 出現時機</h3><p>在進行 merge 的時候，git 預設會以 fast-forward 的模式進行<br></p>
-            <p class="article-more-link">
-                <a href="/2019/06/20/Git/fast-forward/#more">繼續閱讀</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://tzuhui.github.io/2019/06/20/Git/fast-forward/" data-id="ck24twtdw0003js27rkrbyils" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://tzuhui.github.io/2019/06/20/Git/fast-forward/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/06/20/Git/fast-forward/">評論</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-Bootstrap/vue-cli-use-bootstrap" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -537,7 +537,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://tzuhui.github.io/2019/06/20/Bootstrap/vue-cli-use-bootstrap/" data-id="ck24twtdz0004js2766g0t8pq" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="https://tzuhui.github.io/2019/06/20/Bootstrap/vue-cli-use-bootstrap/" data-id="ck2ehuwxr00074427yc03929o" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -615,6 +615,139 @@ ga('send', 'pageview');
 
 
 
+    <article id="post-Git/fast-forward" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2019/06/20/Git/fast-forward/">連葉子都秒懂的 Fast Forward</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        <!-- 
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2019/06/20/Git/fast-forward/">
+            <time datetime="2019-06-19T16:00:00.000Z" itemprop="datePublished">2019-06-20</time>
+        </a>
+    </div>
+
+ -->
+                        
+    <div class="article-category">
+    	<i class="fas fa-folder"></i>
+        <a class="article-category-link" href="/categories/Git-筆記/">Git 筆記</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/git/">git</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p></p><h3 id="fast-forward-出現時機"><a href="#fast-forward-出現時機" class="headerlink" title="fast-forward 出現時機"></a>fast-forward 出現時機</h3><p>在進行 merge 的時候，git 預設會以 fast-forward 的模式進行<br></p>
+            <p class="article-more-link">
+                <a href="/2019/06/20/Git/fast-forward/#more">繼續閱讀</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://tzuhui.github.io/2019/06/20/Git/fast-forward/" data-id="ck2ehuwxj00034427srezq6hz" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://tzuhui.github.io/2019/06/20/Git/fast-forward/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/06/20/Git/fast-forward/">評論</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Vue/Vue-CLI3-env" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -670,7 +803,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/" data-id="ck24twte7000djs270m8isax0" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/" data-id="ck2ehuwxt00094427n5o7ezw8" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -748,139 +881,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-Vue/Vue-CLI3-create" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/12/28/Vue/Vue-CLI3-create/">Vue CLI 3 快速建立篇</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        <!-- 
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/12/28/Vue/Vue-CLI3-create/">
-            <time datetime="2018-12-27T16:00:00.000Z" itemprop="datePublished">2018-12-28</time>
-        </a>
-    </div>
-
- -->
-                        
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/Vue-筆記/">Vue 筆記</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Vue/">Vue</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p></p><p>Vue CLI 3 在建立專案上已經可以利用 GUI 的方式來建立，不需要輸入一堆指令！<br>官網說明：<a href="https://cli.vuejs.org/zh/guide/creating-a-project.html" target="_blank" rel="noopener">https://cli.vuejs.org/zh/guide/creating-a-project.html</a><br></p>
-            <p class="article-more-link">
-                <a href="/2018/12/28/Vue/Vue-CLI3-create/#more">繼續閱讀</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-create/" data-id="ck24twte50009js27kufu5oz5" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-create/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-create/">評論</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一頁 &raquo;</a>
     </nav>
@@ -894,6 +894,25 @@ ga('send', 'pageview');
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/10/31/JavaScript/unit-test/unit-test-basic/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F201910%2F1572513295771-unitTest?alt=media&amp;token=94f0c39e-5397-4c17-adc2-b5cde258cae6)" alt="初探前端 Unit Test" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
+                            <p class="item-title"><a href="/2019/10/31/JavaScript/unit-test/unit-test-basic/" class="title">初探前端 Unit Test</a></p>
+                            <p class="item-date"><time datetime="2019-10-30T16:00:00.000Z" itemprop="datePublished">2019-10-31</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -971,25 +990,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2019/08/29/JavaScript/gulp/gulp3-to-4/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80)" alt="gulp 3 遷移至 gulp 4" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/gulp/">gulp</a></p>
-                            <p class="item-title"><a href="/2019/08/29/JavaScript/gulp/gulp3-to-4/" class="title">gulp 3 遷移至 gulp 4</a></p>
-                            <p class="item-date"><time datetime="2019-08-28T16:00:00.000Z" itemprop="datePublished">2019-08-29</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -999,7 +999,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">分類</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Bootstrap-筆記/">Bootstrap 筆記</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chrome/">Chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git-筆記/">Git 筆記</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-筆記/">Vue 筆記</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gulp/">gulp</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/葉子漂流記/">葉子漂流記</a><span class="category-list-count">2</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Bootstrap-筆記/">Bootstrap 筆記</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chrome/">Chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git-筆記/">Git 筆記</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-筆記/">Vue 筆記</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gulp/">gulp</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/葉子漂流記/">葉子漂流記</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -1008,7 +1008,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">歸檔</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -1017,7 +1017,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">標籤</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOPCON/">MOPCON</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome-extension/">chrome extension</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lottie/">lottie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/六角/">六角</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技術筆記/">技術筆記</a><span class="tag-list-count">8</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOPCON/">MOPCON</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome-extension/">chrome extension</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lottie/">lottie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/六角/">六角</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技術筆記/">技術筆記</a><span class="tag-list-count">9</span></li></ul>
         </div>
     </div>
 
