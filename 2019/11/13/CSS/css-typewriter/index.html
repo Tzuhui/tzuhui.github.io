@@ -3,22 +3,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>初探前端 Unit Test | 想飛的葉子</title>
+    <title>使用 CSS 和 JS 呈現打字機效果 | 想飛的葉子</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="上上個禮拜參加 MOPCON 2019 時，聽到神 Q 超人介紹了『我們與測試的距離』，當時他問了在場的會眾說：『有聽過單元測試的舉手？』現場大概有八成的人都舉手了，接著他再問：『有在前端導入測試的舉手？』結果很意外的，居然幾乎沒有人舉手！">
-<meta name="keywords" content="技術筆記,JavaScript,Unit Test">
+    <meta name="description" content="這篇主要是說明如何運用幾個 CSS 和 JS 觀念來做出打字機的效果。 話不多說，先看 DEMO：DEMO">
+<meta name="keywords" content="CSS,技術筆記">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初探前端 Unit Test">
-<meta property="og:url" content="https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/index.html">
+<meta property="og:title" content="使用 CSS 和 JS 呈現打字機效果">
+<meta property="og:url" content="https://tzuhui.github.io/2019/11/13/CSS/css-typewriter/index.html">
 <meta property="og:site_name" content="想飛的葉子">
-<meta property="og:description" content="上上個禮拜參加 MOPCON 2019 時，聽到神 Q 超人介紹了『我們與測試的距離』，當時他問了在場的會眾說：『有聽過單元測試的舉手？』現場大概有八成的人都舉手了，接著他再問：『有在前端導入測試的舉手？』結果很意外的，居然幾乎沒有人舉手！">
+<meta property="og:description" content="這篇主要是說明如何運用幾個 CSS 和 JS 觀念來做出打字機的效果。 話不多說，先看 DEMO：DEMO">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F201910%2F1572513295771-unitTest?alt=media&token=94f0c39e-5397-4c17-adc2-b5cde258cae6">
-<meta property="og:updated_time" content="2019-10-31T09:15:26.366Z">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta property="og:updated_time" content="2019-11-13T07:03:38.827Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初探前端 Unit Test">
-<meta name="twitter:description" content="上上個禮拜參加 MOPCON 2019 時，聽到神 Q 超人介紹了『我們與測試的距離』，當時他問了在場的會眾說：『有聽過單元測試的舉手？』現場大概有八成的人都舉手了，接著他再問：『有在前端導入測試的舉手？』結果很意外的，居然幾乎沒有人舉手！">
-<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F201910%2F1572513295771-unitTest?alt=media&token=94f0c39e-5397-4c17-adc2-b5cde258cae6">
+<meta name="twitter:title" content="使用 CSS 和 JS 呈現打字機效果">
+<meta name="twitter:description" content="這篇主要是說明如何運用幾個 CSS 和 JS 觀念來做出打字機的效果。 話不多說，先看 DEMO：DEMO">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
     
 
     
@@ -158,7 +158,7 @@ ga('send', 'pageview');
     <div class="outer">
     
     
-      <section id="main-article" ><article id="post-JavaScript/unit-test/unit-test-basic" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main-article" ><article id="post-CSS/css-typewriter" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -166,7 +166,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            初探前端 Unit Test
+            使用 CSS 和 JS 呈現打字機效果
         </h1>
     
 
@@ -175,8 +175,8 @@ ga('send', 'pageview');
                         <!-- 
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/10/31/JavaScript/unit-test/unit-test-basic/">
-            <time datetime="2019-10-30T16:00:00.000Z" itemprop="datePublished">2019-10-31</time>
+        <a href="/2019/11/13/CSS/css-typewriter/">
+            <time datetime="2019-11-12T16:00:00.000Z" itemprop="datePublished">2019-11-13</time>
         </a>
     </div>
 
@@ -184,13 +184,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/JS/">JS</a>
+        <a class="article-category-link" href="/categories/CSS-筆記/">CSS 筆記</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Unit-Test/">Unit Test</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+        <a class="tag-link" href="/tags/CSS/">CSS</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
     </div>
 
                     </div>
@@ -201,68 +201,46 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>上上個禮拜參加 MOPCON 2019 時，聽到神 Q 超人介紹了『我們與測試的距離』，當時他問了在場的會眾說：『有聽過單元測試的舉手？』現場大概有八成的人都舉手了，接著他再問：『有在前端導入測試的舉手？』結果很意外的，居然幾乎沒有人舉手！<br><a id="more"></a><br>我想這應該是因為目前大多數的前端開發還是都以人工進行測試比較多。隨著專案當規模變大時，在產品上線前都會進行多次人工的測試，或是進行程式碼的重構，這都是常見的現象。但也經常因為重構或是測試後進行調整時出現改 A 壞 B 的情況，又或者花在人工測試的時間太多，因此這時就可以試著導入單元測試來輔助開發過程。</p>
-<h2 id="何謂單元測試？"><a href="#何謂單元測試？" class="headerlink" title="何謂單元測試？"></a>何謂單元測試？</h2><p>以 function 為最小單位，程式裡每個單一行為，可稱為一個單元。<br>例如：</p>
-<ol>
-<li>按下按鈕事件觸發</li>
-<li>API function 執行與回傳</li>
-</ol>
-<p>而單元測試則是利用貼近實際使用的腳本來進行對程式碼的檢查與驗證，確保函式的輸入輸出結果是符合需求且可以正確運行的。</p>
-<h2 id="單元測試的好處"><a href="#單元測試的好處" class="headerlink" title="單元測試的好處"></a>單元測試的好處</h2><ul>
-<li><strong>提高正確性：</strong><br>透過測試可以對於功能輸入輸出有個快速的回饋，開發時也可以驗證函式邏輯與想法。</li>
-<li><strong>隨時可測試</strong><br>隨時都可以開啟測試，不一定要等到功能完全寫完後才進行人工的測試，當其中出現問題時，還需要一一驗證是哪個環節出問題。</li>
-<li><strong>花費時間短</strong><br>透過自動化重複測試的部分，不需要一再進行耗時的重複人工測試。</li>
-<li><strong>測試後能產生測試報告（覆蓋率報告）</strong><br>透過單元測試的工具，可以輸出測試後的測試報告，也包含此次測試所覆蓋的程式碼驗證程度，讓測試不會口說無憑！</li>
+            <p>這篇主要是說明如何運用幾個 CSS 和 JS 觀念來做出打字機的效果。</p>
+<p>話不多說，先看 DEMO：<br><a href="https://codepen.io/TzuHui/pen/wvvybbp" target="_blank" rel="noopener">DEMO</a><br><a id="more"></a></p>
+<h2 id="主要觀念"><a href="#主要觀念" class="headerlink" title="主要觀念"></a>主要觀念</h2><ul>
+<li>CSS <ul>
+<li>keyframes</li>
+<li>animation 設定</li>
 </ul>
-<h2 id="兩個常被提到的單元測試面向-TDD-amp-BDD"><a href="#兩個常被提到的單元測試面向-TDD-amp-BDD" class="headerlink" title="兩個常被提到的單元測試面向 - TDD &amp; BDD"></a>兩個常被提到的單元測試面向 - TDD &amp; BDD</h2><h3 id="TDD（Test-driven-development）測試驅動開發"><a href="#TDD（Test-driven-development）測試驅動開發" class="headerlink" title="TDD（Test-driven development）測試驅動開發"></a>TDD（Test-driven development）測試驅動開發</h3><p>TDD 是在開發前先寫測試的程式碼，由通過測試來推動開發的進行。</p>
-<p>TDD 的主要運行圖：<br><img src="https://perspectives.mobilelive.ca/hs-fs/hubfs/TDD%20BDD%20DDD/1-4.jpg?width=2560&amp;name=1-4.jpg" alt="TDD 流程圖"><br>圖片引用自 <a href="https://dzone.com/articles/hybrid-development-with-tdd-ddd-bdd" target="_blank" rel="noopener">hybrid-development-with-tdd-ddd-bdd</a></p>
-<p>從圖中可看出 TDD 的運作是『紅燈』(Red)、『綠燈』(Green)、『綠燈』(Refactor) 的循環。</p>
-<p>這個循環也可以簡單的分為 6 個步驟：</p>
-<p><strong>1. 分析需求、思考實作：</strong><br>根據需求取設計一個自動化的測試實例。</p>
-<p><strong>2. 運行所有測試：</strong><br>在目前開發的程式碼上運行這些自動化測試。在此階段通常會出現紅燈（因為根本還沒開始開發嘛～～～）</p>
-<p><strong>3. 開發符合測試需求的程式碼</strong><br>以功能邏輯為主進行開發，並使其通過測試案例</p>
-<p><strong>4. 再次運行測試，並確認是否通過測試</strong><br>首先要確保功能的開發是否有正確得到實作，若是通過測試（綠燈）代表大致上已經完成一個可正確運行的版本。</p>
-<p><strong>5. 重構</strong><br>這個步驟是可做可不做，但重構可以提高程式碼品質以及提升複用性。</p>
-<p><strong>6. 重複以上步驟</strong><br>有新的測試（對應每個功能）都可以重複步驟 1-5，直到所以測試都通過。</p>
-<p>流程圖參考：<br><img src="https://cdn.softwaretestinghelp.com/wp-content/qa/uploads/2019/08/TDD-Flowchart.jpg" alt="image alt"><br>圖片來自 <a href="https://www.softwaretestinghelp.com/tdd-vs-bdd/" target="_blank" rel="noopener">TDD Vs BDD – Analyze The Differences With Examples</a></p>
-<p>使用 TDD 的方式，就好像是腳踏車的輪子，都是向同一個方向轉動（相同專案需求目標），但後輪是施力的讓腳踏車往前，而前輪是受力的，被帶動而轉（測試驅動開發）。</p>
-<p>TDD 實例可以參考這篇文章 <em><a href="https://tw.alphacamp.co/blog/tdd-test-driven-development-example" target="_blank" rel="noopener">TDD 開發五步驟</a></em> 中提到的『TDD 模式示範』。</p>
-<h3 id="BDD（Behavior-driven-development）行為驅動開發"><a href="#BDD（Behavior-driven-development）行為驅動開發" class="headerlink" title="BDD（Behavior-driven development）行為驅動開發"></a>BDD（Behavior-driven development）行為驅動開發</h3><p>BDD 的主要目標是以<strong>行為</strong>為導向去寫測試，透過利益相關者又或者是專案成員（開發人員、測試人員、用戶）描述系統功能和業務邏輯，來了解預期對系統的需求與認知，進而根據這些描述來進行系統自動化的測試。</p>
-<p>BDD 流程：</p>
-<p><strong>1. 根據 user story 定義出具體的目標：</strong></p>
+</li>
+<li>JS<ul>
+<li>setInterval()</li>
+<li>contains()</li>
+<li>if, else</li>
+</ul>
+</li>
+</ul>
+<h2 id="程式碼說明"><a href="#程式碼說明" class="headerlink" title="程式碼說明"></a>程式碼說明</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>先從 HTML 結構來說:<br>第一層 div 是為了設定鼠標的活動空間是和字體寬度相等，因此會設定為 display: inline-block<br>第二層 div (#typewrite-animated) 則是打字機動畫效果的設定層<br>再往內是打字機文字顯示的地方 (#typewrite-text)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;d-inline-block&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;typewrite-animated&quot;&gt;</span><br><span class="line">    &lt;span id=&quot;typewrite-text&quot; class=&quot;d-inline-block&quot;&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>接著來看 CSS 樣式設定的部分<br>如同上面 HTML 區塊提到的，為了讓寬度適應內容，會設定 display: inline-block。因此第一個樣式就是：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.d-inline-block</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接著進入重點的鼠標以及打字機效果的說明。<br>我們把主要的動畫效果寫到 .typewriter span，而 typewriter 就是要加到 #typewrite-animated 並動態被切換的 class<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.typewriter</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">72px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">border-right</span>: .<span class="number">3rem</span> solid $dark;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="attribute">animation</span>: </span><br><span class="line">    typing <span class="number">0.6s</span> <span class="built_in">steps</span>(3, end),</span><br><span class="line">    blink-caret .<span class="number">5s</span> step-end infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>Given（上下文，如：環境條件、情境先決條件）</li>
-<li>When（事件、當下的動作）</li>
-<li>Then（預期結果、其他結果）</li>
+<li><code>font-size</code>: 設定字體大小</li>
+<li><code>overflow: hidden</code>: 隱藏文字顯示</li>
+<li><code>border-right</code>: 設定鼠標寬度</li>
+<li><code>white-space: nowrap</code>: 讓文字不換行</li>
+<li><code>animation</code>: 設定動畫</li>
 </ul>
-<p>例如：</p>
-<p><strong>Given</strong> 有個顧客擁有一個銀行帳戶<br><strong>When</strong> 顧客要從帳戶中轉帳到海外帳戶<br><strong>Then</strong> 這筆帳轉到海外帳戶<br><strong>And</strong> 並從這個帳戶中收取轉帳的小費</p>
-<p><strong>2. 將定義出的敘述轉為程式碼</strong></p>
-<p>BDD 的過程可以參考這一篇文章 <em><a href="https://medium.com/@yurenju/%E8%87%AA%E5%8B%95%E8%BB%9F%E9%AB%94%E6%B8%AC%E8%A9%A6-tdd-%E8%88%87-bdd-464519672ac5" target="_blank" rel="noopener">自動軟體測試</a></em> 中 BDD (Behavior-driven development)<br>這邊有舉出 BDD 實例。</p>
-<h2 id="總結-TDD-與-BDD-差異"><a href="#總結-TDD-與-BDD-差異" class="headerlink" title="總結 TDD 與 BDD 差異"></a>總結 TDD 與 BDD 差異</h2><p>BDD 和 TDD 有個各自適用的情境，TDD 在於高效且快速開發並測試功能模組，在開發前先寫測試，以確保程式碼品質與符合需求的結果。BDD 比較偏向於系統功能與業務邏輯的自動化測試，除了實作前先寫測試外，通常還會產出一分執行規格。因為強調的是系統行為，因此也會減少使用者和工程師的溝通成本。</p>
-<h2 id="測試工具入門初體驗"><a href="#測試工具入門初體驗" class="headerlink" title="測試工具入門初體驗"></a>測試工具入門初體驗</h2><p>以上講了這麼多觀念，當然要搭配程式碼來理解一下！這邊使用 Jest 來初步做一個簡單的測試。</p>
-<ol>
-<li><p>在專案中載入 Jest</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jest</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在專案中加入 sum.js<br>寫入一個加總的函式，讓函式返回結果為 a+b</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let math = &#123;</span><br><span class="line">  sum: function(a, b) &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">  &#125;,</span><br><span class="line">  minus: function(a, b) &#123;</span><br><span class="line">    return a - b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = math;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在專案中加入 sum.test.js<br>test 的 js 中需要將要測試的函式 require 進來，接著寫下要測試的內容，並寫在預期測試的結果。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const math = require(&apos;./sum&apos;);</span><br><span class="line"></span><br><span class="line">test(&apos;adds 1 + 2 to equal 3&apos;, () =&gt; &#123;</span><br><span class="line">  expect(math.sum(1, 2)).toBe(3);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">test(&apos;minus 4 - 2 to equal 2&apos;, () =&gt; &#123;</span><br><span class="line">  expect(math.minus(4, 2)).toBe(2);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 package.json 加入 test</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;jest&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>運行 npm run test 看結果<br>如果 test 成功會出現如下圖</p>
-</li>
-</ol>
-<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F201910%2F1572510101359-package_json_%E2%80%94_jest_test.png?alt=media&amp;token=668d99a2-2ca6-4561-a9f0-96d72afc64c1" alt="Jest 測試成功"></p>
-<p>我們試著將函式修改一下(假裝不小心把 return 結果寫相反)，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sum: function(a, b) &#123;</span><br><span class="line">  return a - b;</span><br><span class="line">&#125;,</span><br><span class="line">minus: function(a, b) &#123;</span><br><span class="line">  return a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>那運行測試的結果一定是錯誤的，接著就會看到如下圖：</p>
-<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F201910%2F1572510140132-sum_js_%E2%80%94_jest_test.png?alt=media&amp;token=fc855c50-5770-42e6-a8b1-764481ccfb4f" alt="Jest 測試失敗"></p>
-<h2 id="本文小結"><a href="#本文小結" class="headerlink" title="本文小結"></a>本文小結</h2><p>這篇主要著重於了解單元測試的基礎觀念，接下來持續往實作的方向做介紹。<br>初步開始了解單元測試，若是文章中的解釋有誤，再請多多指教 :D</p>
-<h2 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h2><p><a href="https://www.slideshare.net/wantingj/tdd-bdd-47559903" target="_blank" rel="noopener">認識軟體測試的世界 &amp; TDD/BDD 入門</a><br><a href="https://www.itread01.com/content/1545281675.html" target="_blank" rel="noopener">前端單元測試Unit Test</a><br><a href="https://juejin.im/post/5b2da89cf265da597f1c7cab" target="_blank" rel="noopener">浅谈前端单元测试</a><br><a href="https://cythilya.github.io/2017/09/17/unit-test-with-mocha-chai-and-sinon/" target="_blank" rel="noopener">單元測試：Mocha、Chai 和 Sinon</a></p>
+<h3 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h3><p>這邊要特別說明動畫的部分，有加上兩個值。<br>第一個是 <code>typing 0.6s steps(3, end)</code><br><code>typing 0.6s steps(3, end)</code> 中的第一個參數 typing 是說明動畫名稱，會對應到 keyframe 的設定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">keyframes</span> typing &#123;</span><br><span class="line">  <span class="selector-tag">from</span> &#123; <span class="attribute">width</span>: <span class="number">0</span> &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123; <span class="attribute">width</span>: <span class="number">100%</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>也就是外部的寬度由 0 到 100%，而 0.6s 則是指這個動畫過程的時間，第三個參數則是指 animation-timing-function。animation-timing-function 這個屬性是用來控制動畫播放的速度與加速度，常見的值有 linear、ease-in、ease-out 等等，而這邊使用的 steps 也是其中的值，這邊就來介紹一下 steps 吧！</p>
+<h3 id="steps"><a href="#steps" class="headerlink" title="steps()"></a>steps()</h3><p>steps 中可以帶兩個參數，第一個是數字，代表的是要將動畫切為幾格，第二個 position 是指動畫從斷點頭或是斷點尾開始。</p>
+<p>從 W3C 的圖來看是這樣：<br><img src="https://i.imgur.com/mHn9JQu.png" alt=""><br>圖片來自 <a href="https://www.w3.org/TR/css-easing-1/#step-easing-functions" target="_blank" rel="noopener">W3C</a></p>
+<p>實際從範例可以更清楚地理解，請打開以下範例：<br><a href="https://codepen.io/carlos411/pen/wRKRej" target="_blank" rel="noopener">https://codepen.io/carlos411/pen/wRKRej</a></p>
+<p>範例來自 <a href="https://carlos-studio.com/2018/12/13/css-animation-9-%e4%bd%bf%e7%94%a8-animation-timing-function-%e4%be%86%e6%8e%a7%e5%88%b6%e5%8b%95%e7%95%ab%e7%9a%84%e9%80%9f%e5%ba%a6%e8%88%87%e5%8a%a0%e9%80%9f%e5%ba%a6/" target="_blank" rel="noopener">Carlos-Studio 設計好網站</a> </p>
+<p>到這邊就可以了解 steps() 的使用，可以讓文字變成一個一個出現。而範例呈現的文字數有 3 個，所以 steps 設定是 3。以此類推，若有五個字就 steps 就設定為 5。</p>
+<p>而第二個值 <code>blink-caret .5s step-end infinite;</code> 用法也如同上面提到的，blink-caret 是動畫名稱，對應的 keyframes 是設定鼠標的閃爍效果，由透明到黑色。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@keyframes blink-caret &#123;</span><br><span class="line">  from, to &#123; border-color: transparent &#125;</span><br><span class="line">  50% &#123; border-color: $dark &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同樣使用 step-end 讓鼠標有閃動的感覺，最後參數 infinite 讓動畫可以持續的重複播放</p>
+<h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><p>最後說明一下 JS 的部分：<br>主要是透過 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setInterval" target="_blank" rel="noopener">setInterval()</a> 來做每一次的切換變化</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 透過 arr 陣列儲存要變化的文字內容</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="string">'寫程式'</span>, <span class="string">'做設計'</span>, <span class="string">'找工作'</span>];</span><br><span class="line"><span class="comment">// 用 count 計算次數，後面會用來計算目前要顯示的文字內容是哪一個</span></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用 setInterval 做每一次的切換變化</span></span><br><span class="line">setInterval( <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  count += <span class="number">1</span>;</span><br><span class="line">  <span class="comment">// 設定動畫名稱並取得元素</span></span><br><span class="line">  <span class="keyword">const</span> typewriteAni = <span class="built_in">document</span>.getElementById(<span class="string">'typewrite-animated'</span>);</span><br><span class="line">  <span class="keyword">const</span> typewriteText = <span class="built_in">document</span>.getElementById(<span class="string">'typewrite-text'</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 判斷 #typewrite-animated 的 class 中是否含有 'typewriter' 這個 class</span></span><br><span class="line">  <span class="keyword">if</span> (typewriteAni.classList.contains(<span class="string">'typewriter'</span>)) &#123;</span><br><span class="line">    <span class="comment">// 有的話就移除</span></span><br><span class="line">    typewriteAni.classList.remove(<span class="string">'typewriter'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 沒有的話就加上</span></span><br><span class="line">    typewriteAni.classList.add(<span class="string">'typewriter'</span>);</span><br><span class="line">    <span class="comment">// 監聽元素 animationend 事件，動畫執行完 800 毫秒後清掉文字與 'typewriter' 這個 class</span></span><br><span class="line">    typewriteAni.addEventListener(<span class="string">'animationend'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        typewriteText.textContent = <span class="string">''</span>;</span><br><span class="line">        typewriteAni.classList.remove(<span class="string">'typewriter'</span>);</span><br><span class="line">      &#125;, <span class="number">800</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 用 count%3 來計算目前要取得的 arr 位置是第幾個（arr 中有 3 筆就用 %3，五筆就 %5）</span></span><br><span class="line">  typewriteText.textContent = arr[count%<span class="number">3</span>];</span><br><span class="line">&#125;, <span class="number">2500</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="JS-補給站："><a href="#JS-補給站：" class="headerlink" title="JS 補給站："></a>JS 補給站：</h3><h4 id="animationend-event"><a href="#animationend-event" class="headerlink" title="animationend event"></a>animationend event</h4><p>animationend 事件，就如同 click 事件一樣，可以透過 addEventListener 來對元素做監聽。animationend 是指在 CSS 動畫執行完後再執行後面函式設定的內容</p>
+<h4 id="contains"><a href="#contains" class="headerlink" title="contains()"></a>contains()</h4><p>contains 方法可以用在 DOMTokenList，而元素的 classList（ele.classList）回傳的正是一個 DOMTokenList 物件，所以這邊要確認是否有某個 class 就需要使用 contains。</p>
+<p>有一個與 contains 很像的方法，也就是 Array 的 includes，要注意這邊若要使用 includes，要先將 DOMTokenList 轉為 Array。<br>例如：<code>[...typewriteAni.classList].includes(&#39;typewriter&#39;)</code></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://codepen.io/carlos411/pen/wRKRej" target="_blank" rel="noopener">animation-timing-function 的 steps 函式</a><br><a href="https://carlos-studio.com/2018/12/13/css-animation-9-%e4%bd%bf%e7%94%a8-animation-timing-function-%e4%be%86%e6%8e%a7%e5%88%b6%e5%8b%95%e7%95%ab%e7%9a%84%e9%80%9f%e5%ba%a6%e8%88%87%e5%8a%a0%e9%80%9f%e5%ba%a6/" target="_blank" rel="noopener">Carlos-Studio 設計好網站</a></p>
 
         
         </div>
@@ -273,7 +251,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/" data-id="ck2wya6sk002e5s27hrea4an2" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="https://tzuhui.github.io/2019/11/13/CSS/css-typewriter/" data-id="ck2wya6pn00035s27s9rydj4q" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -341,7 +319,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/">評論</a>
+        <a href="https://tzuhui.github.io/2019/11/13/CSS/css-typewriter/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/11/13/CSS/css-typewriter/">評論</a>
     
 
         </footer>
@@ -350,19 +328,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2019/11/13/CSS/css-typewriter/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    使用 CSS 和 JS 呈現打字機效果
-                
-            </div>
-        </a>
     
-    
-        <a href="/2019/10/24/Mine/mopcon-2019/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/10/31/JavaScript/unit-test/unit-test-basic/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">漂流在 MOPCON 2019 的葉子成長記</div>
+            <div class="article-nav-title">初探前端 Unit Test</div>
         </a>
     
 </nav>
@@ -538,9 +507,9 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://tzuhui.github.io/2019/10/31/JavaScript/unit-test/unit-test-basic/';
+            this.page.url = 'https://tzuhui.github.io/2019/11/13/CSS/css-typewriter/';
         
-        this.page.identifier = 'JavaScript/unit-test/unit-test-basic';
+        this.page.identifier = 'CSS/css-typewriter';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
