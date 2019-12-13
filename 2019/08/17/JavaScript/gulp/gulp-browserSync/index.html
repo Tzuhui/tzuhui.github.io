@@ -14,7 +14,7 @@
 <meta property="og:description" content="這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2019-08-17T05:11:36.563Z">
+<meta property="og:updated_time" content="2019-12-13T10:37:43.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)">
 <meta name="twitter:description" content="這篇是使用 gulp 4，所以使用 gulp 3 要注意 task 安排的寫法正文開始！這一篇要從資料夾中只含有一個 index.html 檔案開始說起">
@@ -214,8 +214,9 @@ ga('send', 'pageview');
 <h3 id="4-載入-browser-sync-套件"><a href="#4-載入-browser-sync-套件" class="headerlink" title="4. 載入 browser-sync 套件"></a>4. 載入 browser-sync 套件</h3><p>在終端機下指令安裝 browser-sync<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install browser-sync</span><br></pre></td></tr></table></figure></p>
 <p>在 gulpfile.js 寫入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const browserSync = require(&apos;browser-sync&apos;);</span><br></pre></td></tr></table></figure></p>
 <h3 id="5-使用-browserSync-所提供的方法來-init"><a href="#5-使用-browserSync-所提供的方法來-init" class="headerlink" title="5. 使用 browserSync 所提供的方法來 init"></a>5. 使用 browserSync 所提供的方法來 init</h3><p>參考寫法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;browserSync&apos;, function () &#123;</span><br><span class="line">  browserSync.init(&#123;</span><br><span class="line">    server: &#123;</span><br><span class="line">      baseDir: &apos;./&apos;, // 指向要開啟的資料夾</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="6-執行-gulp-就可以順利開啟-web-server-啦"><a href="#6-執行-gulp-就可以順利開啟-web-server-啦" class="headerlink" title="6. 執行 gulp 就可以順利開啟 web server 啦"></a>6. 執行 gulp 就可以順利開啟 web server 啦</h3><h3 id="小補充-運用-gulp-watch-讓檔案有更動時自動-reload"><a href="#小補充-運用-gulp-watch-讓檔案有更動時自動-reload" class="headerlink" title="小補充 - 運用 gulp watch() 讓檔案有更動時自動 reload"></a>小補充 - 運用 gulp watch() 讓檔案有更動時自動 reload</h3><p>gulp watch 是用於監看全局任務，因此可以用於當檔案發生改變時觸發某行為<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.watch(&quot;*.html&quot;).on(&quot;change&quot;, browserSync.reload);</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-執行-gulp-就可以順利開啟-web-server-啦"><a href="#6-執行-gulp-就可以順利開啟-web-server-啦" class="headerlink" title="6. 執行 gulp 就可以順利開啟 web server 啦"></a>6. 執行 gulp 就可以順利開啟 web server 啦</h3><h3 id="小補充1-運用-gulp-watch-讓檔案有更動時自動-reload"><a href="#小補充1-運用-gulp-watch-讓檔案有更動時自動-reload" class="headerlink" title="小補充1 - 運用 gulp watch() 讓檔案有更動時自動 reload"></a>小補充1 - 運用 gulp watch() 讓檔案有更動時自動 reload</h3><p>gulp watch 是用於監看全局任務，因此可以用於當檔案發生改變時觸發某行為<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.watch(&quot;*.html&quot;).on(&quot;change&quot;, browserSync.reload);</span><br></pre></td></tr></table></figure></p>
 <p>也就是當 HTML 檔案有更動時，在儲存的同時 web server 也會 reload，這樣在開發上就更方便啦～</p>
+<h3 id="小補充2-在-gulp4-中任務也可以用函式的方式來寫，並用-export-匯出"><a href="#小補充2-在-gulp4-中任務也可以用函式的方式來寫，並用-export-匯出" class="headerlink" title="小補充2 - 在 gulp4 中任務也可以用函式的方式來寫，並用 export 匯出"></a>小補充2 - 在 gulp4 中任務也可以用函式的方式來寫，並用 export 匯出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function browser() &#123;</span><br><span class="line">  browserSync.init(&#123;</span><br><span class="line">    server: &#123;</span><br><span class="line">      baseDir: &apos;./&apos;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">  gulp.watch(&apos;*.html&apos;).on(&apos;change&apos;, browserSync.reload);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.default = gulp.series(browser);</span><br></pre></td></tr></table></figure>
 <p>更多 browser-sync 使用方法請見：<br><a href="https://browsersync.io/docs/gulp#gulp-install" target="_blank" rel="noopener">https://browsersync.io/docs/gulp#gulp-install</a></p>
 
         
@@ -227,7 +228,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/" data-id="ck2wya6s8001u5s27hx3200l9" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/" data-id="ck2wyd2xp001sfs27pc4w8lj9" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -314,9 +315,9 @@ ga('send', 'pageview');
         </a>
     
     
-        <a href="/2019/06/20/Bootstrap/vue-cli-use-bootstrap/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/06/20/Git/fast-forward/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">在 Vue Cli 中加入自定義 Bootstrap 樣式</div>
+            <div class="article-nav-title">連葉子都秒懂的 Fast Forward</div>
         </a>
     
 </nav>
