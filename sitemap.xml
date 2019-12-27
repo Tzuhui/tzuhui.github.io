@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzuhui.github.io/2019/12/27/JavaScript/JS/js-promise/</loc>
+    
+    <lastmod>2019-12-27T06:34:07.981Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzuhui.github.io/2019/08/17/JavaScript/gulp/gulp-browserSync/</loc>
     
     <lastmod>2019-12-13T10:37:43.040Z</lastmod>
@@ -86,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-create/</loc>
-    
-    <lastmod>2019-06-20T17:03:40.688Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/</loc>
     
     <lastmod>2019-06-20T17:03:40.688Z</lastmod>
@@ -100,14 +100,21 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/categories/index.html</loc>
+    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-create/</loc>
+    
+    <lastmod>2019-06-20T17:03:40.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzuhui.github.io/tags/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.679Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/tags/index.html</loc>
+    <loc>https://tzuhui.github.io/categories/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.679Z</lastmod>
     

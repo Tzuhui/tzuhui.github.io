@@ -3,15 +3,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>歸檔: 2019/1 | 想飛的葉子</title>
+    <title>用範例理解 JS Promise | 想飛的葉子</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="想飛的葉子">
-<meta property="og:url" content="https://tzuhui.github.io/archives/2019/01/index.html">
+    <meta name="description" content="Promise 的好用之處在於，可以確保事件完成後再執行後面的行為，也解決了傳統 callback 波動拳的問題。它用 resolve, reject 來傳遞函式執行後為成功或是失敗的訊息，再用 then 與 catch 來做對應處理。這一篇就用範例快速了解一下 Promise 怎麼用吧！">
+<meta name="keywords" content="技術筆記,JavaScript,Promise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用範例理解 JS Promise">
+<meta property="og:url" content="https://tzuhui.github.io/2019/12/27/JavaScript/JS/js-promise/index.html">
 <meta property="og:site_name" content="想飛的葉子">
+<meta property="og:description" content="Promise 的好用之處在於，可以確保事件完成後再執行後面的行為，也解決了傳統 callback 波動拳的問題。它用 resolve, reject 來傳遞函式執行後為成功或是失敗的訊息，再用 then 與 catch 來做對應處理。這一篇就用範例快速了解一下 Promise 怎麼用吧！">
 <meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta property="og:updated_time" content="2019-12-27T06:34:07.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="想飛的葉子">
+<meta name="twitter:title" content="用範例理解 JS Promise">
+<meta name="twitter:description" content="Promise 的好用之處在於，可以確保事件完成後再執行後面的行為，也解決了傳統 callback 波動拳的問題。它用 resolve, reject 來傳遞函式執行後為成功或是失敗的訊息，再用 then 與 catch 來做對應處理。這一篇就用範例快速了解一下 Promise 怎麼用吧！">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
     
 
     
@@ -75,16 +82,6 @@ ga('send', 'pageview');
         
           <a class="main-nav-link " href="/about/">關於我</a>
         
-      </nav>
-      
-      
-      <nav id="sub-nav">
-        <div class="profile" id="profile-nav">
-          <a id="profile-anchor" href="javascript:;">
-            <img class="avatar" src="/css/images/personal.png">
-            <i class="fas fa-caret-down"></i>
-          </a>
-        </div>
       </nav>
       
       <div id="search-form-wrap">
@@ -160,106 +157,177 @@ ga('send', 'pageview');
 
     <div class="outer">
     
-      
-
-<aside id="profile" class="profile-fixed">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/personal.png">
-            <h2 id="name">想飛的葉子</h2>
-            <h3 id="title">前端工程師</h3>
-            <h5 id="description">因為金魚腦所以寫文做筆記！</h5>
-            <span id="location"><i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>Taiwan</span>
-            <a id="follow" target="_blank" href="https://github.com/Tzuhui">關注我</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                14
-                <span>文章</span>
-            </div>
-            <div class="article-info-block">
-                13
-                <span>標籤</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="https://github.com/Tzuhui" target="_blank" title="github" class="tooltip">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="https://www.facebook.com/tzuhui.ye" target="_blank" title="facebook" class="tooltip">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="https://www.instagram.com/da_hun_g/?hl=zh-tw" target="_blank" title="instagram" class="tooltip">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
-    </div>
-</aside>
-
     
-    
-      <section id="main"><div class="timeline timeline-wrap">
-    
-            <!-- 小標題：Vue CLI 3 環境變數設置 -->
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fas fa-calendar-alt"></i></span>
-                <h1 class="title">2019</h1>
-            </div>
+      <section id="main-article" ><article id="post-JavaScript/JS/js-promise" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2019/01/08/Vue/Vue-CLI3-env/">Vue CLI 3 環境變數設置</a>
+        <h1 class="article-title" itemprop="name">
+            用範例理解 JS Promise
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        <!-- 
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/01/08/Vue/Vue-CLI3-env/">
-            <time datetime="2019-01-07T16:00:00.000Z" itemprop="datePublished">2019-01-08</time>
+        <a href="/2019/12/27/JavaScript/JS/js-promise/">
+            <time datetime="2019-12-26T16:00:00.000Z" itemprop="datePublished">2019-12-27</time>
         </a>
     </div>
 
-
-                    
+ -->
+                        
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/Vue-筆記/">Vue 筆記</a>
+        <a class="article-category-link" href="/categories/JS/">JS</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Vue/">Vue</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Promise/">Promise</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>Promise 的好用之處在於，可以確保事件完成後再執行後面的行為，也解決了傳統 callback 波動拳的問題。它用 resolve, reject 來傳遞函式執行後為成功或是失敗的訊息，再用 then 與 catch 來做對應處理。這一篇就用範例快速了解一下 Promise 怎麼用吧！<br><a id="more"></a></p>
+<p><strong>情境舉例：</strong><br>當我要去旅遊，首先必須先整理行李後才能出發，<br>因此行李整理完成，我才會叫車</p>
+<h2 id="Promise-基礎範例"><a href="#Promise-基礎範例" class="headerlink" title="Promise 基礎範例"></a>Promise 基礎範例</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkLuggage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">if</span> (<span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">2</span>)) &#123; <span class="comment">// 隨機</span></span><br><span class="line">         setTimeout(resolve, <span class="number">10000</span> * <span class="built_in">Math</span>.random(), <span class="string">'收好行李'</span>);</span><br><span class="line">         <span class="comment">// 隨機時間（不知道要收多久的概念）</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         reject(<span class="string">'想慢慢收'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;</span><br><span class="line">checkLuggage().then(<span class="function">(<span class="params">data</span>)=&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data, <span class="string">'可以叫車了！'</span>);</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>)=&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err, <span class="string">'先不要叫車'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="迴圈與-Promise-Promise-all-的運用"><a href="#迴圈與-Promise-Promise-all-的運用" class="headerlink" title="迴圈與 Promise, Promise.all 的運用"></a>迴圈與 Promise, Promise.all 的運用</h2><p>Promise.all() 這個方法可以同時執行很多 Promise，並在全部都執行完後回傳。</p>
+<p><strong>情境舉例</strong>：<br>繼續上一個情境，整理行李要拿的東西實在太多<br>假設我只要發送指令，就可以讓機器人自動去幫我做拿好（<del>做夢</del><br>那整理行李這件事，我就可以個別發送『拿衣服』、『拿褲子』、『拿襪子』指令，讓他們去拿 XD<br>當我發送出指令的時候，我總要知道他們哪時候完成，才方便我打電話叫車嘛～<br>此時就可以用 promise.all 來確定事情完成：</p>
+<ol>
+<li><p>先制定好去拿的這個事件，並在完成拿取時回報完成</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> todos = [<span class="string">'拿衣服'</span>, <span class="string">'拿褲子'</span>, <span class="string">'拿襪子'</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getThing</span>(<span class="params">todo</span>) </span>&#123; <span class="comment">// 拿東西都是相同指令，就用同一個函式就可以了</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(resolve, <span class="number">10000</span> * <span class="built_in">Math</span>.random(), todo+<span class="string">'完成'</span>); </span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接著用 checkLuggage 來統一發送與接受完成的回傳：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkLuggage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> allTodo = []; <span class="comment">// 用一個變數將所有 promise 事件推進去</span></span><br><span class="line">    todos.forEach(<span class="function"><span class="params">todo</span> =&gt;</span> &#123;</span><br><span class="line">      allTodo.push(getThing(todo));</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">Promise</span>.all(allTodo).then(<span class="function">(<span class="params">results</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> msg = <span class="string">'全部完成：'</span>+ results;</span><br><span class="line">      resolve(msg);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最後執行 checkLuggage 函式，等到全部事情都完成了才會執行 callForCar 函式</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callForCar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'叫車'</span>)</span><br><span class="line">&#125;</span><br><span class="line">checkLuggage().then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">  callForCar();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>這個方法常使用在不確定陣列中（如同範例的 todos）有多少個項目，直接透過迴圈的方式紀錄所有 promise 事件。當其中一個為失敗的話，也可以使用 catch 來做取得錯誤後的處理。這部分就和一開始的 Promise 基礎範例是一樣的道理～</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>透過 Promise 就可以確保事件完成後才觸發後面要執行的事項。<br>就不會發生行李還沒整理好，車子就來了的情形啦！</p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="https://tzuhui.github.io/2019/12/27/JavaScript/JS/js-promise/" data-id="ck4ns7zln001sch273n1tb9pj" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://tzuhui.github.io/2019/12/27/JavaScript/JS/js-promise/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/12/27/JavaScript/JS/js-promise/">評論</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/11/13/CSS/css-typewriter/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">使用 CSS 和 JS 呈現打字機效果</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
       
         
@@ -417,11 +485,13 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = '';
+            this.page.url = 'https://tzuhui.github.io/2019/12/27/JavaScript/JS/js-promise/';
+        
+        this.page.identifier = 'JavaScript/JS/js-promise';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'tzuhui' + '.disqus.com/count.js';
+        s.src = '//' + 'tzuhui' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
