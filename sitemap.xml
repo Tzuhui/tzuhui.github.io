@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzuhui.github.io/2020/01/08/HTML/html-img-blank/</loc>
+    
+    <lastmod>2020-01-08T07:07:42.590Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzuhui.github.io/2019/12/27/JavaScript/JS/js-promise/</loc>
     
     <lastmod>2019-12-27T06:34:07.981Z</lastmod>
@@ -107,14 +114,14 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/tags/index.html</loc>
+    <loc>https://tzuhui.github.io/categories/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.679Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/categories/index.html</loc>
+    <loc>https://tzuhui.github.io/tags/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.679Z</lastmod>
     
