@@ -3,11 +3,11 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>歸檔: 2019/12 | 想飛的葉子</title>
+    <title>想飛的葉子</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta property="og:type" content="website">
 <meta property="og:title" content="想飛的葉子">
-<meta property="og:url" content="https://tzuhui.github.io/archives/2019/12/index.html">
+<meta property="og:url" content="https://tzuhui.github.io/page/4/index.html">
 <meta property="og:site_name" content="想飛的葉子">
 <meta property="og:locale" content="zh-TW">
 <meta name="twitter:card" content="summary">
@@ -216,51 +216,143 @@ ga('send', 'pageview');
 
     
     
-      <section id="main"><div class="timeline timeline-wrap">
-    
-            <!-- 小標題：用範例理解 JS Promise -->
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fas fa-calendar-alt"></i></span>
-                <h1 class="title">2019</h1>
-            </div>
+      <section id="main">
+    <article id="post-Vue/Vue-CLI3-install" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
         <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2019/12/27/JavaScript/JS/js-promise/">用範例理解 JS Promise</a>
+            <a class="article-title" href="/2018/12/28/Vue/Vue-CLI3-install/">Vue CLI 3 安裝篇</a>
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        <!-- 
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/12/27/JavaScript/JS/js-promise/">
-            <time datetime="2019-12-26T16:00:00.000Z" itemprop="datePublished">2019-12-27</time>
+        <a href="/2018/12/28/Vue/Vue-CLI3-install/">
+            <time datetime="2018-12-27T16:00:00.000Z" itemprop="datePublished">2018-12-28</time>
         </a>
     </div>
 
-
-                    
+ -->
+                        
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/JS/">JS</a>
+        <a class="article-category-link" href="/categories/Vue-筆記/">Vue 筆記</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Promise/">Promise</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Vue/">Vue</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p></p><p>Vue CLI 3 安裝非常簡單和官網上說明的可以說是一模一樣 XD<br>官網說明：<a href="https://cli.vuejs.org/zh/guide/" target="_blank" rel="noopener">https://cli.vuejs.org/zh/guide/</a><br></p>
+            <p class="article-more-link">
+                <a href="/2018/12/28/Vue/Vue-CLI3-install/#more">繼續閱讀</a>
+            </p>
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/" data-id="ck6av0rvm000d1h279ykrrt8g" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/">評論</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
 </section>
       
         

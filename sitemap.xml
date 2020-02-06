@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzuhui.github.io/2020/02/06/w3HexSchool-challenge/TypeScript-get-start/</loc>
+    
+    <lastmod>2020-02-06T14:51:43.183Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzuhui.github.io/2020/01/08/HTML/html-img-blank/</loc>
     
     <lastmod>2020-01-08T07:07:42.590Z</lastmod>
@@ -93,7 +100,7 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/</loc>
+    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-create/</loc>
     
     <lastmod>2019-06-20T17:03:40.688Z</lastmod>
     
@@ -107,21 +114,21 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-create/</loc>
+    <loc>https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/</loc>
     
     <lastmod>2019-06-20T17:03:40.688Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/categories/index.html</loc>
+    <loc>https://tzuhui.github.io/tags/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.679Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/tags/index.html</loc>
+    <loc>https://tzuhui.github.io/categories/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.679Z</lastmod>
     
