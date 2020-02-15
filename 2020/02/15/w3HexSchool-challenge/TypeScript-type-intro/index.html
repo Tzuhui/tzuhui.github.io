@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>TypeScript - 資料型別 和 Type Annotations | 想飛的葉子</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="你是否有打開過某一個專案，發現裡面的變數名稱是 a, b, c 等，完全無法透過變數直接了解其作用？此時若是使用 TypeScript，就可以透過型別的註釋，加速了解正在傳遞的數據類型，進而提高程式碼的可讀性。">
+<meta name="keywords" content="技術筆記,w3HexSchool,TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript - 資料型別 和 Type Annotations">
+<meta property="og:url" content="https://tzuhui.github.io/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/index.html">
+<meta property="og:site_name" content="想飛的葉子">
+<meta property="og:description" content="你是否有打開過某一個專案，發現裡面的變數名稱是 a, b, c 等，完全無法透過變數直接了解其作用？此時若是使用 TypeScript，就可以透過型別的註釋，加速了解正在傳遞的數據類型，進而提高程式碼的可讀性。">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta property="og:updated_time" content="2020-02-15T14:38:14.636Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript - 資料型別 和 Type Annotations">
+<meta name="twitter:description" content="你是否有打開過某一個專案，發現裡面的變數名稱是 a, b, c 等，完全無法透過變數直接了解其作用？此時若是使用 TypeScript，就可以透過型別的註釋，加速了解正在傳遞的數據類型，進而提高程式碼的可讀性。">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+    
+
+    
+
+    
+        <link rel="icon" href="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome5/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/libs/font-awesome5/css/fa-brands.min.css">
+    <link rel="stylesheet" href="/libs/font-awesome5/css/fa-solid.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-128579418-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <meta name="google-site-verification" content="8rRxagQTQ05lXUbOoyFU7DuGqTkQagarxpHdL5wrku4">
+    
+    
+
+
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo">
+        <i class="logo"></i>
+        <span class="site-title">想飛的葉子</span>
+      </a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link " href="/archives/">目錄</a>
+        
+          <a class="main-nav-link " href="/categories/">分類</a>
+        
+          <a class="main-nav-link " href="/tags/">標籤</a>
+        
+          <a class="main-nav-link " href="/about/">關於我</a>
+        
+      </nav>
+      
+      <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fas fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: 'Pages',
+            CATEGORIES: '分類',
+            TAGS: '標籤',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+        <td>
+          <a class="main-nav-link " href="/archives/">目錄</a>
+        </td>
+        
+        <td>
+          <a class="main-nav-link " href="/categories/">分類</a>
+        </td>
+        
+        <td>
+          <a class="main-nav-link " href="/tags/">標籤</a>
+        </td>
+        
+        <td>
+          <a class="main-nav-link " href="/about/">關於我</a>
+        </td>
+        
+        <td>
+          
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜尋">
+    </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    <div class="outer">
+    
+    
+      <section id="main-article" ><article id="post-w3HexSchool-challenge/TypeScript-type-intro" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            TypeScript - 資料型別 和 Type Annotations
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        <!-- 
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/">
+            <time datetime="2020-02-14T16:00:00.000Z" itemprop="datePublished">2020-02-15</time>
+        </a>
+    </div>
+
+ -->
+                        
+    <div class="article-category">
+    	<i class="fas fa-folder"></i>
+        <a class="article-category-link" href="/categories/JS/">JS</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/TypeScript/">TypeScript</a>, <a class="tag-link" href="/tags/w3HexSchool/">w3HexSchool</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>你是否有打開過某一個專案，發現裡面的變數名稱是 a, b, c 等，完全無法透過變數直接了解其作用？此時若是使用 TypeScript，就可以透過型別的註釋，加速了解正在傳遞的數據類型，進而提高程式碼的可讀性。<br><a id="more"></a><br>同理來說，TypeScript 為了規範程式碼，提高維護，會特別著重在型別上，每個值都會有它的型別，而型別也伴隨著它本身帶有的方法，例如：string 有 indexOf()。</p>
+<h2 id="TypeScript-資料型別"><a href="#TypeScript-資料型別" class="headerlink" title="TypeScript 資料型別"></a>TypeScript 資料型別</h2><p>前幾個都為 JavaScript 的原始型別（Primitive Types），在 TypeScript 同樣也有這些資料型別。我們就透過型別注釋的方式一一介紹：</p>
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> learn: <span class="built_in">boolean</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<p>因為 learn 已經是 Boolean，所以不能再將這個變數的值改為數值。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">learn = <span class="number">123</span>; <span class="comment">// 錯誤</span></span><br><span class="line">learn = <span class="literal">false</span>;  <span class="comment">//正確</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><p>數值類型支援浮點數、也可以使用十六進位、二進位、八進位。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> decimal: <span class="built_in">number</span> = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">let</span> hex: <span class="built_in">number</span> = <span class="number">0xf00d</span>;</span><br><span class="line"><span class="keyword">let</span> binary: <span class="built_in">number</span> = <span class="number">0b1010</span>;</span><br><span class="line"><span class="keyword">let</span> octal: <span class="built_in">number</span> = <span class="number">0o744</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str:<span class="built_in">string</span> = <span class="string">'learn typescript'</span>;</span><br><span class="line">str = <span class="string">'TypeScript'</span>;</span><br></pre></td></tr></table></figure>
+<p>字串也可以改用模板字符串<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> count: <span class="built_in">number</span> = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">let</span> sentence: <span class="built_in">string</span> = <span class="string">`這是第 <span class="subst">$&#123;count&#125;</span> 篇文`</span>;</span><br></pre></td></tr></table></figure></p>
+<p>這樣也就等於是<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sentence: string = <span class="string">'這是第'</span> + count + <span class="string">'篇文'</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num: <span class="literal">null</span>;</span><br><span class="line">num = <span class="number">1</span>; <span class="comment">// 錯誤</span></span><br><span class="line">num = <span class="literal">null</span>; <span class="comment">// 正確</span></span><br></pre></td></tr></table></figure>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> test: <span class="built_in">number</span>;</span><br><span class="line"><span class="built_in">console</span>.log(test); <span class="comment">// 錯誤</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> test2: <span class="literal">undefined</span>;</span><br><span class="line"><span class="built_in">console</span>.log(test2); <span class="comment">// 正確</span></span><br></pre></td></tr></table></figure>
+<h3 id="void"><a href="#void" class="headerlink" title="void"></a>void</h3><p>JavaScript 沒有 void（可視為空值），但是在 TypeScript 中，可以用 void 來表示沒有任何 return (返回值) 的函式。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'learn TypeScript'</span>);</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p>陣列的寫法有兩種：<br>第一種是「型別 + 方括號」表示法，例如：number[]<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="string">'2'</span>, <span class="number">3</span>]; <span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">let</span> list2: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];  <span class="comment">// 正確</span></span><br></pre></td></tr></table></figure></p>
+<p>第二種則是陣列泛型（Array Generic）<code>Array&lt;型別&gt;</code> 來表示：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list: <span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="string">'2'</span>, <span class="number">3</span>]; <span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">let</span> list2: <span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];  <span class="comment">// 正確</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>Object 是物件型別，也表示非原始型別（Boolean、Number、String、null、undefined）<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj: object;</span><br><span class="line">obj = &#123;name: <span class="string">'Tzu Hui'</span>, age: <span class="number">25</span>&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>或是可以將物件內的參數一一定義型別<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj: &#123; </span><br><span class="line">  name: <span class="built_in">string</span>,</span><br><span class="line">  age: <span class="built_in">number</span>,</span><br><span class="line">&#125;; </span><br><span class="line"></span><br><span class="line">obj = &#123;</span><br><span class="line">    name: <span class="string">'Tzu Hui'</span>,</span><br><span class="line">    age: <span class="number">25</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h3><p>Tuple 是指元素陣列，Tuple 可以以固定的數量定義陣列中位置的型別<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tupleArr: [<span class="built_in">number</span>, <span class="built_in">string</span>, <span class="built_in">boolean</span>] = [<span class="number">2</span>, <span class="string">'寫文啦'</span>, <span class="literal">true</span>];</span><br></pre></td></tr></table></figure></p>
+<p>如同一開始提到型別都會有自己可用的方法，因此在這邊也是會有相對應<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(tupleArr[<span class="number">1</span>].substring(<span class="number">1</span>)); <span class="comment">// 正確</span></span><br><span class="line"><span class="built_in">console</span>.log(tupleArr[<span class="number">0</span>].substring(<span class="number">1</span>)); <span class="comment">// 錯誤，因為 number 沒有 substring 方法</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Enum"><a href="#Enum" class="headerlink" title="Enum"></a>Enum</h3><p>Enum 常被翻譯為<strong>列舉</strong>型別，用於定義一定範圍內的值。<br>如以下範例，將三種狀態利用 enum 做定義。在預設沒有賦予值的情況下，enum 會給這些變數對應的數字值，也就是 0, 1, 2, 3 以此類推。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> statusCode &#123;</span><br><span class="line">  success,</span><br><span class="line">  fail,</span><br><span class="line">  pending</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>上面這段在編譯後為：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> statusCode;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">statusCode</span>) </span>&#123;</span><br><span class="line">    statusCode[statusCode[<span class="string">"success"</span>] = <span class="number">0</span>] = <span class="string">"success"</span>;</span><br><span class="line">    statusCode[statusCode[<span class="string">"fail"</span>] = <span class="number">1</span>] = <span class="string">"fail"</span>;</span><br><span class="line">    statusCode[statusCode[<span class="string">"pending"</span>] = <span class="number">2</span>] = <span class="string">"pending"</span>;</span><br><span class="line">&#125;)(statusCode || (statusCode = &#123;&#125;));</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> res:statusCode = statusCode.success;</span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+<p>那當有賦予值時，沒有賦予值得變數仍會依照前一個變數的值往後推 +1<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> statusCode &#123;</span><br><span class="line">  success = <span class="number">7</span>,</span><br><span class="line">  fail,</span><br><span class="line">  pending</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> res:statusCode = statusCode.fail;</span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// 8</span></span><br></pre></td></tr></table></figure></p>
+<p>也可用數字反推<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> status: <span class="built_in">string</span> = statusCode[<span class="number">8</span>];</span><br><span class="line"><span class="built_in">console</span>.log(status); <span class="comment">// fail</span></span><br></pre></td></tr></table></figure></p>
+<p>以上介紹是 Enums 的 Numeric enums，Enums 仍有 String enums、Ambient Enums 等內容，之後再做一篇更深入的介紹。</p>
+<h3 id="Any"><a href="#Any" class="headerlink" title="Any"></a>Any</h3><p>Any 為任意型別，也就是不指定型別。<br>在指定型別下，變數是所賦予的值是必須符合型別，但指定為 Any 時則可以自由切換<br>指定 string 的範例：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> toDayPage: <span class="built_in">string</span> = <span class="string">'two'</span>;</span><br><span class="line">toDayPage = <span class="number">2</span>; <span class="comment">// 錯誤</span></span><br></pre></td></tr></table></figure></p>
+<p>改為 Any 的範例：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> toDayPage: <span class="built_in">any</span> = <span class="string">'two'</span>;</span><br><span class="line">toDayPage = <span class="number">2</span>; <span class="comment">// 正確</span></span><br></pre></td></tr></table></figure></p>
+<p>Any 除了可以更換值的型別以外，設為 Any 後還可以取得屬性與方法<br>例如：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> anyThing: <span class="built_in">any</span> = <span class="string">'blog'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(anyThing.page);</span><br><span class="line"><span class="built_in">console</span>.log(anyThing.page.count);</span><br></pre></td></tr></table></figure></p>
+<p>最後還要注意一個小地方：<br>因為 TypeScript 會做型別推論，但是當一開始變數沒有賦予值的話，就會定為 Any 型別。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> toDayPage = <span class="string">'two'</span>;</span><br><span class="line">toDayPage = <span class="number">2</span>; <span class="comment">// 錯誤</span></span><br></pre></td></tr></table></figure></p>
+<p>下方與上方的例子差別在於，上方 toDayPage 一開始就賦予字串值，而下方式只有定義，因此在更改 toDayPage = 2 時，只有下方的 Any 不會出現錯誤，上方的則是因為<strong>型別推論</strong>被當成 string 類型而不能修改其他型別值。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> toDayPage: <span class="built_in">any</span>;</span><br><span class="line">toDayPage = <span class="string">'two'</span>;</span><br><span class="line">toDayPage = <span class="number">2</span>; <span class="comment">// 正確</span></span><br><span class="line">toDayPage.getPage(<span class="string">'two'</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Never"><a href="#Never" class="headerlink" title="Never"></a>Never</h3><p>never 是代表不會出現的類型，可以用在 throw new Error。<br>當使用 Never 時是不可以對變數賦予其他類型的值。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> test: never;</span><br><span class="line">test = <span class="string">'learn'</span>; <span class="comment">// 錯誤</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>參考資料：<br><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" rel="noopener">TypeScript - Basic Types</a><br><a href="https://www.udemy.com/course/typescript-the-complete-developers-guide/" target="_blank" rel="noopener">Udemy - Typescript: The Complete Developer’s Guide 2020</a><br><a href="https://willh.gitbook.io/typescript-tutorial/basics" target="_blank" rel="noopener">基礎 - TypeScript 新手指南</a><br><a href="https://www.itread01.com/content/1546269728.html" target="_blank" rel="noopener">Typescript 學習筆記二：資料型別</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://tzuhui.github.io/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/" data-id="ck6npidei000txj27e22acdg0" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://tzuhui.github.io/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/">評論</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/02/06/w3HexSchool-challenge/TypeScript-get-start/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">快速入門 - TypeScript 的 What? Why? How?</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+      
+        
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80)" alt="TypeScript - 資料型別 和 Type Annotations" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
+                            <p class="item-title"><a href="/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/" class="title">TypeScript - 資料型別 和 Type Annotations</a></p>
+                            <p class="item-date"><time datetime="2020-02-14T16:00:00.000Z" itemprop="datePublished">2020-02-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/06/w3HexSchool-challenge/TypeScript-get-start/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80)" alt="快速入門 - TypeScript 的 What? Why? How?" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
+                            <p class="item-title"><a href="/2020/02/06/w3HexSchool-challenge/TypeScript-get-start/" class="title">快速入門 - TypeScript 的 What? Why? How?</a></p>
+                            <p class="item-date"><time datetime="2020-02-05T16:00:00.000Z" itemprop="datePublished">2020-02-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/01/08/HTML/html-img-blank/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80)" alt="HTML img 下方有不明空隙？！" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/HTML-筆記/">HTML 筆記</a></p>
+                            <p class="item-title"><a href="/2020/01/08/HTML/html-img-blank/" class="title">HTML img 下方有不明空隙？！</a></p>
+                            <p class="item-date"><time datetime="2020-01-07T16:00:00.000Z" itemprop="datePublished">2020-01-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/12/27/JavaScript/JS/js-promise/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80)" alt="用範例理解 JS Promise" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JS/">JS</a></p>
+                            <p class="item-title"><a href="/2019/12/27/JavaScript/JS/js-promise/" class="title">用範例理解 JS Promise</a></p>
+                            <p class="item-date"><time datetime="2019-12-26T16:00:00.000Z" itemprop="datePublished">2019-12-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/11/13/CSS/css-typewriter/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80)" alt="使用 CSS 和 JS 呈現打字機效果" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/CSS-筆記/">CSS 筆記</a></p>
+                            <p class="item-title"><a href="/2019/11/13/CSS/css-typewriter/" class="title">使用 CSS 和 JS 呈現打字機效果</a></p>
+                            <p class="item-date"><time datetime="2019-11-12T16:00:00.000Z" itemprop="datePublished">2019-11-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分類</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Bootstrap-筆記/">Bootstrap 筆記</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS-筆記/">CSS 筆記</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chrome/">Chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git-筆記/">Git 筆記</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-筆記/">HTML 筆記</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue-筆記/">Vue 筆記</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gulp/">gulp</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/葉子漂流記/">葉子漂流記</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">歸檔</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">標籤</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOPCON/">MOPCON</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unit-Test/">Unit Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome-extension/">chrome extension</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lottie/">lottie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/w3HexSchool/">w3HexSchool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/六角/">六角</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/問答小坑/">問答小坑</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技術筆記/">技術筆記</a><span class="tag-list-count">14</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fas fa-angle-up"></div>
+</aside>
+
+      
+    
+    </div>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 TzuHui Yeh<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+    
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://tzuhui.github.io/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/';
+        
+        this.page.identifier = 'w3HexSchool-challenge/TypeScript-type-intro';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'tzuhui' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+  </div>
+</html>
+</body>
