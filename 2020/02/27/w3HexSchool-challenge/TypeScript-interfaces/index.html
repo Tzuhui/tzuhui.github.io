@@ -3,21 +3,21 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>連葉子都秒懂的 Fast Forward | 想飛的葉子</title>
+    <title>TypeScript - Interfaces | 想飛的葉子</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="fast-forward 出現時機在進行 merge 的時候，git 預設會以 fast-forward 的模式進行">
-<meta name="keywords" content="技術筆記,git">
+    <meta name="description" content="Interfaces + Classes = TS 提高程式碼複用性。這一篇主要是介紹與了解 Interfaces 的作用，並會在下一篇文章介紹 Classes 與兩者併用的技巧與好處。">
+<meta name="keywords" content="技術筆記,w3HexSchool,TypeScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="連葉子都秒懂的 Fast Forward">
-<meta property="og:url" content="https://tzuhui.github.io/2019/06/20/Git/fast-forward/index.html">
+<meta property="og:title" content="TypeScript - Interfaces">
+<meta property="og:url" content="https://tzuhui.github.io/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/index.html">
 <meta property="og:site_name" content="想飛的葉子">
-<meta property="og:description" content="fast-forward 出現時機在進行 merge 的時候，git 預設會以 fast-forward 的模式進行">
+<meta property="og:description" content="Interfaces + Classes = TS 提高程式碼複用性。這一篇主要是介紹與了解 Interfaces 的作用，並會在下一篇文章介紹 Classes 與兩者併用的技巧與好處。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2019-06-20T17:03:42.005Z">
+<meta property="og:updated_time" content="2020-02-27T03:36:07.290Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="連葉子都秒懂的 Fast Forward">
-<meta name="twitter:description" content="fast-forward 出現時機在進行 merge 的時候，git 預設會以 fast-forward 的模式進行">
+<meta name="twitter:title" content="TypeScript - Interfaces">
+<meta name="twitter:description" content="Interfaces + Classes = TS 提高程式碼複用性。這一篇主要是介紹與了解 Interfaces 的作用，並會在下一篇文章介紹 Classes 與兩者併用的技巧與好處。">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
     
 
@@ -159,7 +159,7 @@ ga('send', 'pageview');
     <div class="outer">
     
     
-      <section id="main-article" ><article id="post-Git/fast-forward" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main-article" ><article id="post-w3HexSchool-challenge/TypeScript-interfaces" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -167,7 +167,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            連葉子都秒懂的 Fast Forward
+            TypeScript - Interfaces
         </h1>
     
 
@@ -176,8 +176,8 @@ ga('send', 'pageview');
                         <!-- 
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/06/20/Git/fast-forward/">
-            <time datetime="2019-06-19T16:00:00.000Z" itemprop="datePublished">2019-06-20</time>
+        <a href="/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/">
+            <time datetime="2020-02-26T16:00:00.000Z" itemprop="datePublished">2020-02-27</time>
         </a>
     </div>
 
@@ -185,13 +185,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/Git-筆記/">Git 筆記</a>
+        <a class="article-category-link" href="/categories/JS/">JS</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/git/">git</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
+        <a class="tag-link" href="/tags/TypeScript/">TypeScript</a>, <a class="tag-link" href="/tags/w3HexSchool/">w3HexSchool</a>, <a class="tag-link" href="/tags/技術筆記/">技術筆記</a>
     </div>
 
                     </div>
@@ -202,26 +202,21 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h3 id="fast-forward-出現時機"><a href="#fast-forward-出現時機" class="headerlink" title="fast-forward 出現時機"></a>fast-forward 出現時機</h3><p>在進行 merge 的時候，git 預設會以 fast-forward 的模式進行<br><a id="more"></a> </p>
-<h3 id="情境說明："><a href="#情境說明：" class="headerlink" title="情境說明："></a>情境說明：</h3><p>當開設 branch feature/add-page 後要回到 master 合併 branch<br>目前狀況：<br><img src="https://i.imgur.com/aXOydv2.png" alt=""></p>
-<p>若使用預設的 merge 採用 fast-forward 進行：</p>
-<ul>
-<li>會將 branch 的 commit 紀錄合併到 master 上</li>
-<li>指令：<br><code>git merge feature/add-page</code></li>
-</ul>
-<p><img src="https://i.imgur.com/oPLxsue.png" alt=""></p>
-<p>不使用 fast-forward ，以 no fast-forward 進行：</p>
-<ul>
-<li>會保留原始 branch 上的 commit 紀錄，並在 master 上增加一個<br><code>merge branch &#39;feature/add-page&#39; into master</code></li>
-<li>指令：<br><code>git merge feature/add-page --no-ff</code><br><small>–no-ff 不要快速合併</small></li>
-</ul>
-<p><img src="https://i.imgur.com/jtXK79v.png" alt=""></p>
-<h3 id="no-fast-forward-的好處"><a href="#no-fast-forward-的好處" class="headerlink" title="no fast-forward 的好處"></a>no fast-forward 的好處</h3><ul>
-<li>可以完整保留每一個分支的 commit 紀錄</li>
-</ul>
-<h3 id="no-fast-forward-的壞處"><a href="#no-fast-forward-的壞處" class="headerlink" title="no fast-forward 的壞處"></a>no fast-forward 的壞處</h3><ul>
-<li>若是 commit 紀錄只有一個，合併多次就會出現很多小叉路</li>
-</ul>
+            <p>Interfaces + Classes = TS 提高程式碼複用性。<br>這一篇主要是介紹與了解 Interfaces 的作用，並會在下一篇文章介紹 Classes 與兩者併用的技巧與好處。<br><a id="more"></a></p>
+<h2 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h2><p>Interfaces 為物件定義一個新的型別，來描述其屬性名稱與值。<br>在不使用 Interface 以前，我們要用型別註釋來定義物件參數型別，都會寫得很長。但使用 Interfaces 就可以有效解決這個問題。</p>
+<p>使用 Interface 來定義物件內的參數型別，就可以直接使用。在以下範例中，只要傳入的內容有符合 Article 所定義的參數與型別即可，不需要依序傳入也沒關係。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Article &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  page: <span class="built_in">number</span>;</span><br><span class="line">  read: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> articleContent = &#123;</span><br><span class="line">  name: <span class="string">'learn'</span>,</span><br><span class="line">  page: <span class="number">3</span>,</span><br><span class="line">  read: <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> learnTypeScript = (blog: Article): <span class="function"><span class="params">void</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(blog.name);</span><br><span class="line">&#125;</span><br><span class="line">learnTypeScript(articleContent)</span><br></pre></td></tr></table></figure></p>
+<p>函式中，可以傳入 Interface 中沒有定義的變數，但若是沒有傳入必要的參數與型別，則會出現錯誤，例如：(以下範例的 articleContent 少了 read 參數)<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Article &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  page: <span class="built_in">number</span>;</span><br><span class="line">  read: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> articleContent = &#123;</span><br><span class="line">  name: <span class="string">'learn'</span>,</span><br><span class="line">  page: <span class="number">3</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> learnTypeScript = (blog: Article): <span class="function"><span class="params">void</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(blog.name);</span><br><span class="line">&#125;</span><br><span class="line">learnTypeScript(articleContent) <span class="comment">// 錯誤</span></span><br><span class="line"><span class="comment">// Argument of type '&#123; name: string; page: number; &#125;' is not assignable to parameter of type 'Article'.</span></span><br><span class="line"><span class="comment">// Property 'read' is missing in type '&#123; name: string; page: number; &#125;' but required in type 'Article'.(2345)</span></span><br></pre></td></tr></table></figure></p>
+<p>鋪梗完後，接下來就要介紹 Interfaces 的 Optional Properties (可選屬性)</p>
+<h4 id="可選屬性-（Optional-Properties）"><a href="#可選屬性-（Optional-Properties）" class="headerlink" title="可選屬性 （Optional Properties）"></a>可選屬性 （Optional Properties）</h4><p>可選屬性可以透過<strong>屬性後面加上『？』</strong> 來讓參數變成選填。<br>與上面出現錯的範例相同，這邊把 interface 中的 read 後面加上 ? ：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Article &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  page: <span class="built_in">number</span>;</span><br><span class="line">  read?: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再次執行就會發現錯誤消失了，可選屬性可用在定義可有可無的參數上。</p>
+<p>另外，Interface 也有提供唯讀屬性：</p>
+<h4 id="唯讀屬性（readonly-properties）"><a href="#唯讀屬性（readonly-properties）" class="headerlink" title="唯讀屬性（readonly properties）"></a>唯讀屬性（readonly properties）</h4><p>唯讀屬性和 const 定義變數時很像，只能讀取，不能修改變數的值。<br>在 Interface 定義屬性前加上 readonly，就可以讓這個屬性無法被修改<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Article &#123;</span><br><span class="line">  readonly name: <span class="built_in">string</span>;</span><br><span class="line">  readonly page: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>小補充：const 和 readonly 的差異，在於 const 是針對變數，readonly 則是屬性</p>
+<p>了解 Interface 的作用後，回到使用它的核心，也就是要提高程式碼的複用性，因此最後來了解一下 Interface 與函式的結合，寫出提升複用性的程式碼：</p>
+<h3 id="Interface-中定義-function"><a href="#Interface-中定義-function" class="headerlink" title="Interface 中定義 function"></a>Interface 中定義 function</h3><p>在 Interface 中也可以定義 function，例如範例中的 getPage()：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Article &#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  page: <span class="built_in">number</span>;</span><br><span class="line">  read?: <span class="built_in">boolean</span>;</span><br><span class="line">  getPage() : <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> articleContent = &#123;</span><br><span class="line">  name: <span class="string">'learn'</span>,</span><br><span class="line">  page: <span class="number">3</span>,</span><br><span class="line">  getPage(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`Page: <span class="subst">$&#123;this.page&#125;</span> 篇`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> learnTypeScript = (blog: Article): <span class="function"><span class="params">void</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(blog.getPage());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-Interface-提高複用性"><a href="#使用-Interface-提高複用性" class="headerlink" title="使用 Interface 提高複用性"></a>使用 Interface 提高複用性</h3><p>使用一個 Interface 定義 function，並確認函式回傳為 string，當傳入的函式為完全不同的物件（articleContent, newsContent）也是 ok 的。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Page &#123;</span><br><span class="line">  getPage() : <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getPage = (post: Page): <span class="function"><span class="params">void</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(post.getPage());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> articleContent = &#123;</span><br><span class="line">  name: <span class="string">'learn'</span>,</span><br><span class="line">  page: <span class="number">3</span>,</span><br><span class="line">  getPage(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`Page: <span class="subst">$&#123;this.page&#125;</span> 篇`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newsContent = &#123;</span><br><span class="line">  name: <span class="string">'Banana 新聞'</span>,</span><br><span class="line">  day: <span class="number">21</span>,</span><br><span class="line">  getPage(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.day&#125;</span> 天的新聞`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">getPage(articleContent)</span><br><span class="line">getPage(newsContent)</span><br></pre></td></tr></table></figure></p>
+<p>以上的範例程式碼都可以貼到 <a href="https://www.typescriptlang.org/play/" target="_blank" rel="noopener">TypeScript Playground</a> 來運行看看哦～</p>
+<p>參考資料：<br><a href="http://www.typescriptlang.org/docs/handbook/interfaces.html" target="_blank" rel="noopener">TypeScript - Interfaces</a><br><a href="https://www.udemy.com/course/typescript-the-complete-developers-guide/" target="_blank" rel="noopener">Udemy - Typescript: The Complete Developer’s Guide 2020</a></p>
 
         
         </div>
@@ -232,7 +227,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://tzuhui.github.io/2019/06/20/Git/fast-forward/" data-id="ck771z7uv0007c627k2yki457" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="https://tzuhui.github.io/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/" data-id="ck771z7v4000oc627heed7tg9" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -300,7 +295,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="https://tzuhui.github.io/2019/06/20/Git/fast-forward/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2019/06/20/Git/fast-forward/">評論</a>
+        <a href="https://tzuhui.github.io/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://tzuhui.github.io/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/">評論</a>
     
 
         </footer>
@@ -309,19 +304,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2019/06/20/Bootstrap/vue-cli-use-bootstrap/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    在 Vue Cli 中加入自定義 Bootstrap 樣式
-                
-            </div>
-        </a>
     
-    
-        <a href="/2019/01/08/Vue/Vue-CLI3-env/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Vue CLI 3 環境變數設置</div>
+            <div class="article-nav-title">TypeScript - 資料型別 和 Type Annotations</div>
         </a>
     
 </nav>
@@ -497,9 +483,9 @@ ga('send', 'pageview');
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://tzuhui.github.io/2019/06/20/Git/fast-forward/';
+            this.page.url = 'https://tzuhui.github.io/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/';
         
-        this.page.identifier = 'Git/fast-forward';
+        this.page.identifier = 'w3HexSchool-challenge/TypeScript-interfaces';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
