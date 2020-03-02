@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzuhui.github.io/2020/03/02/Vue/Vue-CLI3-to-github-pages/</loc>
+    
+    <lastmod>2020-03-02T10:49:24.706Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzuhui.github.io/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/</loc>
     
     <lastmod>2020-02-27T03:36:07.290Z</lastmod>
@@ -114,14 +121,14 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/</loc>
+    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/</loc>
     
     <lastmod>2019-06-20T17:03:40.688Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/</loc>
+    <loc>https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/</loc>
     
     <lastmod>2019-06-20T17:03:40.688Z</lastmod>
     
