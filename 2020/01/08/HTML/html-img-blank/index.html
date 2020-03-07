@@ -19,7 +19,7 @@
 <meta property="og:description" content="之前在回覆問題時，不少人都會發現這個有點奇怪的現象 - 圖片下方有一個莫名的間距這一篇就來說明一下原理以及解決方法吧！">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2020-01-08T07:07:42.590Z">
+<meta property="og:updated_time" content="2020-03-07T03:12:03.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML img 下方有不明空隙？！">
 <meta name="twitter:description" content="之前在回覆問題時，不少人都會發現這個有點奇怪的現象 - 圖片下方有一個莫名的間距這一篇就來說明一下原理以及解決方法吧！">
@@ -82,6 +82,7 @@
 
 
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/custom.css">
 </head>
 <body class="is-2-column">
     <nav class="navbar navbar-main">
@@ -152,6 +153,16 @@
                 </div>
                 
                 
+                    <div class="level is-size-7 is-uppercase">
+                        <div class="level-start">
+                            <div class="level-item">
+                                <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                                <a class="has-link-grey -link" href="/tags/HTML/">HTML</a>, <a class="has-link-grey -link" href="/tags/問答小坑/">問答小坑</a>, <a class="has-link-grey -link" href="/tags/技術筆記/">技術筆記</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                
                 
             </div>
         </div>
@@ -165,7 +176,7 @@
             <p>之前在回覆問題時，不少人都會發現這個有點奇怪的現象 - 圖片下方有一個莫名的間距<br>這一篇就來說明一下原理以及解決方法吧！</p>
 <a id="more"></a> 
 <p>如下面 codepen 範例中，圖片下方會有一個空隙：</p>
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="TzuHui" data-slug-hash="gOboxMW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="img-blank"><br>  <span>See the Pen <a href="https://codepen.io/TzuHui/pen/gOboxMW"><br>  img-blank</a> by TzuHui (<a href="https://codepen.io/TzuHui">@TzuHui</a>)<br>  on <a href="https://codepen.io">CodePen</a>.</span><br></p>
+<iframe height="265" style="width: 100%;" scrolling="no" title="img-blank" src="https://codepen.io/TzuHui/embed/gOboxMW?height=265&theme-id=light&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><br>  See the Pen <a href='https://codepen.io/TzuHui/pen/gOboxMW'>img-blank</a> by TzuHui<br>  (<a href='https://codepen.io/TzuHui'>@TzuHui</a>) on <a href='https://codepen.io'>CodePen</a>.<br></iframe>
 
 <h2 id="原因說明"><a href="#原因說明" class="headerlink" title="原因說明"></a>原因說明</h2><p>因為圖片預設是 inline 元素，而 inline 元素的 vertical-align 設定預設是和父元素的 baseline 對齊的，而 baseline 本身又和父元素底邊有一定的間距。這個間距是來自於英文文字中像是 j, y 這些超過基準線的字符。</p>
 <p><img src="https://i.stack.imgur.com/Ousrm.gif" alt="vertical-align 基準線示意圖" title="title"></p>
@@ -190,25 +201,15 @@
 
         </div>
         
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/HTML/">HTML</a>, <a class="has-link-grey -link" href="/tags/問答小坑/">問答小坑</a>, <a class="has-link-grey -link" href="/tags/技術筆記/">技術筆記</a>
-                </div>
-            </div>
-        </div>
-        
-        
         
         <!-- AddToAny BEGIN -->
 <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<!-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> -->
 <a class="a2a_button_facebook"></a>
 <a class="a2a_button_twitter"></a>
 <a class="a2a_button_telegram"></a>
-<a class="a2a_button_whatsapp"></a>
-<a class="a2a_button_reddit"></a>
+<!-- <a class="a2a_button_whatsapp"></a>
+<a class="a2a_button_reddit"></a> -->
 </div>
 <script async src="https://static.addtoany.com/menu/page.js"></script>
 <!-- AddToAny END -->
@@ -524,9 +525,9 @@
     <div class="container">
         <div class="level">
             <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
+                <a class="footer-logo is-block has-mb-6 d-felx align-items-center" href="/">
                 
-                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="HTML img 下方有不明空隙？！" height="28">
+                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="HTML img 下方有不明空隙？！" height="28"> <span style="margin-left: 4px;">HTML img 下方有不明空隙？！ - 想飛的葉子</span>
                 
                 </a>
                 <p class="is-size-7">
@@ -537,34 +538,6 @@
                 </p>
             </div>
             <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
-                        
-                        <i class="fab fa-creative-commons"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
-                        
-                        <i class="fab fa-creative-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
             
             </div>
         </div>

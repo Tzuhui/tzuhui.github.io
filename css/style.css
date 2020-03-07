@@ -109,7 +109,7 @@ img.thumbnail {
   padding: 1.25rem 0.75rem;
 }
 .navbar-main .navbar-item.is-active {
-  color: #3273dc;
+  color: #33b2e4 !important;
   background-color: transparent;
 }
 @media screen and (max-width: 1087px) {
