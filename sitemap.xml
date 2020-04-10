@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzuhui.github.io/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/</loc>
+    
+    <lastmod>2020-04-10T18:54:35.659Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzuhui.github.io/2020/03/26/CSS/css-object-fit/</loc>
     
-    <lastmod>2020-03-26T16:45:17.908Z</lastmod>
+    <lastmod>2020-04-10T18:45:06.151Z</lastmod>
     
   </url>
   
@@ -135,7 +142,7 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/</loc>
+    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/</loc>
     
     <lastmod>2019-06-20T17:03:40.000Z</lastmod>
     
@@ -149,7 +156,7 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/</loc>
+    <loc>https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/</loc>
     
     <lastmod>2019-06-20T17:03:40.000Z</lastmod>
     
