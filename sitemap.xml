@@ -2,9 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzuhui.github.io/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/</loc>
+    
+    <lastmod>2020-04-17T17:58:55.242Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzuhui.github.io/2020/03/08/w3HexSchool-challenge/TypeScript-classes/</loc>
+    
+    <lastmod>2020-04-17T17:57:12.568Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzuhui.github.io/2020/02/06/w3HexSchool-challenge/TypeScript-get-start/</loc>
+    
+    <lastmod>2020-04-17T17:57:08.449Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzuhui.github.io/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/</loc>
+    
+    <lastmod>2020-04-17T17:57:04.208Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzuhui.github.io/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/</loc>
+    
+    <lastmod>2020-04-17T17:56:29.416Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzuhui.github.io/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/</loc>
     
-    <lastmod>2020-04-10T19:02:40.574Z</lastmod>
+    <lastmod>2020-04-17T17:56:20.722Z</lastmod>
     
   </url>
   
@@ -12,13 +47,6 @@
     <loc>https://tzuhui.github.io/2020/03/26/CSS/css-object-fit/</loc>
     
     <lastmod>2020-04-10T18:45:06.151Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzuhui.github.io/2020/03/08/w3HexSchool-challenge/TypeScript-classes/</loc>
-    
-    <lastmod>2020-03-08T14:10:07.000Z</lastmod>
     
   </url>
   
@@ -40,27 +68,6 @@
     <loc>https://tzuhui.github.io/2020/03/02/Vue/Vue-CLI3-to-github-pages/</loc>
     
     <lastmod>2020-03-06T18:10:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzuhui.github.io/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/</loc>
-    
-    <lastmod>2020-02-27T03:36:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzuhui.github.io/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/</loc>
-    
-    <lastmod>2020-02-27T03:34:05.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzuhui.github.io/2020/02/06/w3HexSchool-challenge/TypeScript-get-start/</loc>
-    
-    <lastmod>2020-02-06T14:51:43.000Z</lastmod>
     
   </url>
   
@@ -142,14 +149,14 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/</loc>
+    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/</loc>
     
     <lastmod>2019-06-20T17:03:40.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/2018/12/28/Vue/Vue-CLI3-install/</loc>
+    <loc>https://tzuhui.github.io/2019/01/08/Vue/Vue-CLI3-env/</loc>
     
     <lastmod>2019-06-20T17:03:40.000Z</lastmod>
     

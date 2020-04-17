@@ -7,22 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>在 Vue Cli 中加入自定義 Bootstrap 樣式 - 想飛的葉子</title>
+<title>XD Plugin - Selection 與 Scenegraph 運用 - 想飛的葉子</title>
 
 
-    <meta name="description" content="常常忘記該怎麼加入自定義的 Bootstrap 樣式，所以直接記下來不囉唆！基礎的引入很簡單，按照步驟一定搞定～">
-<meta name="keywords" content="Vue,Bootstrap,技術筆記">
+    <meta name="description" content="XD 中提供了一些可以調用的 API，可以透握 require() 引入模塊來使用。">
+<meta name="keywords" content="技術筆記,w3HexSchool,XD Plugin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在 Vue Cli 中加入自定義 Bootstrap 樣式">
-<meta property="og:url" content="https://tzuhui.github.io/2019/06/20/Bootstrap/vue-cli-use-bootstrap/index.html">
+<meta property="og:title" content="XD Plugin - Selection 與 Scenegraph 運用">
+<meta property="og:url" content="https://tzuhui.github.io/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/index.html">
 <meta property="og:site_name" content="想飛的葉子">
-<meta property="og:description" content="常常忘記該怎麼加入自定義的 Bootstrap 樣式，所以直接記下來不囉唆！基礎的引入很簡單，按照步驟一定搞定～">
+<meta property="og:description" content="XD 中提供了一些可以調用的 API，可以透握 require() 引入模塊來使用。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2019-06-20T17:03:59.000Z">
+<meta property="og:updated_time" content="2020-04-17T17:58:55.242Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在 Vue Cli 中加入自定義 Bootstrap 樣式">
-<meta name="twitter:description" content="常常忘記該怎麼加入自定義的 Bootstrap 樣式，所以直接記下來不囉唆！基礎的引入很簡單，按照步驟一定搞定～">
+<meta name="twitter:title" content="XD Plugin - Selection 與 Scenegraph 運用">
+<meta name="twitter:description" content="XD 中提供了一些可以調用的 API，可以透握 require() 引入模塊來使用。">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
 
 
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="在 Vue Cli 中加入自定義 Bootstrap 樣式" height="28">
+                <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="XD Plugin - Selection 與 Scenegraph 運用" height="28">
             
             </a>
         </div>
@@ -118,6 +118,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜尋" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -137,7 +141,7 @@
         
             <div class="card-image">
                 <span class="image is-7by1">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="在 Vue Cli 中加入自定義 Bootstrap 樣式">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Selection 與 Scenegraph 運用">
                 </span>
             </div>
         
@@ -146,10 +150,10 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-19T16:00:00.000Z">2019-06-20</time>
+                <time class="level-item has-text-grey" datetime="2020-04-17T16:00:00.000Z">2020-04-18</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Bootstrap-筆記/">Bootstrap 筆記</a>
+                <a class="has-link-grey -link" href="/categories/JS/">JS</a>
                 </div>
                 
                 
@@ -157,7 +161,7 @@
                         <div class="level-start">
                             <div class="level-item">
                                 <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                                <a class="has-link-grey -link" href="/tags/Bootstrap/">Bootstrap</a>, <a class="has-link-grey -link" href="/tags/Vue/">Vue</a>, <a class="has-link-grey -link" href="/tags/技術筆記/">技術筆記</a>
+                                <a class="has-link-grey -link" href="/tags/XD-Plugin/">XD Plugin</a>, <a class="has-link-grey -link" href="/tags/w3HexSchool/">w3HexSchool</a>, <a class="has-link-grey -link" href="/tags/技術筆記/">技術筆記</a>
                             </div>
                         </div>
                     </div>
@@ -169,27 +173,47 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                在 Vue Cli 中加入自定義 Bootstrap 樣式
+                XD Plugin - Selection 與 Scenegraph 運用
             
         </h1>
         <div class="content">
-            <p>常常忘記該怎麼加入自定義的 Bootstrap 樣式，所以直接記下來不囉唆！<br>基礎的引入很簡單，按照步驟一定搞定～<br><a id="more"></a> </p>
+            <p>XD 中提供了一些可以調用的 API，可以透握 require() 引入模塊來使用。<br><a id="more"></a><br>目前的 API 有：</p>
+<ul>
+<li>selection</li>
+<li>scenegraph</li>
+<li>commands</li>
+<li>interactions</li>
+<li>application</li>
+<li>clipboard</li>
+</ul>
+<p>其中 Selection 和 Scenegraph 是今天的主角，Selection 是當前選定的節點，而 Scenegraph 是指在 XD 中的樹狀節點。</p>
+<p>透過 Selection 和 Scenegraph 的觀念，可以了解如何使用插件來對 XD 的圖層做出行為，例如：建立圖型、賦予顏色等等。<br>而這篇就實際舉例並說明運用～</p>
+<p>Scenegraph 的概念可以參考下圖<br><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202004%2F1587146298493-1%2018%20y9YDwM0.png?alt=media&amp;token=683461a9-c732-4c66-961e-8b09b7e90c28" alt=""><br><a href="https://adobexdplatform.com/plugin-docs/reference/core/scenegraph.html">截圖自 XD 官方文件</a></p>
+<h2 id="調用-scenegraph"><a href="#調用-scenegraph" class="headerlink" title="調用 scenegraph"></a>調用 scenegraph</h2><p>從這個 <a href="https://github.com/AdobeXD/plugin-samples/tree/master/quick-start">quick-start 範例</a>來看，可以看到在 main.js 中，是使用 <code>const {Rectangle, Color} = require(&quot;scenegraph&quot;);</code><br>這是 scenegraph 就是 XD 提供的模組，只要 require 進來後就可以調用。</p>
+<p>範例使用到的就是圖型節點中的 Rectangle，圖型節點還有其他像是 Polygon、Line、Path、Text 等等。另外是不屬於圖型節點，但仍可以從 scenegraph 調用的 Color，其他像是 Shawdow、Blur 也同屬這類。</p>
+<p>想了解更多圖形節點可以參考<a href="https://adobexdplatform.com/plugin-docs/reference/scenegraph.html#class-hierarchy">這邊</a><br>非圖形節點可參考<a href="https://adobexdplatform.com/plugin-docs/reference/scenegraph.html#related-classes">這邊</a></p>
+<h2 id="運用-selection-和-scenegraph-新增一個綠色六角"><a href="#運用-selection-和-scenegraph-新增一個綠色六角" class="headerlink" title="運用 selection 和 scenegraph 新增一個綠色六角"></a>運用 selection 和 scenegraph 新增一個綠色六角</h2><ol>
+<li><p>引入 scenegraph，因為六角形是多邊形，所以這邊是使用 Polygon，而要使用顏色所以調用 Color</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123;Polygon, Color&#125; = require(&quot;scenegraph&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立一個函式</p>
 <ol>
-<li><p>安裝</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install bootstrap --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 <code>src</code> 下的 <code>assets</code> 建立 <code>helpers</code> 資料夾<br>並將 node_moduled 中的 bootstrap _variables.scss 複製過去</p>
-</li>
-<li><p>在 <code>src</code> 下的 <code>assets</code> 建立 all.scss 檔案<br>用來管理所有 scss </p>
-</li>
-<li><p>在 all.scss 引入順序</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"~bootstrap/scss/functions"</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'helpers/variables'</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"~bootstrap/scss/bootstrap"</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 App.vue 中引入 all.scss</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang="scss"&gt;</span><br><span class="line">  @<span class="keyword">import</span> <span class="string">"./assets/all.scss"</span></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<li>用 new Polygon() 建立多邊形</li>
+<li>設定 cornerCount（幾邊形），因為是六角形，所以 cornerCount = 6。三角形就 cornerCount = 3。</li>
+<li>設定寬高，並給予顏色。給予顏色是用 fill，這邊也會用到 new Color，可以填入顏色名稱或是色碼都可以</li>
+<li>最後用 selection 的方法 insertionParent 將 polygon 加到畫面上<br>程式碼參考：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function PolygonCreateFunction(selection) &#123; </span><br><span class="line">    var polygon = new Polygon(); // [1]</span><br><span class="line">    polygon.cornerCount = 6; // [2]</span><br><span class="line">    polygon.width = 65;</span><br><span class="line">    polygon.height = 56;</span><br><span class="line">    polygon.fill = new Color(&quot;green&quot;); // [3]</span><br><span class="line">    selection.insertionParent.addChild(polygon); // [4]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>如果要再加入其他自定義的 scss 可以在 <code>src</code> 下的 <code>assets</code> 建立 <code>components</code> 資料夾ㄅㄨ<br>並加入自定義的元件 scss 樣式，接著再 all.scss 引入就完成了！</p>
+</li>
+<li><p>呼叫 PolygonCreateFunction 函式。這邊是用 commands 的方式。也可以用 panel 加上按鈕來觸發。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    commands: &#123;</span><br><span class="line">        createRectangle: PolygonCreateFunction</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>以上程式碼可以直接貼到 main.js 測試效果～<br>結果如下圖：<br><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202004%2F1587146312308-2%2018%20fjeudP6.png?alt=media&amp;token=2111d210-c855-43a9-9d2c-d57f89a3ba63" alt=""></p>
+<h2 id="同場加映-使用-application-API-編輯內容"><a href="#同場加映-使用-application-API-編輯內容" class="headerlink" title="同場加映 - 使用 application API 編輯內容"></a>同場加映 - 使用 application API 編輯內容</h2><p>application 是適用於 panel 的 API，主要可以用在匯出項目、啟動編輯、獲取版本或是區塊的資訊等等。</p>
+<p>而這邊就可以透過 application 中的 editDocument 方法來變更圖形，例如更換顏色。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const &#123; editDocument &#125; = require(&quot;application&quot;);</span><br><span class="line">const color = document.querySelector(&quot;#color&quot;).value</span><br><span class="line"></span><br><span class="line">editDocument(function (selection) &#123;</span><br><span class="line">  const selectedPolygon = selection.items[0];</span><br><span class="line">  selectedPolygon.fill = new Color(color)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>完整的程式碼<a href="https://github.com/Tzuhui/xd-plugin-polygon-sample">在這裡</a><br>成果圖片參考：<br><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202004%2F1587146327592-3%2018%20TFOCE0T.png?alt=media&amp;token=55ab8127-9fb7-434b-9980-960434cccc87" alt=""></p>
 
         </div>
         
@@ -217,17 +241,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/20/Git/fast-forward/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">連葉子都秒懂的 Fast Forward</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/08/Vue/Vue-CLI3-env/">
-                <span class="level-item">Vue CLI 3 環境變數設置</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/">
+                <span class="level-item">XD Plugin 入門 - 建立與 UI 介面篇</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -243,8 +260,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://tzuhui.github.io/2019/06/20/Bootstrap/vue-cli-use-bootstrap/';
-        this.page.identifier = '2019/06/20/Bootstrap/vue-cli-use-bootstrap/';
+        this.page.url = 'https://tzuhui.github.io/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/';
+        this.page.identifier = '2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -270,6 +287,30 @@
 <div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-3 column-right ">
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#調用-scenegraph">
+        <span class="has-mr-6">1</span>
+        <span>調用 scenegraph</span>
+        </a></li><li>
+        <a class="is-flex" href="#運用-selection-和-scenegraph-新增一個綠色六角">
+        <span class="has-mr-6">2</span>
+        <span>運用 selection 和 scenegraph 新增一個綠色六角</span>
+        </a></li><li>
+        <a class="is-flex" href="#同場加映-使用-application-API-編輯內容">
+        <span class="has-mr-6">3</span>
+        <span>同場加映 - 使用 application API 編輯內容</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -526,7 +567,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6 d-felx align-items-center" href="/">
                 
-                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="在 Vue Cli 中加入自定義 Bootstrap 樣式" height="28"> <span style="margin-left: 4px;">在 Vue Cli 中加入自定義 Bootstrap 樣式</span>
+                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="XD Plugin - Selection 與 Scenegraph 運用" height="28"> <span style="margin-left: 4px;">XD Plugin - Selection 與 Scenegraph 運用</span>
                 
                 </a>
                 <p class="is-size-7">

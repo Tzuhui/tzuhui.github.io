@@ -19,7 +19,7 @@
 <meta property="og:description" content="本篇的主旨：  Class 的運用 Class + Interface 的運用">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2020-03-08T14:10:07.000Z">
+<meta property="og:updated_time" content="2020-04-17T17:57:12.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript - Classes">
 <meta name="twitter:description" content="本篇的主旨：  Class 的運用 Class + Interface 的運用">
@@ -117,6 +117,10 @@
             
             <div class="navbar-end">
                 
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
                 
                 <a class="navbar-item search" title="搜尋" href="javascript:;">
@@ -282,12 +286,71 @@
 <div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-3 column-right ">
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Class-的基本應用">
+        <span class="has-mr-6">1</span>
+        <span>Class 的基本應用</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#extends">
+        <span class="has-mr-6">1.1</span>
+        <span>extends</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Modifiers">
+        <span class="has-mr-6">2</span>
+        <span>Modifiers</span>
+        </a></li><li>
+        <a class="is-flex" href="#constructor-NaN">
+        <span class="has-mr-6">3</span>
+        <span>constructor</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#super">
+        <span class="has-mr-6">3.1</span>
+        <span>super</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Classes-amp-Interfaces">
+        <span class="has-mr-6">4</span>
+        <span>Classes &amp; Interfaces</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#小補充">
+        <span class="has-mr-6">4.1</span>
+        <span>小補充</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Selection 與 Scenegraph 運用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-17T16:00:00.000Z">2020-04-18</time></div>
+                    <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Selection 與 Scenegraph 運用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -360,25 +423,6 @@
                     <a href="/2020/03/02/Vue/Vue-CLI3-to-github-pages/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue Cli 部署到 Github Pages</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Vue-筆記/">Vue 筆記</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="TypeScript - Interfaces">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-26T16:00:00.000Z">2020-02-27</time></div>
-                    <a href="/2020/02/27/w3HexSchool-challenge/TypeScript-interfaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TypeScript - Interfaces</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
                     </p>
                 </div>
             </div>
@@ -461,7 +505,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/XD-Plugin/">
                         <span class="tag">XD Plugin</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -496,7 +540,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/w3HexSchool/">
                         <span class="tag">w3HexSchool</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -517,7 +561,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/技術筆記/">
                         <span class="tag">技術筆記</span>
-                        <span class="tag is-grey">18</span>
+                        <span class="tag is-grey">19</span>
                     </a>
                 </div>
                 
