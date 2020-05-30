@@ -7,22 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>gulp 3 遷移至 gulp 4 - 想飛的葉子</title>
+<title>flex-shrink 的壓縮計算 - 想飛的葉子</title>
 
 
-    <meta name="description" content="從 2018 年 10 月開始，使用 npm 下載 gulp 預設的版本都將為 4，因 gulp 3 與 4 在寫法上有些更新，所以在安裝 4 的情況之下，運行 3 的寫法是有可能會出錯的，因此這篇主要說明 gulp 3 與 4 的差異">
-<meta name="keywords" content="技術筆記,JavaScript,gulp">
+    <meta name="description" content="flex-shrink 是當設定 flex 的情況之下，子元素的總寬度大於父元素的寬度時，就會依比例的減去子元素的寬度空間。">
+<meta name="keywords" content="技術筆記,w3HexSchool">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gulp 3 遷移至 gulp 4">
-<meta property="og:url" content="https://tzuhui.github.io/2019/08/29/JavaScript/gulp/gulp3-to-4/index.html">
+<meta property="og:title" content="flex-shrink 的壓縮計算">
+<meta property="og:url" content="https://tzuhui.github.io/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/index.html">
 <meta property="og:site_name" content="想飛的葉子">
-<meta property="og:description" content="從 2018 年 10 月開始，使用 npm 下載 gulp 預設的版本都將為 4，因 gulp 3 與 4 在寫法上有些更新，所以在安裝 4 的情況之下，運行 3 的寫法是有可能會出錯的，因此這篇主要說明 gulp 3 與 4 的差異">
+<meta property="og:description" content="flex-shrink 是當設定 flex 的情況之下，子元素的總寬度大於父元素的寬度時，就會依比例的減去子元素的寬度空間。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2019-09-07T04:08:35.000Z">
+<meta property="og:updated_time" content="2020-05-30T04:40:20.701Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gulp 3 遷移至 gulp 4">
-<meta name="twitter:description" content="從 2018 年 10 月開始，使用 npm 下載 gulp 預設的版本都將為 4，因 gulp 3 與 4 在寫法上有些更新，所以在安裝 4 的情況之下，運行 3 的寫法是有可能會出錯的，因此這篇主要說明 gulp 3 與 4 的差異">
+<meta name="twitter:title" content="flex-shrink 的壓縮計算">
+<meta name="twitter:description" content="flex-shrink 是當設定 flex 的情況之下，子元素的總寬度大於父元素的寬度時，就會依比例的減去子元素的寬度空間。">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
 
 
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="gulp 3 遷移至 gulp 4" height="28">
+                <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="flex-shrink 的壓縮計算" height="28">
             
             </a>
         </div>
@@ -118,6 +118,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜尋" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -137,7 +141,7 @@
         
             <div class="card-image">
                 <span class="image is-7by1">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="gulp 3 遷移至 gulp 4">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="flex-shrink 的壓縮計算">
                 </span>
             </div>
         
@@ -146,10 +150,10 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-28T16:00:00.000Z">2019-08-29</time>
+                <time class="level-item has-text-grey" datetime="2020-05-29T16:00:00.000Z">2020-05-30</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/gulp/">gulp</a>
+                <a class="has-link-grey -link" href="/categories/CSS-筆記/">CSS 筆記</a>
                 </div>
                 
                 
@@ -157,7 +161,7 @@
                         <div class="level-start">
                             <div class="level-item">
                                 <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                                <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>, <a class="has-link-grey -link" href="/tags/gulp/">gulp</a>, <a class="has-link-grey -link" href="/tags/技術筆記/">技術筆記</a>
+                                <a class="has-link-grey -link" href="/tags/w3HexSchool/">w3HexSchool</a>, <a class="has-link-grey -link" href="/tags/技術筆記/">技術筆記</a>
                             </div>
                         </div>
                     </div>
@@ -169,34 +173,39 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                gulp 3 遷移至 gulp 4
+                flex-shrink 的壓縮計算
             
         </h1>
         <div class="content">
-            <p>從 2018 年 10 月開始，使用 npm 下載 gulp 預設的版本都將為 4，因 gulp 3 與 4 在寫法上有些更新，所以在安裝 4 的情況之下，運行 3 的寫法是有可能會出錯的，因此這篇主要說明 gulp 3 與 4 的差異<br><a id="more"></a> </p>
-<p>若仍需要使用 gulp 3，也可以用此指令安裝 3 的版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp@^3.9.1</span><br></pre></td></tr></table></figure></p>
-<h3 id="使用-series-取代原本-Arrays-任務安排的寫法"><a href="#使用-series-取代原本-Arrays-任務安排的寫法" class="headerlink" title="使用 series() 取代原本 Arrays 任務安排的寫法"></a>使用 series() 取代原本 Arrays 任務安排的寫法</h3><p>Gulp 4 介紹了新的組合任務方法：series()、parallel()</p>
-<p><code>series()</code> 按指定的順序一次運行一個任務<br><code>parallel()</code> 以任何順序同時運行任務</p>
-<p>舉例：<br>在 gulp 3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;, [&apos;browserSync&apos;]);</span><br></pre></td></tr></table></figure></p>
-<p>轉換到 gulp 4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;, gulp.series(&apos;browserSync&apos;))</span><br></pre></td></tr></table></figure></p>
-<p>兩者也可以混用，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;build&apos;, gulp.series(&apos;clean&apos;, gulp.parallel(&apos;sass&apos;, &apos;vendorJs&apos;)));</span><br></pre></td></tr></table></figure></p>
-<p>這樣的寫法也是先執行 clean 後再執行後面的 sass, vendorJS<br>而 sass, vendorJS 是同時執行的</p>
-<h3 id="使用-done-當任務結束後的-callback"><a href="#使用-done-當任務結束後的-callback" class="headerlink" title="使用 done() - 當任務結束後的 callback"></a>使用 done() - 當任務結束後的 callback</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;,</span><br><span class="line">  gulp.series(&apos;clean&apos;, gulp.parallel(&apos;sass&apos;, &apos;vendorJs&apos;),</span><br><span class="line">  function(done) &#123;</span><br><span class="line">    // 也就是先確保前面都執行完</span><br><span class="line">    gulp.watch([&apos;./source/stylesheets/**/*.sass&apos;, &apos;./source/stylesheets/**/*.scss&apos;],gulp.series(&apos;sass&apos;));</span><br><span class="line">    done();</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h3 id="模組化設計-將-task-改用一般的函式寫法"><a href="#模組化設計-將-task-改用一般的函式寫法" class="headerlink" title="模組化設計 - 將 task 改用一般的函式寫法"></a>模組化設計 - 將 task 改用一般的函式寫法</h3><p>好處在於可以更方便的管理使用。</p>
-<ol>
-<li>另外建立一個 JS 檔 (ex: vendor.js )，並將 task 改用函式的方式來寫</li>
-</ol>
-<p>舉例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;vendorJs&apos;, function () &#123;</span><br><span class="line">  return gulp.src([</span><br><span class="line">    &apos;./node_modules/jquery/dist/jquery.slim.min.js&apos;,</span><br><span class="line">    &apos;./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js&apos;</span><br><span class="line">  ])</span><br><span class="line">  .pipe($.concat(&apos;vendor.js&apos;))</span><br><span class="line">  .pipe(gulp.dest(&apos;./public/javascripts&apos;))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>改用函式的寫法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const vendorJs = function(done) &#123;</span><br><span class="line">  gulp.src([</span><br><span class="line">    &apos;./node_modules/jquery/dist/jquery.slim.min.js&apos;,</span><br><span class="line">    &apos;./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js&apos;</span><br><span class="line">    ])</span><br><span class="line">    .pipe($.concat(&apos;vendor.js&apos;))</span><br><span class="line">    .pipe(gulp.dest(&apos;./public/javascripts&apos;))</span><br><span class="line">  done();</span><br><span class="line">&#125;;</span><br><span class="line">exports.vendorJs = vendorJs;</span><br></pre></td></tr></table></figure></p>
-<ol start="2">
-<li>在原本的 JS 檔（主要安排與執行任務的檔案，ex: index.js）將上面寫好的檔案引入</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; vendorJs &#125; = require(&apos;./vendor.js&apos;);</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>最後將 vendorJs 安排到任務執行</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.series(vendorJs)</span><br></pre></td></tr></table></figure>
-<p>要注意因為是引入的方法，所以這邊安排任務不是使用字串 <code>&#39;&#39;</code> 寫法</p>
+            <p>flex-shrink 是當設定 flex 的情況之下，子元素的總寬度大於父元素的寬度時，就會依比例的減去子元素的寬度空間。<br><a id="more"></a></p>
+<h2 id="flex-shrink-的預設值是-1"><a href="#flex-shrink-的預設值是-1" class="headerlink" title="flex-shrink 的預設值是 1"></a>flex-shrink 的預設值是 1</h2><p>預設值是 1，也就是當沒有額外設定時，元素是可以被壓縮空間的。</p>
+<p>之前也蠻常遇到學員詢問，為什麼 .menu 我已經寫了 width: 300px，在響應式（行動版）時 .menu 還會一直縮小。（如下面範例）</p>
+<p>這就是因為 flex-shrink 預設是 1，因此會依照比例來縮小區塊寬度。若是範例中將 CSS 第 10 行的 flex-shrink: 0 打開註解就會發現螢幕寬度變小時，.menu 依舊維持著 300px 的寬度</p>
+<p><p class="codepen" data-height="265" data-theme-id="light" data-default-tab="html,result" data-user="TzuHui" data-slug-hash="ZEbNEXN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="flex-shrink-sample-1"><br>  <span>See the Pen <a href="https://codepen.io/TzuHui/pen/ZEbNEXN"><br>  flex-shrink-sample-1</a> by TzuHui (<a href="https://codepen.io/TzuHui">@TzuHui</a>)<br>  on <a href="https://codepen.io">CodePen</a>.</span><br></p></p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+
+<h2 id="flex-shrink-的壓縮規則"><a href="#flex-shrink-的壓縮規則" class="headerlink" title="flex-shrink 的壓縮規則"></a>flex-shrink 的壓縮規則</h2><p>flex-shrink 是依照元素寬度比例與 flex-shrink 設定值來做加權後，計算出每個元素要收縮的空間。舉例：</p>
+<p><p class="codepen" data-height="265" data-theme-id="light" data-default-tab="html,result" data-user="TzuHui" data-slug-hash="GRpVNQL" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="GRpVNQL"><br>  <span>See the Pen <a href="https://codepen.io/TzuHui/pen/GRpVNQL"><br>  GRpVNQL</a> by TzuHui (<a href="https://codepen.io/TzuHui">@TzuHui</a>)<br>  on <a href="https://codepen.io">CodePen</a>.</span><br></p></p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202005%2F1590813562375-4NmEjIQ.png?alt=media&amp;token=1677aaf0-d540-4375-89aa-e216dafed39a" alt="flex-shrink 範例說明"><br>壓縮權重（sum）是計算基底，由元素乘以 flex-shrink 設定值的加總來當作壓縮率的分目。</p>
+<ul>
+<li>公式：<br>壓縮權重（sum）: menu_shrink <em> menu_width + content_shrink </em> content_width</li>
+<li>舉例：<br>sum = 3 <em> 300 + 1 </em> 900 = 1800</li>
+</ul>
+<p>元素壓縮率 (S) 則是計算該元素所佔的壓縮比例。</p>
+<ul>
+<li>公式：<br>元素壓縮率 (S): shrink * menu_width/壓縮權重(sum)</li>
+<li>舉例（這邊是以範例 .menu 元素為例）：<br>S1 = 3 * 300 / 1800 = 0.5</li>
+</ul>
+<p>元素寬度 (W) 為壓縮後的元素寬度</p>
+<ul>
+<li>公式：<br>元素寬度 (W): menu_width - 壓縮率*剩餘空間</li>
+<li>舉例（這邊是以範例 .menu 元素為例）：<br>W = 300 - 0.5*200 = 200</li>
+</ul>
+<p>註：剩餘空間是 (300+900) - 1000 算出來的哦</p>
+<p>參考資料<br><a href="https://juejin.im/post/5dedb28ef265da33b12e98cd">深入理解 flex-grow、flex-shrink、flex-basis</a></p>
 
         </div>
         
@@ -224,17 +233,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/26/JavaScript/lottie/lottie-intro/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Lottie 輕鬆實現動畫效果</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/17/JavaScript/gulp/gulp-browserSync/">
-                <span class="level-item">在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/">
+                <span class="level-item">XD Plugin - Selection 與 Scenegraph 運用</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -250,8 +252,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://tzuhui.github.io/2019/08/29/JavaScript/gulp/gulp3-to-4/';
-        this.page.identifier = '2019/08/29/JavaScript/gulp/gulp3-to-4/';
+        this.page.url = 'https://tzuhui.github.io/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/';
+        this.page.identifier = '2020/05/30/w3HexSchool-challenge/flex-shrink-rule/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -277,6 +279,26 @@
 <div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-3 column-right ">
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#flex-shrink-的預設值是-1">
+        <span class="has-mr-6">1</span>
+        <span>flex-shrink 的預設值是 1</span>
+        </a></li><li>
+        <a class="is-flex" href="#flex-shrink-的壓縮規則">
+        <span class="has-mr-6">2</span>
+        <span>flex-shrink 的壓縮規則</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -533,7 +555,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6 d-felx align-items-center" href="/">
                 
-                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="gulp 3 遷移至 gulp 4" height="28"> <span style="margin-left: 4px;">gulp 3 遷移至 gulp 4</span>
+                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="flex-shrink 的壓縮計算" height="28"> <span style="margin-left: 4px;">flex-shrink 的壓縮計算</span>
                 
                 </a>
                 <p class="is-size-7">
