@@ -11,7 +11,7 @@
 
 
     <meta name="description" content="你是否有打開過某一個專案，發現裡面的變數名稱是 a, b, c 等，完全無法透過變數直接了解其作用？此時若是使用 TypeScript，就可以透過型別的註釋，加速了解正在傳遞的數據類型，進而提高程式碼的可讀性。">
-<meta name="keywords" content="w3HexSchool,技術筆記,TypeScript">
+<meta name="keywords" content="技術筆記,w3HexSchool,TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript - 資料型別 和 Type Annotations">
 <meta property="og:url" content="https://tzuhui.github.io/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/index.html">
@@ -25,6 +25,16 @@
 <meta name="twitter:description" content="你是否有打開過某一個專案，發現裡面的變數名稱是 a, b, c 等，完全無法透過變數直接了解其作用？此時若是使用 TypeScript，就可以透過型別的註釋，加速了解正在傳遞的數據類型，進而提高程式碼的可讀性。">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
 
+
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5FKPBB3');
+</script>
+<!-- End Google Tag Manager -->
 
 
 
@@ -85,6 +95,10 @@
 <link rel="stylesheet" href="/css/custom.css">
 </head>
 <body class="is-2-column">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKPBB3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
