@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzuhui.github.io/2020/12/11/Vue/Vue-deploy-github-actions/</loc>
+    
+    <lastmod>2020-12-10T16:28:26.901Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzuhui.github.io/about/index.html</loc>
     
     <lastmod>2020-12-06T07:50:45.478Z</lastmod>
@@ -177,14 +184,14 @@
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/categories/index.html</loc>
+    <loc>https://tzuhui.github.io/tags/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzuhui.github.io/tags/index.html</loc>
+    <loc>https://tzuhui.github.io/categories/index.html</loc>
     
     <lastmod>2018-10-26T03:21:38.000Z</lastmod>
     
