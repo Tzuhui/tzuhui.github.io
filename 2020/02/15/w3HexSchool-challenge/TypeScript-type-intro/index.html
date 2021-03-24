@@ -19,7 +19,7 @@
 <meta property="og:description" content="你是否有打開過某一個專案，發現裡面的變數名稱是 a, b, c 等，完全無法透過變數直接了解其作用？此時若是使用 TypeScript，就可以透過型別的註釋，加速了解正在傳遞的數據類型，進而提高程式碼的可讀性。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2021-03-24T16:38:45.757Z">
+<meta property="og:updated_time" content="2021-03-24T16:48:38.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript - 資料型別 和 Type Annotations">
 <meta name="twitter:description" content="你是否有打開過某一個專案，發現裡面的變數名稱是 a, b, c 等，完全無法透過變數直接了解其作用？此時若是使用 TypeScript，就可以透過型別的註釋，加速了解正在傳遞的數據類型，進而提高程式碼的可讀性。">
@@ -36,12 +36,16 @@
 </script>
 <!-- End Google Tag Manager -->
 
+<!-- Google Adsense -->
+<script data-ad-client="ca-pub-9006675162967798" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Adsense -->
 
 
 
 
 
-<link rel="icon" href="/images/favicon.svg">
+
+<link rel="icon" href="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -70,7 +74,15 @@
 <link rel="stylesheet" href="/css/back-to-top.css">
 
     
-    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128579418-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-128579418-1');
+</script>
+
     
     
     
@@ -86,7 +98,8 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/custom.css">
 </head>
-<body class="is-2-column">
+<!-- <body class="is-2-column"> -->
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKPBB3"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -96,7 +109,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="TypeScript - 資料型別 和 Type Annotations" height="28">
+                <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="TypeScript - 資料型別 和 Type Annotations" height="28">
             
             </a>
         </div>
@@ -105,31 +118,23 @@
             <div class="navbar-start">
                 
                 <a class="navbar-item"
-                href="/">Home</a>
+                href="/">首頁</a>
                 
                 <a class="navbar-item"
-                href="/archives">Archives</a>
+                href="/archives">目錄</a>
                 
                 <a class="navbar-item"
-                href="/categories">Categories</a>
+                href="/categories">分類</a>
                 
                 <a class="navbar-item"
-                href="/tags">Tags</a>
+                href="/tags">標籤</a>
                 
                 <a class="navbar-item"
-                href="/about">About</a>
+                href="/about">關於我</a>
                 
             </div>
             
             <div class="navbar-end">
-                
-                    
-                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
                 
                 
                 <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
@@ -181,12 +186,6 @@
                     </div>
                 
                 
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分鐘 閱讀文 (大約 1366 個字)
-                </span>
-                
                 
             </div>
         </div>
@@ -232,45 +231,37 @@
 
         </div>
         
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- tzuhui-ad-hr-3 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9006675162967798"
+     data-ad-slot="9060650530"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        
+        
+        
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<!-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> -->
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_telegram"></a>
+<!-- <a class="a2a_button_whatsapp"></a>
+<a class="a2a_button_reddit"></a> -->
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
         
     </div>
 </div>
 
 
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜歡這篇文章嗎? 贊助一下作者吧!</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
@@ -297,6 +288,30 @@
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://tzuhui.github.io/2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/';
+        this.page.identifier = '2020/02/15/w3HexSchool-challenge/TypeScript-type-intro/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'tzuhui' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
 
 
 
@@ -320,11 +335,101 @@
 
 <div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-3 column-right ">
     
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#TypeScript-資料型別">
+        <span class="has-mr-6">1</span>
+        <span>TypeScript 資料型別</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Boolean">
+        <span class="has-mr-6">1.1</span>
+        <span>Boolean</span>
+        </a></li><li>
+        <a class="is-flex" href="#Number">
+        <span class="has-mr-6">1.2</span>
+        <span>Number</span>
+        </a></li><li>
+        <a class="is-flex" href="#String">
+        <span class="has-mr-6">1.3</span>
+        <span>String</span>
+        </a></li><li>
+        <a class="is-flex" href="#null">
+        <span class="has-mr-6">1.4</span>
+        <span>null</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.5</span>
+        <span>undefined</span>
+        </a></li><li>
+        <a class="is-flex" href="#void">
+        <span class="has-mr-6">1.6</span>
+        <span>void</span>
+        </a></li><li>
+        <a class="is-flex" href="#Array">
+        <span class="has-mr-6">1.7</span>
+        <span>Array</span>
+        </a></li><li>
+        <a class="is-flex" href="#Object">
+        <span class="has-mr-6">1.8</span>
+        <span>Object</span>
+        </a></li><li>
+        <a class="is-flex" href="#Tuple">
+        <span class="has-mr-6">1.9</span>
+        <span>Tuple</span>
+        </a></li><li>
+        <a class="is-flex" href="#Enum">
+        <span class="has-mr-6">1.10</span>
+        <span>Enum</span>
+        </a></li><li>
+        <a class="is-flex" href="#Any">
+        <span class="has-mr-6">1.11</span>
+        <span>Any</span>
+        </a></li><li>
+        <a class="is-flex" href="#Never">
+        <span class="has-mr-6">1.12</span>
+        <span>Never</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#小補帖-型別推論（Type-Inference）">
+        <span class="has-mr-6">2</span>
+        <span>小補帖 - 型別推論（Type Inference）</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="Vue - 使用 GitHub Actions 部署到 GitHub Pages">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-12-11T00:00:00.000Z">2020-12-11</time></div>
+                    <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue - 使用 GitHub Actions 部署到 GitHub Pages</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Vue-筆記/">Vue 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
         
         <article class="media">
             
@@ -344,6 +449,7 @@
                 </div>
             </div>
         </article>
+            
         
         <article class="media">
             
@@ -363,6 +469,21 @@
                 </div>
             </div>
         </article>
+            
+                <div style="margin: 16px 0px;">
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+     <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-format="fluid"
+          data-ad-layout-key="-hr+2-b-r+2j"
+          data-ad-client="ca-pub-9006675162967798"
+          data-ad-slot="3088276737"></ins>
+     <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+     </script>
+</div>
+
+            
         
         <article class="media">
             
@@ -382,6 +503,7 @@
                 </div>
             </div>
         </article>
+            
         
         <article class="media">
             
@@ -401,186 +523,26 @@
                 </div>
             </div>
         </article>
-        
-        <article class="media">
             
-            <a href="/2020/03/08/w3HexSchool-challenge/TypeScript-classes/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="TypeScript - Classes">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-08T00:00:00.000Z">2020-03-08</time></div>
-                    <a href="/2020/03/08/w3HexSchool-challenge/TypeScript-classes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TypeScript - Classes</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
-                    </p>
-                </div>
-            </div>
-        </article>
         
     </div>
 </div>
     
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            彙整
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/02/">
-                <span class="level-start">
-                    <span class="level-item">二月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/12/">
-                <span class="level-start">
-                    <span class="level-item">十二月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/10/">
-                <span class="level-start">
-                    <span class="level-item">十月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">九月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">八月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/06/">
-                <span class="level-start">
-                    <span class="level-item">六月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/12/">
-                <span class="level-start">
-                    <span class="level-item">十二月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
+        <div style="margin: 16px 0px">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- tzuhui-ad-1 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9006675162967798"
+         data-ad-slot="2758131916"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </div>
-    
-        <div class="card widget">
+
+<div class="card widget">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
@@ -591,6 +553,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Bootstrap/">
                         <span class="tag">Bootstrap</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CI-CD/">
+                        <span class="tag">CI/CD</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -647,7 +616,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -731,7 +700,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6 d-felx align-items-center" href="/">
                 
-                    <img src="/images/logo.svg" alt="TypeScript - 資料型別 和 Type Annotations" height="28"> <span style="margin-left: 4px;">TypeScript - 資料型別 和 Type Annotations</span>
+                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="TypeScript - 資料型別 和 Type Annotations" height="28"> <span style="margin-left: 4px;">TypeScript - 資料型別 和 Type Annotations</span>
                 
                 </a>
                 <p class="is-size-7">
@@ -742,34 +711,6 @@
                 </p>
             </div>
             <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
-                        
-                        <i class="fab fa-creative-commons"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
-                        
-                        <i class="fab fa-creative-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
             
             </div>
         </div>
