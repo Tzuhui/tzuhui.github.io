@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.8.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>XD Plugin - Selection 與 Scenegraph 運用 - 想飛的葉子</title>
+
+
+    <meta name="description" content="XD 中提供了一些可以調用的 API，可以透握 require() 引入模塊來使用。">
+<meta name="keywords" content="技術筆記,w3HexSchool,XD Plugin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XD Plugin - Selection 與 Scenegraph 運用">
+<meta property="og:url" content="https://tzuhui.github.io/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/index.html">
+<meta property="og:site_name" content="想飛的葉子">
+<meta property="og:description" content="XD 中提供了一些可以調用的 API，可以透握 require() 引入模塊來使用。">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta property="og:updated_time" content="2021-03-24T16:38:45.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XD Plugin - Selection 與 Scenegraph 運用">
+<meta name="twitter:description" content="XD 中提供了一些可以調用的 API，可以透握 require() 引入模塊來使用。">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+
+
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5FKPBB3');
+</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/custom.css">
+</head>
+<body class="is-2-column">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKPBB3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="XD Plugin - Selection 與 Scenegraph 運用" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+        
+            <div class="card-image">
+                <span class="image is-7by1">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Selection 與 Scenegraph 運用">
+                </span>
+            </div>
+        
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-18T00:00:00.000Z">2020-04-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                </div>
+                
+                
+                    <div class="level is-size-7 is-uppercase">
+                        <div class="level-start">
+                            <div class="level-item">
+                                <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                                <a class="has-link-grey -link" href="/tags/XD-Plugin/">XD Plugin</a>, <a class="has-link-grey -link" href="/tags/w3HexSchool/">w3HexSchool</a>, <a class="has-link-grey -link" href="/tags/技術筆記/">技術筆記</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分鐘 閱讀文 (大約 783 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                XD Plugin - Selection 與 Scenegraph 運用
+            
+        </h1>
+        <div class="content">
+            <p>XD 中提供了一些可以調用的 API，可以透握 require() 引入模塊來使用。<br><a id="more"></a><br>目前的 API 有：</p>
+<ul>
+<li>selection</li>
+<li>scenegraph</li>
+<li>commands</li>
+<li>interactions</li>
+<li>application</li>
+<li>clipboard</li>
+</ul>
+<p>其中 Selection 和 Scenegraph 是今天的主角，Selection 是當前選定的節點，而 Scenegraph 是指在 XD 中的樹狀節點。</p>
+<p>透過 Selection 和 Scenegraph 的觀念，可以了解如何使用插件來對 XD 的圖層做出行為，例如：建立圖型、賦予顏色等等。<br>而這篇就實際舉例並說明運用～</p>
+<p>Scenegraph 的概念可以參考下圖<br><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202004%2F1587146298493-1%2018%20y9YDwM0.png?alt=media&amp;token=683461a9-c732-4c66-961e-8b09b7e90c28" alt=""><br><a href="https://adobexdplatform.com/plugin-docs/reference/core/scenegraph.html">截圖自 XD 官方文件</a></p>
+<h2 id="調用-scenegraph"><a href="#調用-scenegraph" class="headerlink" title="調用 scenegraph"></a>調用 scenegraph</h2><p>從這個 <a href="https://github.com/AdobeXD/plugin-samples/tree/master/quick-start">quick-start 範例</a>來看，可以看到在 main.js 中，是使用 <code>const {Rectangle, Color} = require(&quot;scenegraph&quot;);</code><br>這是 scenegraph 就是 XD 提供的模組，只要 require 進來後就可以調用。</p>
+<p>範例使用到的就是圖型節點中的 Rectangle，圖型節點還有其他像是 Polygon、Line、Path、Text 等等。另外是不屬於圖型節點，但仍可以從 scenegraph 調用的 Color，其他像是 Shawdow、Blur 也同屬這類。</p>
+<p>想了解更多圖形節點可以參考<a href="https://adobexdplatform.com/plugin-docs/reference/scenegraph.html#class-hierarchy">這邊</a><br>非圖形節點可參考<a href="https://adobexdplatform.com/plugin-docs/reference/scenegraph.html#related-classes">這邊</a></p>
+<h2 id="運用-selection-和-scenegraph-新增一個綠色六角"><a href="#運用-selection-和-scenegraph-新增一個綠色六角" class="headerlink" title="運用 selection 和 scenegraph 新增一個綠色六角"></a>運用 selection 和 scenegraph 新增一個綠色六角</h2><ol>
+<li><p>引入 scenegraph，因為六角形是多邊形，所以這邊是使用 Polygon，而要使用顏色所以調用 Color</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123;Polygon, Color&#125; = require(&quot;scenegraph&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立一個函式</p>
+<ol>
+<li>用 new Polygon() 建立多邊形</li>
+<li>設定 cornerCount（幾邊形），因為是六角形，所以 cornerCount = 6。三角形就 cornerCount = 3。</li>
+<li>設定寬高，並給予顏色。給予顏色是用 fill，這邊也會用到 new Color，可以填入顏色名稱或是色碼都可以</li>
+<li>最後用 selection 的方法 insertionParent 將 polygon 加到畫面上<br>程式碼參考：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function PolygonCreateFunction(selection) &#123; </span><br><span class="line">    var polygon = new Polygon(); // [1]</span><br><span class="line">    polygon.cornerCount = 6; // [2]</span><br><span class="line">    polygon.width = 65;</span><br><span class="line">    polygon.height = 56;</span><br><span class="line">    polygon.fill = new Color(&quot;green&quot;); // [3]</span><br><span class="line">    selection.insertionParent.addChild(polygon); // [4]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>呼叫 PolygonCreateFunction 函式。這邊是用 commands 的方式。也可以用 panel 加上按鈕來觸發。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    commands: &#123;</span><br><span class="line">        createRectangle: PolygonCreateFunction</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>以上程式碼可以直接貼到 main.js 測試效果～<br>結果如下圖：<br><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202004%2F1587146312308-2%2018%20fjeudP6.png?alt=media&amp;token=2111d210-c855-43a9-9d2c-d57f89a3ba63" alt=""></p>
+<h2 id="同場加映-使用-application-API-編輯內容"><a href="#同場加映-使用-application-API-編輯內容" class="headerlink" title="同場加映 - 使用 application API 編輯內容"></a>同場加映 - 使用 application API 編輯內容</h2><p>application 是適用於 panel 的 API，主要可以用在匯出項目、啟動編輯、獲取版本或是區塊的資訊等等。</p>
+<p>而這邊就可以透過 application 中的 editDocument 方法來變更圖形，例如更換顏色。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const &#123; editDocument &#125; = require(&quot;application&quot;);</span><br><span class="line">const color = document.querySelector(&quot;#color&quot;).value</span><br><span class="line"></span><br><span class="line">editDocument(function (selection) &#123;</span><br><span class="line">  const selectedPolygon = selection.items[0];</span><br><span class="line">  selectedPolygon.fill = new Color(color)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>完整的程式碼<a href="https://github.com/Tzuhui/xd-plugin-polygon-sample">在這裡</a><br>成果圖片參考：<br><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202004%2F1587146327592-3%2018%20TFOCE0T.png?alt=media&amp;token=55ab8127-9fb7-434b-9980-960434cccc87" alt=""></p>
+
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜歡這篇文章嗎? 贊助一下作者吧!</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">flex-shrink 的壓縮計算</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/">
+                <span class="level-item">XD Plugin 入門 - 建立與 UI 介面篇</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "XD Plugin - Selection 與 Scenegraph 運用",
+    "image": ["https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80"],
+    "datePublished": "Sat Apr 18 2020 00:00:00 GMT+0000",
+    "dateModified": "Sat Apr 18 2020 00:00:00 GMT+0000"
+    }
+    </script>
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="flex-shrink 的壓縮計算">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-30T00:00:00.000Z">2020-05-30</time></div>
+                    <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flex-shrink 的壓縮計算</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSS-筆記/">CSS 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Selection 與 Scenegraph 運用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-18T00:00:00.000Z">2020-04-18</time></div>
+                    <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Selection 與 Scenegraph 運用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin 入門 - 建立與 UI 介面篇">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T00:00:00.000Z">2020-04-11</time></div>
+                    <a href="/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin 入門 - 建立與 UI 介面篇</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/26/CSS/css-object-fit/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="HTML img 也能有 bg-image 的 cover 效果">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-26T00:00:00.000Z">2020-03-26</time></div>
+                    <a href="/2020/03/26/CSS/css-object-fit/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTML img 也能有 bg-image 的 cover 效果</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSS-筆記/">CSS 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/08/w3HexSchool-challenge/TypeScript-classes/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="TypeScript - Classes">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-08T00:00:00.000Z">2020-03-08</time></div>
+                    <a href="/2020/03/08/w3HexSchool-challenge/TypeScript-classes/" class="title has-link-black-ter is-size-6 has-text-weight-normal">TypeScript - Classes</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            彙整
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                標籤
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Bootstrap/">
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML/">
+                        <span class="tag">HTML</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MOPCON/">
+                        <span class="tag">MOPCON</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Promise/">
+                        <span class="tag">Promise</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TypeScript/">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Unit-Test/">
+                        <span class="tag">Unit Test</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/XD-Plugin/">
+                        <span class="tag">XD Plugin</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/chrome-extension/">
+                        <span class="tag">chrome extension</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gulp/">
+                        <span class="tag">gulp</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/lottie/">
+                        <span class="tag">lottie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/w3HexSchool/">
+                        <span class="tag">w3HexSchool</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/六角/">
+                        <span class="tag">六角</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/問答小坑/">
+                        <span class="tag">問答小坑</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/技術筆記/">
+                        <span class="tag">技術筆記</span>
+                        <span class="tag is-grey">20</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6 d-felx align-items-center" href="/">
+                
+                    <img src="/images/logo.svg" alt="XD Plugin - Selection 與 Scenegraph 運用" height="28"> <span style="margin-left: 4px;">XD Plugin - Selection 與 Scenegraph 運用</span>
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 TzuHui Yeh&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://tzuhui.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
