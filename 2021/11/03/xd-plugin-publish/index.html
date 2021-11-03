@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.8.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>XD Plugin - Icon Anywhere 正式發佈 - 想飛的葉子</title>
+
+
+    <meta name="description" content="話不多說，先上連結！！ XD Plugin - Icon Anywhere 回顧起部落格文章，發現開發這個插件大概是一年前的事情了，陸陸續續優化了這個插件後，終於迎來最後一個版本，並把它發布到 XD Plugin Manager 啦～">
+<meta name="keywords" content="XD Plugin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XD Plugin - Icon Anywhere 正式發佈">
+<meta property="og:url" content="https://tzuhui.github.io/2021/11/03/xd-plugin-publish/index.html">
+<meta property="og:site_name" content="想飛的葉子">
+<meta property="og:description" content="話不多說，先上連結！！ XD Plugin - Icon Anywhere 回顧起部落格文章，發現開發這個插件大概是一年前的事情了，陸陸續續優化了這個插件後，終於迎來最後一個版本，並把它發布到 XD Plugin Manager 啦～">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta property="og:updated_time" content="2021-11-03T17:51:28.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XD Plugin - Icon Anywhere 正式發佈">
+<meta name="twitter:description" content="話不多說，先上連結！！ XD Plugin - Icon Anywhere 回顧起部落格文章，發現開發這個插件大概是一年前的事情了，陸陸續續優化了這個插件後，終於迎來最後一個版本，並把它發布到 XD Plugin Manager 啦～">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+
+
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5FKPBB3');
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Adsense -->
+<script data-ad-client="ca-pub-9006675162967798" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Adsense -->
+
+
+
+
+
+
+<link rel="icon" href="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128579418-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-128579418-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/custom.css">
+</head>
+<!-- <body class="is-2-column"> -->
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKPBB3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="XD Plugin - Icon Anywhere 正式發佈" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首頁</a>
+                
+                <a class="navbar-item"
+                href="/archives">目錄</a>
+                
+                <a class="navbar-item"
+                href="/categories">分類</a>
+                
+                <a class="navbar-item"
+                href="/tags">標籤</a>
+                
+                <a class="navbar-item"
+                href="/about">關於我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+        
+            <div class="card-image">
+                <span class="image is-7by1">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Icon Anywhere 正式發佈">
+                </span>
+            </div>
+        
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-11-03T00:00:00.000Z">2021-11-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/XD/">XD</a>
+                </div>
+                
+                
+                    <div class="level is-size-7 is-uppercase">
+                        <div class="level-start">
+                            <div class="level-item">
+                                <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                                <a class="has-link-grey -link" href="/tags/XD-Plugin/">XD Plugin</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                XD Plugin - Icon Anywhere 正式發佈
+            
+        </h1>
+        <div class="content">
+            <p>話不多說，先上連結！！</p>
+<p><a href="https://exchange.adobe.com/creativecloud/plugindetails.html/app/cc/3aecaa50?pluginId=3aecaa50&amp;workflow=share">XD Plugin - Icon Anywhere</a></p>
+<p>回顧起部落格文章，發現開發這個插件大概是一年前的事情了，陸陸續續優化了這個插件後，終於迎來最後一個版本，並把它發布到 XD Plugin Manager 啦～<br><a id="more"></a><br>因此關於最後一篇來寫一下關於發佈的流程：</p>
+<h2 id="發布流程"><a href="#發布流程" class="headerlink" title="發布流程"></a>發布流程</h2><p>1.先透過開發者的介面，申請好自己專案的獨立 ID，這個 ID 是放到 manifest.json 中<br><a href="https://www.adobe.io/console">https://www.adobe.io/console</a></p>
+<p>2.接著選擇專案，進入到發佈的介面，總共會有兩個步驟要填寫<br>第一個是關於插件的資訊，包含名稱、描述、縮圖 icon（3 個尺寸）、Screenshots (1360 x 800 px) 兩張<br>第二個是上傳插件檔案</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202111%2F1635961451752-Untitled.png?alt=media&amp;token=ebd0fe0d-da40-4093-bd7c-4fd91ef3cea2" alt="上傳畫面"></p>
+<p>3.鑑於第二步驟要上傳插件，因此這邊要先依照 XD 的要求，打包開發好的程式碼<br>打包方式可以參考文件中的步驟，主要就是將檔案壓縮為 .zip 檔案後，再變更檔名為 .xdx 檔<br><a href="https://adobexdplatform.com/plugin-docs/distribution/packaging.html">參考文件</a></p>
+<p>打包時要特別注意，不需要將父資料壓縮進去，也就是直接選取所有檔案並壓縮就可以了（用父資料夾壓縮，上傳後就會出現上傳檔案有誤啊啊啊）</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202111%2F1635961659386-Untitled3.png?alt=media&amp;token=36369641-22ec-4845-9ba5-c398ca7dea72" alt="壓縮注意"></p>
+<p>另外，打包完後，上傳到『Plugin File』也會做預先的檢查，因此也需要注意以下規範：</p>
+<ol>
+<li>檔案大小必須小於 25 MB</li>
+<li>檔案包含的檔案必須少於 3000 的檔案數量</li>
+</ol>
+<p>不符合的話，是不會通過檢查並給予上傳的哦<br>都上傳成功以後，就可以選擇『Preview and submit』送審囉</p>
+<p>沒錯，發布到 XD Plugin Manager 前還會先給予 CC Integrations Review 團隊審核，通過他們的審核之後，才會正式發布到 XD Plugin Manager 上。</p>
+<p>審核的天數大約需要 5 - 10 個工作天，會透過 Email 的方式聯繫。想當然爾，我的審核失敗了兩次 XD 失敗的原因是因為，插件本身有取得外部資源，因此需要連線網路的情形下使用。若在斷網的情況下無法使用，必須要有回饋訊息給使用者。不得不說，我覺得審核的相當仔細呢！</p>
+<p>總之，修正好 XD 團隊提供的回饋後，最後成功發佈啦！</p>
+<p>可以在 XD Plugin Manager 找到自己插件，並看到評分</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202111%2F1635961753453-Untitled1.png?alt=media&amp;token=056674f1-4ddd-4823-8c67-040f3d5ab033" alt="XD Plugin Manager"></p>
+<h2 id="額外補充"><a href="#額外補充" class="headerlink" title="額外補充"></a>額外補充</h2><p>Adobe XD 的開發人員模式有做了一個大的改版，不同於『XD Plugin 入門 - 建立與 UI 介面篇』這一篇的操作方式，而是更改為一個獨立的開發工具，如下圖：</p>
+<p><a href="https://tzuhui.github.io/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/">https://tzuhui.github.io/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/</a></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202111%2F1635961765354-Untitled2.png?alt=media&amp;token=ef90a11f-b6f1-4c27-8b78-b1cdd7783149" alt="Adobe 新開發工具"></p>
+<p>使用方式我覺得與原先沒有太多的差異，也就是選擇 manifest.json 檔就可以載入囉</p>
+
+        </div>
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- tzuhui-ad-hr-3 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9006675162967798"
+     data-ad-slot="9060650530"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        
+        
+        
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<!-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> -->
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_telegram"></a>
+<!-- <a class="a2a_button_whatsapp"></a>
+<a class="a2a_button_reddit"></a> -->
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/12/11/Vue/Vue-deploy-github-actions/">
+                <span class="level-item">Vue - 使用 GitHub Actions 部署到 GitHub Pages</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://tzuhui.github.io/2021/11/03/xd-plugin-publish/';
+        this.page.identifier = '2021/11/03/xd-plugin-publish/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'tzuhui' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+
+
+
+  <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "XD Plugin - Icon Anywhere 正式發佈",
+    "image": ["https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80"],
+    "datePublished": "Wed Nov 03 2021 00:00:00 GMT+0000",
+    "dateModified": "Wed Nov 03 2021 00:00:00 GMT+0000"
+    }
+    </script>
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-3 column-right ">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#發布流程">
+        <span class="has-mr-6">1</span>
+        <span>發布流程</span>
+        </a></li><li>
+        <a class="is-flex" href="#額外補充">
+        <span class="has-mr-6">2</span>
+        <span>額外補充</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/11/03/xd-plugin-publish/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Icon Anywhere 正式發佈">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-11-03T00:00:00.000Z">2021-11-03</time></div>
+                    <a href="/2021/11/03/xd-plugin-publish/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Icon Anywhere 正式發佈</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/XD/">XD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="Vue - 使用 GitHub Actions 部署到 GitHub Pages">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-12-11T00:00:00.000Z">2020-12-11</time></div>
+                    <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue - 使用 GitHub Actions 部署到 GitHub Pages</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Vue-筆記/">Vue 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="flex-shrink 的壓縮計算">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-30T00:00:00.000Z">2020-05-30</time></div>
+                    <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flex-shrink 的壓縮計算</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSS-筆記/">CSS 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+                <div style="margin: 16px 0px;">
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+     <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-format="fluid"
+          data-ad-layout-key="-hr+2-b-r+2j"
+          data-ad-client="ca-pub-9006675162967798"
+          data-ad-slot="3088276737"></ins>
+     <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+     </script>
+</div>
+
+            
+        
+        <article class="media">
+            
+            <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Selection 與 Scenegraph 運用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-18T00:00:00.000Z">2020-04-18</time></div>
+                    <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Selection 與 Scenegraph 運用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin 入門 - 建立與 UI 介面篇">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T00:00:00.000Z">2020-04-11</time></div>
+                    <a href="/2020/04/11/w3HexSchool-challenge/xd-plugin-basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin 入門 - 建立與 UI 介面篇</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+    </div>
+</div>
+    
+        <div style="margin: 16px 0px">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- tzuhui-ad-1 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9006675162967798"
+         data-ad-slot="2758131916"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                標籤
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Bootstrap/">
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CI-CD/">
+                        <span class="tag">CI/CD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML/">
+                        <span class="tag">HTML</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MOPCON/">
+                        <span class="tag">MOPCON</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Promise/">
+                        <span class="tag">Promise</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TypeScript/">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Unit-Test/">
+                        <span class="tag">Unit Test</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/XD-Plugin/">
+                        <span class="tag">XD Plugin</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/chrome-extension/">
+                        <span class="tag">chrome extension</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gulp/">
+                        <span class="tag">gulp</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/lottie/">
+                        <span class="tag">lottie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/w3HexSchool/">
+                        <span class="tag">w3HexSchool</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/六角/">
+                        <span class="tag">六角</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/問答小坑/">
+                        <span class="tag">問答小坑</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/技術筆記/">
+                        <span class="tag">技術筆記</span>
+                        <span class="tag is-grey">20</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6 d-felx align-items-center" href="/">
+                
+                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="XD Plugin - Icon Anywhere 正式發佈" height="28"> <span style="margin-left: 4px;">XD Plugin - Icon Anywhere 正式發佈</span>
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 TzuHui Yeh&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://tzuhui.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
