@@ -19,7 +19,7 @@
 <meta property="og:description" content="之前在回覆問題時，不少人都會發現這個有點奇怪的現象 - 圖片下方有一個莫名的間距這一篇就來說明一下原理以及解決方法吧！">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
-<meta property="og:updated_time" content="2022-11-25T08:04:48.881Z">
+<meta property="og:updated_time" content="2024-08-12T03:04:48.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML img 下方有不明空隙？！">
 <meta name="twitter:description" content="之前在回覆問題時，不少人都會發現這個有點奇怪的現象 - 圖片下方有一個莫名的間距這一篇就來說明一下原理以及解決方法吧！">
@@ -198,7 +198,7 @@
 <iframe height="265" style="width: 100%;" scrolling="no" title="img-blank" src="https://codepen.io/TzuHui/embed/gOboxMW?height=265&theme-id=light&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><br>  See the Pen <a href='https://codepen.io/TzuHui/pen/gOboxMW'>img-blank</a> by TzuHui<br>  (<a href='https://codepen.io/TzuHui'>@TzuHui</a>) on <a href='https://codepen.io'>CodePen</a>.<br></iframe>
 
 <h2 id="原因說明"><a href="#原因說明" class="headerlink" title="原因說明"></a>原因說明</h2><p>因為圖片預設是 inline 元素，而 inline 元素的 vertical-align 設定預設是和父元素的 baseline 對齊的，而 baseline 本身又和父元素底邊有一定的間距。這個間距是來自於英文文字中像是 j, y 這些超過基準線的字符。</p>
-<p><img src="https://i.stack.imgur.com/Ousrm.gif" alt="vertical-align 基準線示意圖" title="title"></p>
+<p><img src="/images/html-baseline.png" alt="vertical-align 基準線示意圖" /></p>
 <p style="text-align: center; margin: 0;line-height:1"><small>圖片來自 <a href="https://stackoverflow.com/a/34952703">overstackflow 回覆</a></small></p>
 
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>了解原因之後也就可以明白，要去除掉下方的空隙可以使用以下三種方法：</p>
@@ -639,7 +639,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2022 TzuHui Yeh&nbsp;
+                &copy; 2024 TzuHui Yeh&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
