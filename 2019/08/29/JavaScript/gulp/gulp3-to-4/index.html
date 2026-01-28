@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.8.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>gulp 3 遷移至 gulp 4 - 想飛的葉子</title>
+
+
+    <meta name="description" content="從 2018 年 10 月開始，使用 npm 下載 gulp 預設的版本都將為 4，因 gulp 3 與 4 在寫法上有些更新，所以在安裝 4 的情況之下，運行 3 的寫法是有可能會出錯的，因此這篇主要說明 gulp 3 與 4 的差異">
+<meta name="keywords" content="技術筆記,JavaScript,gulp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp 3 遷移至 gulp 4">
+<meta property="og:url" content="https://tzuhui.github.io/2019/08/29/JavaScript/gulp/gulp3-to-4/index.html">
+<meta property="og:site_name" content="想飛的葉子">
+<meta property="og:description" content="從 2018 年 10 月開始，使用 npm 下載 gulp 預設的版本都將為 4，因 gulp 3 與 4 在寫法上有些更新，所以在安裝 4 的情況之下，運行 3 的寫法是有可能會出錯的，因此這篇主要說明 gulp 3 與 4 的差異">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta property="og:updated_time" content="2024-08-12T03:04:48.444Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gulp 3 遷移至 gulp 4">
+<meta name="twitter:description" content="從 2018 年 10 月開始，使用 npm 下載 gulp 預設的版本都將為 4，因 gulp 3 與 4 在寫法上有些更新，所以在安裝 4 的情況之下，運行 3 的寫法是有可能會出錯的，因此這篇主要說明 gulp 3 與 4 的差異">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+
+
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5FKPBB3');
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Adsense -->
+<script data-ad-client="ca-pub-9006675162967798" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Adsense -->
+
+
+
+
+
+
+<link rel="icon" href="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QN77HMJZX9"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QN77HMJZX9');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/custom.css">
+</head>
+<!-- <body class="is-2-column"> -->
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKPBB3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="gulp 3 遷移至 gulp 4" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首頁</a>
+                
+                <a class="navbar-item"
+                href="/archives">目錄</a>
+                
+                <a class="navbar-item"
+                href="/categories">分類</a>
+                
+                <a class="navbar-item"
+                href="/tags">標籤</a>
+                
+                <a class="navbar-item"
+                href="/about">關於我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+        
+            <div class="card-image">
+                <span class="image is-7by1">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="gulp 3 遷移至 gulp 4">
+                </span>
+            </div>
+        
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-29T00:00:00.000Z">2019-08-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/gulp/">gulp</a>
+                </div>
+                
+                
+                    <div class="level is-size-7 is-uppercase">
+                        <div class="level-start">
+                            <div class="level-item">
+                                <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                                <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>, <a class="has-link-grey -link" href="/tags/gulp/">gulp</a>, <a class="has-link-grey -link" href="/tags/技術筆記/">技術筆記</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                gulp 3 遷移至 gulp 4
+            
+        </h1>
+        <div class="content">
+            <p>從 2018 年 10 月開始，使用 npm 下載 gulp 預設的版本都將為 4，因 gulp 3 與 4 在寫法上有些更新，所以在安裝 4 的情況之下，運行 3 的寫法是有可能會出錯的，因此這篇主要說明 gulp 3 與 4 的差異<br><a id="more"></a> </p>
+<p>若仍需要使用 gulp 3，也可以用此指令安裝 3 的版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp@^3.9.1</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-series-取代原本-Arrays-任務安排的寫法"><a href="#使用-series-取代原本-Arrays-任務安排的寫法" class="headerlink" title="使用 series() 取代原本 Arrays 任務安排的寫法"></a>使用 series() 取代原本 Arrays 任務安排的寫法</h3><p>Gulp 4 介紹了新的組合任務方法：series()、parallel()</p>
+<p><code>series()</code> 按指定的順序一次運行一個任務<br><code>parallel()</code> 以任何順序同時運行任務</p>
+<p>舉例：<br>在 gulp 3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;, [&apos;browserSync&apos;]);</span><br></pre></td></tr></table></figure></p>
+<p>轉換到 gulp 4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;, gulp.series(&apos;browserSync&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>兩者也可以混用，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;build&apos;, gulp.series(&apos;clean&apos;, gulp.parallel(&apos;sass&apos;, &apos;vendorJs&apos;)));</span><br></pre></td></tr></table></figure></p>
+<p>這樣的寫法也是先執行 clean 後再執行後面的 sass, vendorJS<br>而 sass, vendorJS 是同時執行的</p>
+<h3 id="使用-done-當任務結束後的-callback"><a href="#使用-done-當任務結束後的-callback" class="headerlink" title="使用 done() - 當任務結束後的 callback"></a>使用 done() - 當任務結束後的 callback</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;,</span><br><span class="line">  gulp.series(&apos;clean&apos;, gulp.parallel(&apos;sass&apos;, &apos;vendorJs&apos;),</span><br><span class="line">  function(done) &#123;</span><br><span class="line">    // 也就是先確保前面都執行完</span><br><span class="line">    gulp.watch([&apos;./source/stylesheets/**/*.sass&apos;, &apos;./source/stylesheets/**/*.scss&apos;],gulp.series(&apos;sass&apos;));</span><br><span class="line">    done();</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="模組化設計-將-task-改用一般的函式寫法"><a href="#模組化設計-將-task-改用一般的函式寫法" class="headerlink" title="模組化設計 - 將 task 改用一般的函式寫法"></a>模組化設計 - 將 task 改用一般的函式寫法</h3><p>好處在於可以更方便的管理使用。</p>
+<ol>
+<li>另外建立一個 JS 檔 (ex: vendor.js )，並將 task 改用函式的方式來寫</li>
+</ol>
+<p>舉例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;vendorJs&apos;, function () &#123;</span><br><span class="line">  return gulp.src([</span><br><span class="line">    &apos;./node_modules/jquery/dist/jquery.slim.min.js&apos;,</span><br><span class="line">    &apos;./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js&apos;</span><br><span class="line">  ])</span><br><span class="line">  .pipe($.concat(&apos;vendor.js&apos;))</span><br><span class="line">  .pipe(gulp.dest(&apos;./public/javascripts&apos;))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>改用函式的寫法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const vendorJs = function(done) &#123;</span><br><span class="line">  gulp.src([</span><br><span class="line">    &apos;./node_modules/jquery/dist/jquery.slim.min.js&apos;,</span><br><span class="line">    &apos;./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js&apos;</span><br><span class="line">    ])</span><br><span class="line">    .pipe($.concat(&apos;vendor.js&apos;))</span><br><span class="line">    .pipe(gulp.dest(&apos;./public/javascripts&apos;))</span><br><span class="line">  done();</span><br><span class="line">&#125;;</span><br><span class="line">exports.vendorJs = vendorJs;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>在原本的 JS 檔（主要安排與執行任務的檔案，ex: index.js）將上面寫好的檔案引入</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; vendorJs &#125; = require(&apos;./vendor.js&apos;);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>最後將 vendorJs 安排到任務執行</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.series(vendorJs)</span><br></pre></td></tr></table></figure>
+<p>要注意因為是引入的方法，所以這邊安排任務不是使用字串 <code>&#39;&#39;</code> 寫法</p>
+
+        </div>
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- tzuhui-ad-hr-3 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9006675162967798"
+     data-ad-slot="9060650530"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        
+        
+        
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<!-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> -->
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_telegram"></a>
+<!-- <a class="a2a_button_whatsapp"></a>
+<a class="a2a_button_reddit"></a> -->
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/26/JavaScript/lottie/lottie-intro/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Lottie 輕鬆實現動畫效果</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/17/JavaScript/gulp/gulp-browserSync/">
+                <span class="level-item">在專案引入 gulp 4.0 並開啟 Ｗeb Server (使用 browser-sync)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://tzuhui.github.io/2019/08/29/JavaScript/gulp/gulp3-to-4/';
+        this.page.identifier = '2019/08/29/JavaScript/gulp/gulp3-to-4/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'tzuhui' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+
+
+
+  <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "gulp 3 遷移至 gulp 4",
+    "image": ["https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80"],
+    "datePublished": "Thu Aug 29 2019 00:00:00 GMT+0000",
+    "dateModified": "Thu Aug 29 2019 00:00:00 GMT+0000"
+    }
+    </script>
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-3 column-right ">
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2022/05/13/tool/postman-mock-server/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="用 Postman Mock Server 建立 Mock API">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-05-13T00:00:00.000Z">2022-05-13</time></div>
+                    <a href="/2022/05/13/tool/postman-mock-server/" class="title has-link-black-ter is-size-6 has-text-weight-normal">用 Postman Mock Server 建立 Mock API</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Tool/">Tool</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2021/11/03/xd-plugin-publish/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Icon Anywhere 正式發佈">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-11-03T00:00:00.000Z">2021-11-03</time></div>
+                    <a href="/2021/11/03/xd-plugin-publish/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Icon Anywhere 正式發佈</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/XD/">XD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="Vue - 使用 GitHub Actions 部署到 GitHub Pages">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-12-11T00:00:00.000Z">2020-12-11</time></div>
+                    <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue - 使用 GitHub Actions 部署到 GitHub Pages</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Vue-筆記/">Vue 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+                <div style="margin: 16px 0px;">
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+     <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-format="fluid"
+          data-ad-layout-key="-hr+2-b-r+2j"
+          data-ad-client="ca-pub-9006675162967798"
+          data-ad-slot="3088276737"></ins>
+     <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+     </script>
+</div>
+
+            
+        
+        <article class="media">
+            
+            <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="flex-shrink 的壓縮計算">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-30T00:00:00.000Z">2020-05-30</time></div>
+                    <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flex-shrink 的壓縮計算</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSS-筆記/">CSS 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Selection 與 Scenegraph 運用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-18T00:00:00.000Z">2020-04-18</time></div>
+                    <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Selection 與 Scenegraph 運用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+    </div>
+</div>
+    
+        <div style="margin: 16px 0px">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- tzuhui-ad-1 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9006675162967798"
+         data-ad-slot="2758131916"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                標籤
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Bootstrap/">
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CI-CD/">
+                        <span class="tag">CI/CD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML/">
+                        <span class="tag">HTML</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MOPCON/">
+                        <span class="tag">MOPCON</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Postman/">
+                        <span class="tag">Postman</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Promise/">
+                        <span class="tag">Promise</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TypeScript/">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Unit-Test/">
+                        <span class="tag">Unit Test</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/XD-Plugin/">
+                        <span class="tag">XD Plugin</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/chrome-extension/">
+                        <span class="tag">chrome extension</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gulp/">
+                        <span class="tag">gulp</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/lottie/">
+                        <span class="tag">lottie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/w3HexSchool/">
+                        <span class="tag">w3HexSchool</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/六角/">
+                        <span class="tag">六角</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/問答小坑/">
+                        <span class="tag">問答小坑</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/好用工具/">
+                        <span class="tag">好用工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/技術筆記/">
+                        <span class="tag">技術筆記</span>
+                        <span class="tag is-grey">20</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6 d-felx align-items-center" href="/">
+                
+                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="gulp 3 遷移至 gulp 4" height="28"> <span style="margin-left: 4px;">gulp 3 遷移至 gulp 4</span>
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2024 TzuHui Yeh&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://tzuhui.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

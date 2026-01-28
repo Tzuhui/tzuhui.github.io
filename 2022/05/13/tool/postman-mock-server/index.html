@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.8.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>用 Postman Mock Server 建立 Mock API - 想飛的葉子</title>
+
+
+    <meta name="description" content="前陣子遇到 API 暫時還打不過取不到資料，但要在那陣子先把前端畫面和串接 API 的部分處理好，所以尋覓了很多 Mock API 的服務。沒想到意外找到 Postman 就有這樣的服務可以用～">
+<meta name="keywords" content="Postman,好用工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Postman Mock Server 建立 Mock API">
+<meta property="og:url" content="https://tzuhui.github.io/2022/05/13/tool/postman-mock-server/index.html">
+<meta property="og:site_name" content="想飛的葉子">
+<meta property="og:description" content="前陣子遇到 API 暫時還打不過取不到資料，但要在那陣子先把前端畫面和串接 API 的部分處理好，所以尋覓了很多 Mock API 的服務。沒想到意外找到 Postman 就有這樣的服務可以用～">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta property="og:updated_time" content="2024-08-12T03:04:48.444Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用 Postman Mock Server 建立 Mock API">
+<meta name="twitter:description" content="前陣子遇到 API 暫時還打不過取不到資料，但要在那陣子先把前端畫面和串接 API 的部分處理好，所以尋覓了很多 Mock API 的服務。沒想到意外找到 Postman 就有這樣的服務可以用～">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+
+
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5FKPBB3');
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Adsense -->
+<script data-ad-client="ca-pub-9006675162967798" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Adsense -->
+
+
+
+
+
+
+<link rel="icon" href="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QN77HMJZX9"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QN77HMJZX9');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/custom.css">
+</head>
+<!-- <body class="is-2-column"> -->
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKPBB3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="用 Postman Mock Server 建立 Mock API" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首頁</a>
+                
+                <a class="navbar-item"
+                href="/archives">目錄</a>
+                
+                <a class="navbar-item"
+                href="/categories">分類</a>
+                
+                <a class="navbar-item"
+                href="/tags">標籤</a>
+                
+                <a class="navbar-item"
+                href="/about">關於我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="文章目錄" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+        
+            <div class="card-image">
+                <span class="image is-7by1">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="用 Postman Mock Server 建立 Mock API">
+                </span>
+            </div>
+        
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2022-05-13T00:00:00.000Z">2022-05-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Tool/">Tool</a>
+                </div>
+                
+                
+                    <div class="level is-size-7 is-uppercase">
+                        <div class="level-start">
+                            <div class="level-item">
+                                <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                                <a class="has-link-grey -link" href="/tags/Postman/">Postman</a>, <a class="has-link-grey -link" href="/tags/好用工具/">好用工具</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                用 Postman Mock Server 建立 Mock API
+            
+        </h1>
+        <div class="content">
+            <p>前陣子遇到 API 暫時還打不過取不到資料，但要在那陣子先把前端畫面和串接 API 的部分處理好，所以尋覓了很多 Mock API 的服務。沒想到意外找到 Postman 就有這樣的服務可以用～<br><a id="more"></a><br>身為前端應該對 Postman 不陌生，但最常被使用的通常是 Request 戳 API 的部分，沒想到 Mock Server 也很好用。</p>
+<p>如果你也剛好有此需求，就可以依照以下步驟建立看看！</p>
+<h3 id="步驟一：建立新的-Mock-Server"><a href="#步驟一：建立新的-Mock-Server" class="headerlink" title="步驟一：建立新的 Mock Server"></a>步驟一：建立新的 Mock Server</h3><p>Request Body 可以先不填寫，後續再進行修改。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202205%2F1652374122337-Cursor_%E5%92%8C_Postman.png?alt=media&amp;token=897f2dac-37e2-4de7-8d01-562398183b2f" alt="建立 Mock Server"></p>
+<h3 id="步驟二：Mock-Server-設定"><a href="#步驟二：Mock-Server-設定" class="headerlink" title="步驟二：Mock Server 設定"></a>步驟二：Mock Server 設定</h3><ol>
+<li>為你的 Mock Server 取名</li>
+<li>做細部設定<ul>
+<li>第一個項目是可以選擇環境檔案來統一一些參數的設定，這樣就可以儲存這個 Mock Server 的 URL 為環境變數，建立後會比較好直接測試 call API</li>
+<li>Mock server 是否為私有的：私有的話，就會需要設定 x-api-key 在 headers，而 key 的建立可以參考 <a href="https://learning.postman.com/docs/developer/intro-api/">https://learning.postman.com/docs/developer/intro-api/</a></li>
+</ul>
+</li>
+</ol>
+<p>這邊若是做為開發 Demo 使用，也可以不勾選，方便直接使用</p>
+<p>設定完後就可以直接 Create Mock Server</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202205%2F1652373980754-Cursor_%E5%92%8C_Postman%201.png?alt=media&amp;token=66108fd2-01fe-4b29-b2ba-49039ab5be2d" alt="Mock Server 設定"></p>
+<p>完成後就會看到 mock server 的 URL，如以下畫面，可以先複製起來，等等方便直接使用。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202205%2F1652374143191-Postman.png?alt=media&amp;token=431b7191-5248-46f1-8cd4-4a2df6612dae" alt="Mock Server URL"></p>
+<h3 id="步驟三：回到-Collections，設定-Mock-API-Data"><a href="#步驟三：回到-Collections，設定-Mock-API-Data" class="headerlink" title="步驟三：回到 Collections，設定 Mock API Data"></a>步驟三：回到 Collections，設定 Mock API Data</h3><p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202205%2F1652374042821-Cursor_%E5%92%8C_Postman%202.png?alt=media&amp;token=770515ca-8268-46b5-acb6-0794cc3a8886" alt="設定資料"></p>
+<p>回到 Collections，會發現多了剛剛設定 Mock Server 的名字，此時他已經開好資料夾了。打開後會發現剛剛設定的 API，展開選擇一個 API 的 Default 就可以設定預設資料。</p>
+<p>例如： <code>/posts</code> 這邊預設的 Response 會拿到三筆文章資料。</p>
+<p>點選右上角的『Save』到這邊就可以成功建立一個 Mock 的 API 了～</p>
+<p>可以在 CodePen 一試：</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202205%2F1652373943503-Cursor_%E5%92%8C_Create_a_New_Pen.png?alt=media&amp;token=8b262b83-3b71-4427-bfaa-8255c27fa872" alt="CodePen1"></p>
+<h2 id="網址參數設定"><a href="#網址參數設定" class="headerlink" title="網址參數設定"></a>網址參數設定</h2><p>最強的是可以針斷不同的網址參數做設定，這樣連分頁的功能都能 Mock 呢！</p>
+<p>只要在 Collections API 下的 Default 再新增其他假資料，就可以實現，如下圖：</p>
+<p>例如： <code>/v2/posts?page1</code> 、 <code>/v2/post?page2</code></p>
+<p>先設定第一頁的資料</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202205%2F1652374081552-Cursor_%E5%92%8C_Postman%203.png?alt=media&amp;token=496e620b-2036-4c15-9f00-c670981381d0" alt="第一頁設定"></p>
+<p>帶入第二頁的參數，並設定第二頁的資料</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202205%2F1652374104254-Cursor_%E5%92%8C_Postman%204.png?alt=media&amp;token=fdbf4e60-e2f8-4043-a78d-5df9d771a708" alt="第二頁設定"></p>
+<p>最後～ 就可以看到取得分頁後的結果囉！</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/tzuhui-10c1e.appspot.com/o/blog%2F202205%2F1652373923324-Create_a_New_Pen.png?alt=media&amp;token=48b142e1-8e16-44b2-9953-d67db865fa99" alt="CodePen2"></p>
+
+        </div>
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- tzuhui-ad-hr-3 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9006675162967798"
+     data-ad-slot="9060650530"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        
+        
+        
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<!-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> -->
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_telegram"></a>
+<!-- <a class="a2a_button_whatsapp"></a>
+<a class="a2a_button_reddit"></a> -->
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/11/03/xd-plugin-publish/">
+                <span class="level-item">XD Plugin - Icon Anywhere 正式發佈</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://tzuhui.github.io/2022/05/13/tool/postman-mock-server/';
+        this.page.identifier = '2022/05/13/tool/postman-mock-server/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'tzuhui' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+
+
+
+  <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "用 Postman Mock Server 建立 Mock API",
+    "image": ["https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80"],
+    "datePublished": "Fri May 13 2022 00:00:00 GMT+0000",
+    "dateModified": "Fri May 13 2022 00:00:00 GMT+0000"
+    }
+    </script>
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-3 column-right ">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    文章目錄
+                </h3>
+                <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#步驟一：建立新的-Mock-Server">
+        <span class="has-mr-6">1.1</span>
+        <span>步驟一：建立新的 Mock Server</span>
+        </a></li><li>
+        <a class="is-flex" href="#步驟二：Mock-Server-設定">
+        <span class="has-mr-6">1.2</span>
+        <span>步驟二：Mock Server 設定</span>
+        </a></li><li>
+        <a class="is-flex" href="#步驟三：回到-Collections，設定-Mock-API-Data">
+        <span class="has-mr-6">1.3</span>
+        <span>步驟三：回到 Collections，設定 Mock API Data</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#網址參數設定">
+        <span class="has-mr-6">2</span>
+        <span>網址參數設定</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2022/05/13/tool/postman-mock-server/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="用 Postman Mock Server 建立 Mock API">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-05-13T00:00:00.000Z">2022-05-13</time></div>
+                    <a href="/2022/05/13/tool/postman-mock-server/" class="title has-link-black-ter is-size-6 has-text-weight-normal">用 Postman Mock Server 建立 Mock API</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Tool/">Tool</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2021/11/03/xd-plugin-publish/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Icon Anywhere 正式發佈">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-11-03T00:00:00.000Z">2021-11-03</time></div>
+                    <a href="/2021/11/03/xd-plugin-publish/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Icon Anywhere 正式發佈</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/XD/">XD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="Vue - 使用 GitHub Actions 部署到 GitHub Pages">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-12-11T00:00:00.000Z">2020-12-11</time></div>
+                    <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue - 使用 GitHub Actions 部署到 GitHub Pages</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Vue-筆記/">Vue 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+                <div style="margin: 16px 0px;">
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+     <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-format="fluid"
+          data-ad-layout-key="-hr+2-b-r+2j"
+          data-ad-client="ca-pub-9006675162967798"
+          data-ad-slot="3088276737"></ins>
+     <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+     </script>
+</div>
+
+            
+        
+        <article class="media">
+            
+            <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="flex-shrink 的壓縮計算">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-30T00:00:00.000Z">2020-05-30</time></div>
+                    <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flex-shrink 的壓縮計算</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSS-筆記/">CSS 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Selection 與 Scenegraph 運用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-18T00:00:00.000Z">2020-04-18</time></div>
+                    <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Selection 與 Scenegraph 運用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+    </div>
+</div>
+    
+        <div style="margin: 16px 0px">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- tzuhui-ad-1 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9006675162967798"
+         data-ad-slot="2758131916"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                標籤
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Bootstrap/">
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CI-CD/">
+                        <span class="tag">CI/CD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML/">
+                        <span class="tag">HTML</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MOPCON/">
+                        <span class="tag">MOPCON</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Postman/">
+                        <span class="tag">Postman</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Promise/">
+                        <span class="tag">Promise</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TypeScript/">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Unit-Test/">
+                        <span class="tag">Unit Test</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/XD-Plugin/">
+                        <span class="tag">XD Plugin</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/chrome-extension/">
+                        <span class="tag">chrome extension</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gulp/">
+                        <span class="tag">gulp</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/lottie/">
+                        <span class="tag">lottie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/w3HexSchool/">
+                        <span class="tag">w3HexSchool</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/六角/">
+                        <span class="tag">六角</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/問答小坑/">
+                        <span class="tag">問答小坑</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/好用工具/">
+                        <span class="tag">好用工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/技術筆記/">
+                        <span class="tag">技術筆記</span>
+                        <span class="tag is-grey">20</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6 d-felx align-items-center" href="/">
+                
+                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="用 Postman Mock Server 建立 Mock API" height="28"> <span style="margin-left: 4px;">用 Postman Mock Server 建立 Mock API</span>
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2024 TzuHui Yeh&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://tzuhui.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.8.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>使用 CSS 和 JS 呈現打字機效果 - 想飛的葉子</title>
+
+
+    <meta name="description" content="這篇主要是說明如何運用幾個 CSS 和 JS 觀念來做出打字機的效果。 話不多說，先看 DEMO：DEMO">
+<meta name="keywords" content="技術筆記,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 CSS 和 JS 呈現打字機效果">
+<meta property="og:url" content="https://tzuhui.github.io/2019/11/13/CSS/css-typewriter/index.html">
+<meta property="og:site_name" content="想飛的葉子">
+<meta property="og:description" content="這篇主要是說明如何運用幾個 CSS 和 JS 觀念來做出打字機的效果。 話不多說，先看 DEMO：DEMO">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+<meta property="og:updated_time" content="2024-08-12T03:04:48.440Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 CSS 和 JS 呈現打字機效果">
+<meta name="twitter:description" content="這篇主要是說明如何運用幾個 CSS 和 JS 觀念來做出打字機的效果。 話不多說，先看 DEMO：DEMO">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80">
+
+
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5FKPBB3');
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Adsense -->
+<script data-ad-client="ca-pub-9006675162967798" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- End Google Adsense -->
+
+
+
+
+
+
+<link rel="icon" href="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QN77HMJZX9"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QN77HMJZX9');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/custom.css">
+</head>
+<!-- <body class="is-2-column"> -->
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKPBB3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="使用 CSS 和 JS 呈現打字機效果" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首頁</a>
+                
+                <a class="navbar-item"
+                href="/archives">目錄</a>
+                
+                <a class="navbar-item"
+                href="/categories">分類</a>
+                
+                <a class="navbar-item"
+                href="/tags">標籤</a>
+                
+                <a class="navbar-item"
+                href="/about">關於我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+        
+            <div class="card-image">
+                <span class="image is-7by1">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="使用 CSS 和 JS 呈現打字機效果">
+                </span>
+            </div>
+        
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-13T00:00:00.000Z">2019-11-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CSS-筆記/">CSS 筆記</a>
+                </div>
+                
+                
+                    <div class="level is-size-7 is-uppercase">
+                        <div class="level-start">
+                            <div class="level-item">
+                                <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                                <a class="has-link-grey -link" href="/tags/CSS/">CSS</a>, <a class="has-link-grey -link" href="/tags/技術筆記/">技術筆記</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                使用 CSS 和 JS 呈現打字機效果
+            
+        </h1>
+        <div class="content">
+            <p>這篇主要是說明如何運用幾個 CSS 和 JS 觀念來做出打字機的效果。</p>
+<p>話不多說，先看 DEMO：<br><a href="https://codepen.io/TzuHui/pen/wvvybbp">DEMO</a><br><a id="more"></a></p>
+<h2 id="主要觀念"><a href="#主要觀念" class="headerlink" title="主要觀念"></a>主要觀念</h2><ul>
+<li>CSS <ul>
+<li>keyframes</li>
+<li>animation 設定</li>
+</ul>
+</li>
+<li>JS<ul>
+<li>setInterval()</li>
+<li>contains()</li>
+<li>if, else</li>
+</ul>
+</li>
+</ul>
+<h2 id="程式碼說明"><a href="#程式碼說明" class="headerlink" title="程式碼說明"></a>程式碼說明</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>先從 HTML 結構來說:<br>第一層 div 是為了設定鼠標的活動空間是和字體寬度相等，因此會設定為 display: inline-block<br>第二層 div (#typewrite-animated) 則是打字機動畫效果的設定層<br>再往內是打字機文字顯示的地方 (#typewrite-text)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;d-inline-block&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;typewrite-animated&quot;&gt;</span><br><span class="line">    &lt;span id=&quot;typewrite-text&quot; class=&quot;d-inline-block&quot;&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>接著來看 CSS 樣式設定的部分<br>如同上面 HTML 區塊提到的，為了讓寬度適應內容，會設定 display: inline-block。因此第一個樣式就是：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.d-inline-block</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接著進入重點的鼠標以及打字機效果的說明。<br>我們把主要的動畫效果寫到 .typewriter span，而 typewriter 就是要加到 #typewrite-animated 並動態被切換的 class<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.typewriter</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">72px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">border-right</span>: .<span class="number">3rem</span> solid $dark;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="attribute">animation</span>: </span><br><span class="line">    typing <span class="number">0.6s</span> <span class="built_in">steps</span>(3, end),</span><br><span class="line">    blink-caret .<span class="number">5s</span> step-end infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>font-size</code>: 設定字體大小</li>
+<li><code>overflow: hidden</code>: 隱藏文字顯示</li>
+<li><code>border-right</code>: 設定鼠標寬度</li>
+<li><code>white-space: nowrap</code>: 讓文字不換行</li>
+<li><code>animation</code>: 設定動畫</li>
+</ul>
+<h3 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h3><p>這邊要特別說明動畫的部分，有加上兩個值。<br>第一個是 <code>typing 0.6s steps(3, end)</code><br><code>typing 0.6s steps(3, end)</code> 中的第一個參數 typing 是說明動畫名稱，會對應到 keyframe 的設定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">keyframes</span> typing &#123;</span><br><span class="line">  <span class="selector-tag">from</span> &#123; <span class="attribute">width</span>: <span class="number">0</span> &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123; <span class="attribute">width</span>: <span class="number">100%</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>也就是外部的寬度由 0 到 100%，而 0.6s 則是指這個動畫過程的時間，第三個參數則是指 animation-timing-function。animation-timing-function 這個屬性是用來控制動畫播放的速度與加速度，常見的值有 linear、ease-in、ease-out 等等，而這邊使用的 steps 也是其中的值，這邊就來介紹一下 steps 吧！</p>
+<h3 id="steps"><a href="#steps" class="headerlink" title="steps()"></a>steps()</h3><p>steps 中可以帶兩個參數，第一個是數字，代表的是要將動畫切為幾格，第二個 position 是指動畫從斷點頭或是斷點尾開始。</p>
+<p>從 W3C 的圖來看是這樣：<br><img src="https://i.imgur.com/mHn9JQu.png" alt=""><br>圖片來自 <a href="https://www.w3.org/TR/css-easing-1/#step-easing-functions">W3C</a></p>
+<p>實際從範例可以更清楚地理解，請打開以下範例：<br><a href="https://codepen.io/carlos411/pen/wRKRej">https://codepen.io/carlos411/pen/wRKRej</a></p>
+<p>範例來自 <a href="https://carlos-studio.com/2018/12/13/css-animation-9-%e4%bd%bf%e7%94%a8-animation-timing-function-%e4%be%86%e6%8e%a7%e5%88%b6%e5%8b%95%e7%95%ab%e7%9a%84%e9%80%9f%e5%ba%a6%e8%88%87%e5%8a%a0%e9%80%9f%e5%ba%a6/">Carlos-Studio 設計好網站</a> </p>
+<p>到這邊就可以了解 steps() 的使用，可以讓文字變成一個一個出現。而範例呈現的文字數有 3 個，所以 steps 設定是 3。以此類推，若有五個字就 steps 就設定為 5。</p>
+<p>而第二個值 <code>blink-caret .5s step-end infinite;</code> 用法也如同上面提到的，blink-caret 是動畫名稱，對應的 keyframes 是設定鼠標的閃爍效果，由透明到黑色。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@keyframes blink-caret &#123;</span><br><span class="line">  from, to &#123; border-color: transparent &#125;</span><br><span class="line">  50% &#123; border-color: $dark &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同樣使用 step-end 讓鼠標有閃動的感覺，最後參數 infinite 讓動畫可以持續的重複播放</p>
+<h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><p>最後說明一下 JS 的部分：<br>主要是透過 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setInterval">setInterval()</a> 來做每一次的切換變化</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 透過 arr 陣列儲存要變化的文字內容</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="string">'寫程式'</span>, <span class="string">'做設計'</span>, <span class="string">'找工作'</span>];</span><br><span class="line"><span class="comment">// 用 count 計算次數，後面會用來計算目前要顯示的文字內容是哪一個</span></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用 setInterval 做每一次的切換變化</span></span><br><span class="line">setInterval( <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  count += <span class="number">1</span>;</span><br><span class="line">  <span class="comment">// 設定動畫名稱並取得元素</span></span><br><span class="line">  <span class="keyword">const</span> typewriteAni = <span class="built_in">document</span>.getElementById(<span class="string">'typewrite-animated'</span>);</span><br><span class="line">  <span class="keyword">const</span> typewriteText = <span class="built_in">document</span>.getElementById(<span class="string">'typewrite-text'</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 判斷 #typewrite-animated 的 class 中是否含有 'typewriter' 這個 class</span></span><br><span class="line">  <span class="keyword">if</span> (typewriteAni.classList.contains(<span class="string">'typewriter'</span>)) &#123;</span><br><span class="line">    <span class="comment">// 有的話就移除</span></span><br><span class="line">    typewriteAni.classList.remove(<span class="string">'typewriter'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 沒有的話就加上</span></span><br><span class="line">    typewriteAni.classList.add(<span class="string">'typewriter'</span>);</span><br><span class="line">    <span class="comment">// 監聽元素 animationend 事件，動畫執行完 800 毫秒後清掉文字與 'typewriter' 這個 class</span></span><br><span class="line">    typewriteAni.addEventListener(<span class="string">'animationend'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        typewriteText.textContent = <span class="string">''</span>;</span><br><span class="line">        typewriteAni.classList.remove(<span class="string">'typewriter'</span>);</span><br><span class="line">      &#125;, <span class="number">800</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 用 count%3 來計算目前要取得的 arr 位置是第幾個（arr 中有 3 筆就用 %3，五筆就 %5）</span></span><br><span class="line">  typewriteText.textContent = arr[count%<span class="number">3</span>];</span><br><span class="line">&#125;, <span class="number">2500</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="JS-補給站："><a href="#JS-補給站：" class="headerlink" title="JS 補給站："></a>JS 補給站：</h3><h4 id="animationend-event"><a href="#animationend-event" class="headerlink" title="animationend event"></a>animationend event</h4><p>animationend 事件，就如同 click 事件一樣，可以透過 addEventListener 來對元素做監聽。animationend 是指在 CSS 動畫執行完後再執行後面函式設定的內容</p>
+<h4 id="contains"><a href="#contains" class="headerlink" title="contains()"></a>contains()</h4><p>contains 方法可以用在 DOMTokenList，而元素的 classList（ele.classList）回傳的正是一個 DOMTokenList 物件，所以這邊要確認是否有某個 class 就需要使用 contains。</p>
+<p>有一個與 contains 很像的方法，也就是 Array 的 includes，要注意這邊若要使用 includes，要先將 DOMTokenList 轉為 Array。<br>例如：<code>[...typewriteAni.classList].includes(&#39;typewriter&#39;)</code></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://codepen.io/carlos411/pen/wRKRej">animation-timing-function 的 steps 函式</a><br><a href="https://carlos-studio.com/2018/12/13/css-animation-9-%e4%bd%bf%e7%94%a8-animation-timing-function-%e4%be%86%e6%8e%a7%e5%88%b6%e5%8b%95%e7%95%ab%e7%9a%84%e9%80%9f%e5%ba%a6%e8%88%87%e5%8a%a0%e9%80%9f%e5%ba%a6/">Carlos-Studio 設計好網站</a></p>
+
+        </div>
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- tzuhui-ad-hr-3 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9006675162967798"
+     data-ad-slot="9060650530"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        
+        
+        
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<!-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> -->
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_telegram"></a>
+<!-- <a class="a2a_button_whatsapp"></a>
+<a class="a2a_button_reddit"></a> -->
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/27/JavaScript/JS/js-promise/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">用範例理解 JS Promise</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/31/JavaScript/unit-test/unit-test-basic/">
+                <span class="level-item">初探前端 Unit Test</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://tzuhui.github.io/2019/11/13/CSS/css-typewriter/';
+        this.page.identifier = '2019/11/13/CSS/css-typewriter/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'tzuhui' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+
+
+
+
+  <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "使用 CSS 和 JS 呈現打字機效果",
+    "image": ["https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80"],
+    "datePublished": "Wed Nov 13 2019 00:00:00 GMT+0000",
+    "dateModified": "Wed Nov 13 2019 00:00:00 GMT+0000"
+    }
+    </script>
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-3 column-right ">
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2022/05/13/tool/postman-mock-server/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="用 Postman Mock Server 建立 Mock API">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-05-13T00:00:00.000Z">2022-05-13</time></div>
+                    <a href="/2022/05/13/tool/postman-mock-server/" class="title has-link-black-ter is-size-6 has-text-weight-normal">用 Postman Mock Server 建立 Mock API</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Tool/">Tool</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2021/11/03/xd-plugin-publish/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Icon Anywhere 正式發佈">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-11-03T00:00:00.000Z">2021-11-03</time></div>
+                    <a href="/2021/11/03/xd-plugin-publish/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Icon Anywhere 正式發佈</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/XD/">XD</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="Vue - 使用 GitHub Actions 部署到 GitHub Pages">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-12-11T00:00:00.000Z">2020-12-11</time></div>
+                    <a href="/2020/12/11/Vue/Vue-deploy-github-actions/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Vue - 使用 GitHub Actions 部署到 GitHub Pages</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Vue-筆記/">Vue 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+                <div style="margin: 16px 0px;">
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+     <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-format="fluid"
+          data-ad-layout-key="-hr+2-b-r+2j"
+          data-ad-client="ca-pub-9006675162967798"
+          data-ad-slot="3088276737"></ins>
+     <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+     </script>
+</div>
+
+            
+        
+        <article class="media">
+            
+            <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="flex-shrink 的壓縮計算">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-30T00:00:00.000Z">2020-05-30</time></div>
+                    <a href="/2020/05/30/w3HexSchool-challenge/flex-shrink-rule/" class="title has-link-black-ter is-size-6 has-text-weight-normal">flex-shrink 的壓縮計算</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSS-筆記/">CSS 筆記</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+        <article class="media">
+            
+            <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="XD Plugin - Selection 與 Scenegraph 運用">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-18T00:00:00.000Z">2020-04-18</time></div>
+                    <a href="/2020/04/18/w3HexSchool-challenge/xd-plugin-selection-scenegraph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">XD Plugin - Selection 與 Scenegraph 運用</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+            
+        
+    </div>
+</div>
+    
+        <div style="margin: 16px 0px">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- tzuhui-ad-1 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9006675162967798"
+         data-ad-slot="2758131916"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                標籤
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Bootstrap/">
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CI-CD/">
+                        <span class="tag">CI/CD</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML/">
+                        <span class="tag">HTML</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MOPCON/">
+                        <span class="tag">MOPCON</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Postman/">
+                        <span class="tag">Postman</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Promise/">
+                        <span class="tag">Promise</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TypeScript/">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Unit-Test/">
+                        <span class="tag">Unit Test</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Vue/">
+                        <span class="tag">Vue</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/XD-Plugin/">
+                        <span class="tag">XD Plugin</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/chrome-extension/">
+                        <span class="tag">chrome extension</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git/">
+                        <span class="tag">git</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/gulp/">
+                        <span class="tag">gulp</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/lottie/">
+                        <span class="tag">lottie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/w3HexSchool/">
+                        <span class="tag">w3HexSchool</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/六角/">
+                        <span class="tag">六角</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/問答小坑/">
+                        <span class="tag">問答小坑</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/好用工具/">
+                        <span class="tag">好用工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/技術筆記/">
+                        <span class="tag">技術筆記</span>
+                        <span class="tag is-grey">20</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6 d-felx align-items-center" href="/">
+                
+                    <img src="https://avatars2.githubusercontent.com/u/34861363?s=400&u=cd528ada323d694d6db0e5133b5ce0fe926a94d6&v=4" alt="使用 CSS 和 JS 呈現打字機效果" height="28"> <span style="margin-left: 4px;">使用 CSS 和 JS 呈現打字機效果</span>
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2024 TzuHui Yeh&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-TW");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://tzuhui.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到頁首" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="請輸入關鍵字..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
